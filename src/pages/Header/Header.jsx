@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import "@/assets/css/Header.css"
+import { useState } from "react";
 import {
   FaHome,
   FaLaptopCode,
@@ -11,6 +12,8 @@ import {
 } from "react-icons/fa";
 import { Link, useLocation } from "react-router-dom";
 
+
+
 export default function Header() {
   const location = useLocation();
   const [activeLink, setActiveLink] = useState(() => {
@@ -18,16 +21,11 @@ export default function Header() {
     return path;
   });
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-
-  useEffect(() => {
-    const handleResize = () => setWindowWidth(window.innerWidth);
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
+  // Removed unused windowWidth state and related useEffect
 
   const navLinks = [
     { id: "home", icon: FaHome, text: "Home", path: "/" },
+    { id: "about", icon: FaUser, text: "About", path: "/about" },
     { id: "skills", icon: FaCode, text: "Skills", path: "/skills" },
     {
       id: "experience",
@@ -72,7 +70,7 @@ export default function Header() {
                       setActiveLink(id);
                       setIsMenuOpen(false);
                     }}
-                    className={`px-3 py-2 md:py-1.5 rounded-lg md:rounded-full text-sm font-medium
+                    className={`nav-link px-3 py-2 md:py-1.5 rounded-lg md:rounded-full text-sm font-medium
                       transition-all duration-300 flex items-center gap-2
                       hover:bg-white/10 
                       ${

@@ -143,14 +143,15 @@ export default function EnhancedPortfolioCard() {
                 </Badge>
               </div>
               <p className="text-gray-300 text-lg leading-relaxed">
-                Visual Designer with 7+ years of experience. I'm all about
-                crafting user-friendly interfaces that are functional and
-                visually compelling.
+                I architect and develop full-stack web applications with a focus on performance,
+                accessibility, and cutting-edge technologies. Let&#39;s build something amazing together.
               </p>
               <p className="text-gray-300 text-lg leading-relaxed">
-                Born and raised in the beautiful Costa Rica. When I'm not busy
-                designing, you'll likely find me playing some board games, deep
-                into my Animal Crossing or cooking some mouthwatering Arepas.
+                I&#39;m Ashley Motsie, a passionate <strong>Full-Stack Developer</strong> based in <em>South
+                  Africa</em>
+                with expertise in building efficient, user-friendly modern web applications.
+                My journey in tech has been driven by curiosity and a desire to solve complex problems
+                through innovative solutions.
               </p>
             </motion.div>
           </Card>
