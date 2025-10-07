@@ -1,11 +1,11 @@
-import React, { useState } from "react";
-import EducationLoader from "@/components/ui/EducationLoader";
+import { useState } from "react";
+// import EducationLoader from "@/components/ui/EducationLoader";
 import {
-  Star,
+  // Star,
   Award,
   Calendar,
   BookOpen,
-  GraduationCap,
+  // GraduationCap,
   Trophy,
 } from "lucide-react";
 import { motion } from "framer-motion";
@@ -74,7 +74,7 @@ const EducationSection = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-teal-400 to-blue-500 bg-clip-text text-transparent mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-teal-400 to-green-500 bg-clip-text text-transparent mb-6">
             Educational Journey
           </h2>
           <p className="text-gray-300 max-w-2xl mx-auto text-lg">
@@ -96,7 +96,7 @@ const EducationSection = () => {
               className={`relative border rounded-xl p-8 transition-all duration-300 bg-gray-900/50 backdrop-blur-sm ${
                 hoveredIndex === index
                   ? "border-teal-500 scale-[1.02]"
-                  : "border-blue-400/20"
+                  : "border-green-400/20"
               }`}
               onMouseEnter={() => setHoveredIndex(index)}
               onMouseLeave={() => setHoveredIndex(null)}
@@ -145,7 +145,7 @@ const EducationSection = () => {
                   {edu.skills.map((skill, i) => (
                     <span
                       key={i}
-                      className="px-2 py-1 text-xs rounded bg-blue-500/10 text-blue-300"
+                      className="px-2 py-1 text-xs rounded bg-blue-500/10 text-green-300"
                     >
                       {skill}
                     </span>
