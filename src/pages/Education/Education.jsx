@@ -15,22 +15,22 @@ const EducationSection = () => {
 
   const educationData = [
     {
-      degree: "Secondary School Certificate (SSC)",
-      school: "Natore Textile Institute",
+      degree: "Secondary School Certificate (NSC)",
+      school: "Malefo Secondary School",
       mascot: "📘",
-      year: "2019-2021",
-      achievements: ["GPA: 4.89", "Subject: Science"],
+      year: "2016-2020",
+      achievements: ["Subject: Mathematics, Science"],
       skills: ["Mathematics", "Physics", "Chemistry", "Biology"],
       description:
         "Focused on core science subjects with emphasis on practical laboratory work and scientific research methodologies.",
     },
     {
-      degree: "Higher Secondary Certificate (HSC)",
-      school: "Dottopara Model Degree College",
+      degree: "College Certificate (NCV)",
+      school: "Orbit Tvet College",
       mascot: "📗",
-      year: "2021-2023",
-      achievements: ["GPA: 4.25", "Subject: Arts"],
-      skills: ["Literature", "Social Studies", "Economics", "History"],
+      year: "2022-2024",
+      achievements: ["Subject: IT & Computer Science"],
+      skills: ["Computer Programming", "System Analysis and Design", "Multimedia", "Data Communication & Networking"],
       description:
         "Developed strong analytical and critical thinking skills through comprehensive study of humanities and social sciences.",
     },
