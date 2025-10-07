@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/prop-types */
 import React from "react";
 import { Code2, Activity, Cpu, Layers, Network, Binary } from "lucide-react";
 
@@ -56,18 +58,16 @@ const ExperienceSection = () => {
     {
       icon: Network,
       title: "Junior Software Dev & IT Technician",
-      company: "Eullafied Tech Solutions",
+      company: "ETS",
       period: "June 2025 - Current",
-      description:
-        "Worked on developing and customizing WordPress websites for clients globally.",
+      description: "Worked on developing and customizing WordPress websites for clients globally.",
     },
     {
       icon: Code2,
       title: "AI Software Developer",
       company: "AI Global Networks",
       period: "July 2025 - Current",
-      description:
-        "Assisted in building and optimizing user interfaces with a focus on responsive and interactive designs.",
+      description: "Assisted in building and optimizing user interfaces with a focus on responsive and interactive designs.",
     },
   ];
 
@@ -106,7 +106,7 @@ const ExperienceSection = () => {
               <div className="absolute inset-0 -z-10 bg-gradient-to-r from-cyan-500/20 to-purple-500/20 blur-3xl rounded-full" />
             </div>
             <p className="text-lg md:text-xl text-gray-400 font-medium tracking-wide text-center max-w-2xl">
-              "Transforming ideas into digital reality, one project at a time"
+              &quot;Transforming ideas into digital reality, one project at a time&quot;
             </p>
           </div>
 
