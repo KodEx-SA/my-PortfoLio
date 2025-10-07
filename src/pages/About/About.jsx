@@ -1,4 +1,4 @@
-import HeroImg from "@/assets/images/profile_images/my_pic.png";
+import HeroImg from "@/assets/img/my_pic.png";
 import LogoImage from "@/assets/images/logo_images/Logo.png";
 
 export default function About() {

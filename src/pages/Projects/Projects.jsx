@@ -2,47 +2,57 @@ import { ReactLenis } from "lenis/react";
 import { useTransform, motion, useScroll } from "framer-motion";
 import { useRef, useEffect } from "react";
 import PropTypes from "prop-types";
+import AIAssistantImg from "@/assets/img/AI-Assistant.png";
+import GautengRentalsImg from "@/assets/img/gauteng-rentals.png";
+import RealHomesImg from "@/assets/img/real-homes.png";
+import WebAppConverterImg from "@/assets/img/web-app-converter.jpeg";
 
 const projects = [
   {
-    title: "Olova! A Lightweight JavaScript Library",
-    description:
-      "A lightweight JavaScript library for creating beautiful, responsive UI components.",
-    src: "rock.jpg",
-    link: "https://i.postimg.cc/DwgWTfP0/Annotation-2025-03-19-113338.png",
+    title: "Generative AI Chatbot",
+    description: "Real-time conversational chatbot powered by Groq AI.",
+    src: AIAssistantImg,
+    link: "https://i.postimg.cc/3x3Q8y7W/Annotation-2025-04-01-203130.png",
     color: "#5196fd",
-    githubLink: "https://github.com/olovajs/olova",
-    liveLink: "https://olova.js.org/",
+    githubLink: "https://github.com/KodEx-SA/ReactJs-ChatBot",
+    liveLink: "https://react-js-chat-bot-1.vercel.app/",
   },
   {
-    title: "A sleek portfolio built with React and Tailwind CSS ",
-    description:
-      "A sleek portfolio built with React and Tailwind CSS to showcase your skills, projects, and experience in a modern design.",
-    src: "tree.jpg",
-    link: "https://i.postimg.cc/J75CKyrs/Annotation-2025-04-01-203959.png",
-    color: "#8f89ff",
-    githubLink: "https://github.com/seraprogrammer/portfolio",
-    liveLink: "https://codervai.vercel.app",
+    title: "Temperature Converter",
+    description: "Efficient web app for temperature conversions.",
+    src: WebAppConverterImg,
+    link: "https://i.postimg.cc/3x3Q8y7W/Annotation-2025-04-01-203130.png",
+    color: "#5196fd",
+    githubLink: "https://github.com/KodEx-SA/web_app_temp_conveter",
+    liveLink: "https://my-web-app-temperature-conveter.vercel.app/",
   },
+  // {
+  //   title: "A sleek portfolio built with React and Tailwind CSS ",
+  //   description:
+  //     "A sleek portfolio built with React and Tailwind CSS to showcase your skills, projects, and experience in a modern design.",
+  //   src: "tree.jpg",
+  //   link: "https://i.postimg.cc/J75CKyrs/Annotation-2025-04-01-203959.png",
+  //   color: "#8f89ff",
+  //   githubLink: "https://github.com/KodEx-SA/my-PortfoLio",
+  //   liveLink: "",
+  // },
   {
-    title: "🚀 CodeWhisperer",
-    description:
-      "🚀 CodeWhisperer A powerful online code editor built with React and Tailwind CSS. Featuring real-time code execution, syntax highlighting, multi-language support, and a sleek UI. Start coding instantly! 💻✨",
-    src: "water.jpg",
-    link: "https://i.postimg.cc/J4jPVFY0/Annotation-2025-04-01-204723.png",
+    title: "Gauteng Rentals Directory",
+    description: "Fast, simple, reliable rental search with AI recommendations.",
+    src: GautengRentalsImg,
+    link: "https://i.postimg.cc/3x3Q8y7W/Annotation-2025-04-01-203130.png",
     color: "#fff",
-    githubLink: "https://github.com/seraprogrammer/codewhisperer",
-    liveLink: "https://codewhisperer.vercel.app/",
+    githubLink: "https://github.com/KodEx-SA/jhb-rental-directory",
+    liveLink: "https://gauteng-rental-directory-landing-pa.vercel.app/",
   },
   {
-    title: "CodeKori 🔥",
-    description:
-      "CodeKori is a powerful online code editor built with React and Tailwind CSS. Featuring real-time code execution, syntax highlighting, multi-language support, and a sleek UI. Start coding instantly! 💻✨",
-    src: "house.jpg",
-    link: "https://i.postimg.cc/cHQr4fpR/Annotation-2025-04-01-205350.png",
+    title: "RealHomes",
+    description: "Luxury real estate platform with advanced search and authentication.",
+    src: RealHomesImg,
+    link: "https://i.postimg.cc/3x3Q8y7W/Annotation-2025-04-01-203130.png",
     color: "#ed649e",
-    githubLink: "https://github.com/seraprogrammer/CodeKori",
-    liveLink: "https://codekori.js.org",
+    githubLink: "https://github.com/KodEx-SA/RealHomes",
+    liveLink: "",
   },
 ];
 
@@ -107,7 +117,7 @@ export default function Projects() {
               <Card
                 key={`p_${i}`}
                 i={i}
-                url={project.link}
+                src={project.src} // changed from url to local image 
                 title={project.title}
                 color={project.color}
                 description={project.description}
@@ -129,7 +139,7 @@ function Card({
   i,
   title,
   description,
-  url,
+  src, // updated to use src , not url
   color,
   progress,
   range,
@@ -163,7 +173,7 @@ function Card({
           {/* Image section - full width on mobile, 55% on desktop */}
           <div className="w-full md:w-[55%] h-[250px] md:h-[400px] lg:h-[450px] relative overflow-hidden">
             <motion.img
-              src={url}
+              src={src} // use local img
               alt={title}
               className="w-full h-full object-cover"
               initial={{ scale: 1 }}
@@ -284,7 +294,7 @@ Card.propTypes = {
   i: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
-  url: PropTypes.string.isRequired,
+  src: PropTypes.string.isRequired,
   color: PropTypes.string.isRequired,
   progress: PropTypes.object.isRequired,
   range: PropTypes.array.isRequired,
