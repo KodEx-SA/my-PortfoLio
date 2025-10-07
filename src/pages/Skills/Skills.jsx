@@ -9,12 +9,10 @@ import {
   FaPython,
   FaDocker,
   FaGitAlt,
-  FaLinux,
   FaFigma,
   FaAws,
 } from "react-icons/fa";
 import {
-  SiNextdotjs,
   SiBootstrap,
   SiTailwindcss,
   SiPostgresql,
@@ -221,7 +219,7 @@ const SkillsSection = () => {
       <section className="container mx-auto px-4 py-12 relative z-10">
         {/* Header Section */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-purple-500 to-emerald-400 mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-green-500 via-teal-600 to-emerald-500 mb-4">
             Skills & Technologies
           </h2>
           <p className="text-gray-400 text-lg max-w-2xl mx-auto">
