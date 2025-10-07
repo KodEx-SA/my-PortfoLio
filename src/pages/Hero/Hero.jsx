@@ -198,17 +198,6 @@ const profile = {
           </div>
         </div>
       </section>
-
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce flex flex-col items-center gap-2">
-        <span className="text-gray-400 text-sm flex items-center gap-2">
-          <Mouse className="text-blue-400 w-4 h-4" />
-          About me
-        </span>
-        <ChevronDown className="text-blue-400 w-6 h-6" />
-      </div>
-
-
     </main>
   );
 }

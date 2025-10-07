@@ -26,18 +26,18 @@ export default function About() {
 
           <div className="relative space-y-4">
             <p className="text-gray-300 leading-relaxed">
-              I'm Ashley Motsie, a passionate <strong className="text-white">Full-Stack Developer</strong> based in{" "}
+              I&apos;m Ashley Motsie, a passionate <strong className="text-white">Full-Stack Developer</strong> based in{" "}
               <em className="text-emerald-400">South Africa</em> with expertise in building efficient, 
               user-friendly modern web applications. My journey in tech has been driven by curiosity 
               and a desire to solve complex problems through innovative solutions.{" "}
               <span className="font-bold text-emerald-400">
                 As a growing Developer in Tech Industry
               </span>
-              , I'm dedicated to learning development workflows.
+              , I&apos;m dedicated to learning development workflows.
             </p>
             
             <p className="text-gray-300 leading-relaxed">
-              My focus is on web development and currently, I'm expanding into
+              My focus is on web development and currently, I&apos;m expanding into
               backend development to grow as a full-stack developer and create
               seamless, robust web applications.
             </p>
@@ -45,9 +45,9 @@ export default function About() {
             <div className="pt-6">
               <blockquote className="border-l-4 border-emerald-400 pl-4 bg-gray-800/20 p-4 rounded-r-lg">
                 <p className="text-gray-300 italic">
-                  I'm a lifelong learner, sometimes a teacher and innovator,
+                  I&apos;m a lifelong learner, sometimes a teacher and innovator,
                   driven by a desire to contribute to the developer community with new ideas and
-                  tools that deliver real value. I'm learning JavaScript frameworks to build scalable applications.
+                  tools that deliver real value. I&apos;m learning JavaScript frameworks to build scalable applications.
                 </p>
 
                 <div className="mt-6 space-y-3">
