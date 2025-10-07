@@ -6,7 +6,7 @@ export default function About() {
     <section id="about" className="py-16 md:py-32 text-white bg-[#04081A] min-h-screen">
       <div className="mx-auto max-w-5xl space-y-8 px-6 md:space-y-16">
         <h2 className="relative z-10 max-w-xl text-4xl font-medium lg:text-5xl text-white">
-          Developer, Problem Solver and Lifelong Learner
+          Forever a Student, sometimes a Teacher, always a Coder.
         </h2>
         
         <div className="grid gap-6 sm:grid-cols-2 md:gap-12 lg:gap-24">
@@ -39,7 +39,7 @@ export default function About() {
             <p className="text-gray-300 leading-relaxed">
               My focus is on web development and currently, I&apos;m expanding into
               backend development to grow as a full-stack developer and create
-              seamless, robust web applications.
+              efficient, robust web applications.
             </p>
 
             <div className="pt-6">

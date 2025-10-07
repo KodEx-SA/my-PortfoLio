@@ -40,7 +40,8 @@ const GridBackground = () => {
 export default function Hero() {
   const words = [
     "Full-Stack Development",
-    "AI Development & Integration", 
+    "AI Software Development",
+    "AI Integration", 
     "Web Development",
   ];
 
@@ -49,14 +50,14 @@ const profile = {
     name: 'Ashley K Motsie',
     title: 'Full-Stack Development | AI Enthusiast | Problem Solving',
     skills: [
-        'React', 'Flask', 'Django', 'MSSQL', 'Python', 'Javascript', 'HTML & CSS',
-        'MySQL', 'MongoDB', 'PostgreSQL', 'Docker', '.NET', 'Bootstrap', 'Tailwindcss',
-        'ChartJs', 'Git', 'Linux(beginner)', 'GitHub', 'Figma', 'AI Tools'
+        'React', 'Flask', 'Django', 'MSSQL', 'Python', 'Javascript', 
+        'HTML & CSS', 'MySQL', 'PostgreSQL', 'Docker', 'Bootstrap', 
+        'Tailwindcss','Git', 'GitHub', 'Figma', 'AI Tools'
     ],
     hardWorker: true,
     quickLearner: true,
     problemSolver: true,
-    yearsOfExperience: 4, 
+    yearsOfExperience: 5, 
     hireable: function() {
         return (
             this.hardWorker &&

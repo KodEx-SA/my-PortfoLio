@@ -55,27 +55,19 @@ const ExperienceSection = () => {
   const experiences = [
     {
       icon: Network,
-      title: "WordPress Developer",
-      company: "Fiverr",
-      period: "2019 - 2020",
+      title: "Junior Software Dev & IT Technician",
+      company: "Eullafied Tech Solutions",
+      period: "June 2025 - Current",
       description:
         "Worked on developing and customizing WordPress websites for clients globally.",
     },
     {
-      icon: Layers,
-      title: "Junior Frontend Developer",
-      company: "Sera Programmer",
-      period: "2021 - 2023",
+      icon: Code2,
+      title: "AI Software Developer",
+      company: "AI Global Networks",
+      period: "July 2025 - Current",
       description:
         "Assisted in building and optimizing user interfaces with a focus on responsive and interactive designs.",
-    },
-    {
-      icon: Code2,
-      title: "JavaScript Developer",
-      company: "OlovJS (Sera Programmer)",
-      period: "2023 - Present",
-      description:
-        "Contributed to developing JavaScript libraries and enhancing framework functionalities.",
     },
   ];
 
