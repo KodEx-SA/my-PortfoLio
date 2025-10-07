@@ -105,7 +105,7 @@ const profile = {
               <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold leading-tight">
                 <SparklesText text="Hello" />
                 <span className="relative inline-block">
-                  I'm
+                  I&apos;m
                   <span className="typing-effect gradient-text ml-2">
                     Ashley K Motsie
                   </span>
