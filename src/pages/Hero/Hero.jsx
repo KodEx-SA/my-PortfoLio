@@ -6,9 +6,7 @@ import Meteors from "@/components/ui/meteors";
 
 import SparklesText from "@/components/ui/sparkles-text";
 import { FlipWords } from "@/components/ui/flip-words";
-import { 
-  ChevronDown, 
-  Mouse, 
+import {
   Rocket, 
   Code, 
   ArrowRight,
@@ -90,13 +88,13 @@ const profile = {
           {/* Left Column - Text Content */}
           <div className="w-full lg:w-1/2 relative">
             {/* Decorative Blurs */}
-            <div className="absolute -top-20 -left-20 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl hidden lg:block"></div>
+            <div className="absolute -top-20 -left-20 w-64 h-64 bg-green-800/10 rounded-full blur-3xl hidden lg:block"></div>
             <div className="absolute top-40 -right-20 w-64 h-64 bg-teal-500/10 rounded-full blur-3xl hidden lg:block"></div>
 
             {/* Welcome Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 mb-8">
-              <div className="w-2 h-2 rounded-full bg-blue-400 animate-pulse"></div>
-              <span className="text-gray-300 text-sm font-medium">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gray-800/50 backdrop-blur-sm border border-green-700/50 mb-8">
+              <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse"></div>
+              <span className="text-green-300 text-sm font-medium">
                 Welcome to my universe
               </span>
             </div>
@@ -127,7 +125,7 @@ const profile = {
             {/* Description */}
             <div className="relative mb-12 max-w-xl">
               <p className="text-xl text-gray-300/90 leading-relaxed">
-                Tech lover 🚀 | Utilizing frameworks and coding the future 💻✨
+                Tech Enthusiast | Utilizing frameworks and coding the future
               </p>
             </div>
 
