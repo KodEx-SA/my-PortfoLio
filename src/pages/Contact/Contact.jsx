@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import { Send, Phone, MapPin, Mail } from "lucide-react";
 
