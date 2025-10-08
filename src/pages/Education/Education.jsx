@@ -20,9 +20,9 @@ const EducationSection = () => {
       mascot: "📘",
       year: "2016-2020",
       achievements: ["Subject: Mathematics, Science"],
-      skills: ["Mathematics", "Physics", "Chemistry", "Biology"],
+      skills: ["Mathematics", "Physics", "Biology"],
       description:
-        "Focused on core science subjects with emphasis on practical laboratory work and scientific research methodologies.",
+        "Focused on science subjects with emphasis on practical laboratory work and scientific research methodologies.",
     },
     {
       degree: "College Certificate (NCV)",
@@ -32,7 +32,7 @@ const EducationSection = () => {
       achievements: ["Subject: IT & Computer Science"],
       skills: ["Computer Programming", "System Analysis and Design", "Multimedia", "Data Communication & Networking"],
       description:
-        "Developed strong analytical and critical thinking skills through comprehensive study of humanities and social sciences.",
+        "Developed strong critical thinking skills through comprehensive study of Computer Science.",
     },
   ];
 
