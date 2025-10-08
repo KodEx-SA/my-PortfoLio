@@ -89,7 +89,7 @@ const profile = {
           <div className="w-full lg:w-1/2 relative">
             {/* Decorative Blurs */}
             <div className="absolute -top-20 -left-20 w-64 h-64 bg-green-800/10 rounded-full blur-3xl hidden lg:block"></div>
-            <div className="absolute top-40 -right-20 w-64 h-64 bg-teal-500/10 rounded-full blur-3xl hidden lg:block"></div>
+            <div className="absolute top-40 -right-20 w-64 h-64 bg-green-500/10 rounded-full blur-3xl hidden lg:block"></div>
 
             {/* Welcome Badge */}
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gray-800/50 backdrop-blur-sm border border-green-700/50 mb-8">
