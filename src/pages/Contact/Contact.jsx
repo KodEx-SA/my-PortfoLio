@@ -26,7 +26,7 @@ export default function Contact() {
     if (!formData.email.trim()) {
       tempErrors.email = "Email is required";
       isValid = false;
-    } else if (!/^[\w-\\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(formData.email)) {
+    } else if (!/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/.test(formData.email)) {
       tempErrors.email = "Email is invalid";
       isValid = false;
     }
@@ -53,13 +53,17 @@ export default function Contact() {
       return;
     }
 
+    if (!import.meta.env.VITE_WEB3FORMS_KEY) {
+      setStatus("Error: Web3Forms access key is missing. Please contact the site owner.");
+      return;
+    }
+
     setLoading(true);
     setStatus(null);
     setErrors({});
 
-    // Prepare data as JSON (per Web3Forms docs; simpler than FormData for non-file forms)
     const data = {
-      access_key: import.meta.env.VITE_WEB3FORMS_KEY, // Use env var: VITE_WEB3FORMS_KEY=your-key
+      access_key: import.meta.env.VITE_WEB3FORMS_KEY,
       name: formData.name,
       email: formData.email,
       subject: formData.subject || "New Contact Form Submission",
@@ -77,6 +81,7 @@ export default function Contact() {
       });
 
       const result = await response.json();
+      // console.log("Web3Forms Response:", result); // Debug API response
 
       if (result.success) {
         setStatus("Your message is sent successfully! I'll get back to you soon.");
@@ -87,11 +92,11 @@ export default function Contact() {
           message: "",
         });
       } else {
-        setStatus(result.message || "There was an error sending your message. Please try again.");
+        setStatus(result.message || "Error sending message. Please try again.");
       }
     } catch (error) {
-      setStatus("An error occurred. Please check your connection and try again.");
-      console.error("Error:", error);
+      setStatus("Network error. Please check your connection and try again.");
+      console.error("Fetch Error:", error);
     } finally {
       setLoading(false);
     }
@@ -178,9 +183,7 @@ export default function Contact() {
                       aria-describedby={errors.email ? "email-error" : undefined}
                     />
                     {errors.email && (
-                      <p id="email-error" className="text-red-500 text-sm mt-1">
-                        {errors.email}
-                      </p>
+                      <p id="email-error" className="text-red-500 text-sm mt-1">{errors.email}</p>
                     )}
                   </div>
 
@@ -201,9 +204,7 @@ export default function Contact() {
                       aria-describedby={errors.subject ? "subject-error" : undefined}
                     />
                     {errors.subject && (
-                      <p id="subject-error" className="text-red-500 text-sm mt-1">
-                        {errors.subject}
-                      </p>
+                      <p id="subject-error" className="text-red-500 text-sm mt-1">{errors.subject}</p>
                     )}
                   </div>
 
@@ -224,9 +225,7 @@ export default function Contact() {
                       aria-describedby={errors.message ? "message-error" : undefined}
                     ></textarea>
                     {errors.message && (
-                      <p id="message-error" className="text-red-500 text-sm mt-1">
-                        {errors.message}
-                      </p>
+                      <p id="message-error" className="text-red-500 text-sm mt-1">{errors.message}</p>
                     )}
                   </div>
                 </div>
