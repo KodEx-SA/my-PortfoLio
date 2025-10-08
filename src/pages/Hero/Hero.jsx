@@ -46,7 +46,7 @@ export default function Hero() {
   const [code] = useState(`
 const profile = {
     name: 'Ashley K Motsie',
-    title: 'Full-Stack Development | AI Enthusiast | Problem Solving',
+    title: 'Full-Stack Developer | AI Enthusiast | Problem Solver',
     skills: [
         'React', 'Flask', 'Django', 'MSSQL', 'Python', 'Javascript', 
         'HTML & CSS', 'MySQL', 'PostgreSQL', 'Docker', 'Bootstrap', 
