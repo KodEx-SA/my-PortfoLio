@@ -19,7 +19,7 @@ const projects = [
     liveLink: "https://react-js-chat-bot-1.vercel.app/",
   },
   {
-    title: "Modern Ubizo iMarket - e-commerce landing page",
+    title: "Modern Ubizo iMarket e-commerce landing page",
     description: "Connect buyers and sellers across South Africa on one powerful Ubizo iMarket platform.",
     src: UbizoiMarketImg,
     link: "https://i.postimg.cc/3x3Q8y7W/Annotation-2025-04-01-203130.png",
