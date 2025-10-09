@@ -6,6 +6,7 @@ import AIAssistantImg from "@/assets/img/AI-Assistant.png";
 import GautengRentalsImg from "@/assets/img/gauteng-rentals.png";
 import RealHomesImg from "@/assets/img/real-homes.png";
 import WebAppConverterImg from "@/assets/img/web-app-converter.jpeg";
+import UbizoiMarketImg from "@/assets/img/ubizo.png";
 
 const projects = [
   {
@@ -18,6 +19,15 @@ const projects = [
     liveLink: "https://react-js-chat-bot-1.vercel.app/",
   },
   {
+    title: "Modern Ubizo iMarket - e-commerce landing page",
+    description: "Connect buyers and sellers across South Africa on one powerful Ubizo iMarket platform.",
+    src: UbizoiMarketImg,
+    link: "https://i.postimg.cc/3x3Q8y7W/Annotation-2025-04-01-203130.png",
+    color: "#8f89ff",
+    githubLink: "https://github.com/KodEx-SA/ubizo-e-commerce-landing-page",
+    liveLink: "https://ubizo-e-commerce-landing-page.onrender.com/",
+  },
+  {
     title: "Temperature Converter",
     description: "Efficient web app for temperature conversions.",
     src: WebAppConverterImg,
@@ -26,16 +36,6 @@ const projects = [
     githubLink: "https://github.com/KodEx-SA/web_app_temp_conveter",
     liveLink: "https://my-web-app-temperature-conveter.vercel.app/",
   },
-  // {
-  //   title: "A sleek portfolio built with React and Tailwind CSS ",
-  //   description:
-  //     "A sleek portfolio built with React and Tailwind CSS to showcase your skills, projects, and experience in a modern design.",
-  //   src: "tree.jpg",
-  //   link: "https://i.postimg.cc/J75CKyrs/Annotation-2025-04-01-203959.png",
-  //   color: "#8f89ff",
-  //   githubLink: "https://github.com/KodEx-SA/my-PortfoLio",
-  //   liveLink: "",
-  // },
   {
     title: "Gauteng Rentals Directory",
     description: "Fast, simple, reliable rental search with AI recommendations.",
