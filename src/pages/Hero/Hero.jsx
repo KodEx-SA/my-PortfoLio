@@ -1,33 +1,33 @@
+"use client";
 import { useState, useEffect } from "react";
 import Prism from "prismjs";
 import "prismjs/components/prism-javascript";
 import "@/assets/css/tomorrow.css";
 import Meteors from "@/components/ui/meteors";
-
 import SparklesText from "@/components/ui/sparkles-text";
 import { FlipWords } from "@/components/ui/flip-words";
 import {
-  Rocket, 
-  Code, 
+  Rocket,
+  Code,
   ArrowRight,
   Wand2,
   Lightbulb,
-  Download
+  Download,
 } from "lucide-react";
 
 // Grid Background Component
 const GridBackground = () => {
   return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-20">
+    <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-20 z-10">
       <div className="absolute inset-0 [mask-image:radial-gradient(ellipse_at_center,transparent_0%,black)]">
-        <div 
+        <div
           className="absolute inset-0 opacity-40"
           style={{
             backgroundImage: `
               linear-gradient(to right, white 0.5px, transparent 0.5px),
               linear-gradient(to bottom, white 0.5px, transparent 0.5px)
             `,
-            backgroundSize: '40px 40px'
+            backgroundSize: "40px 40px",
           }}
         />
       </div>
@@ -39,7 +39,7 @@ export default function Hero() {
   const words = [
     "Full-Stack Development",
     "AI Software Development",
-    "AI Integration", 
+    "AI & API Integration",
     "Web Development",
   ];
 
@@ -76,15 +76,14 @@ const profile = {
       <section className="min-h-screen flex items-center justify-center relative px-4 sm:px-6 lg:px-8 pt-20 pb-10">
         {/* Background Elements */}
         <GridBackground />
-        
+
         {/* Meteors Effect */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute inset-0 overflow-hidden pointer-events-none z-20">
           <Meteors number={10} />
         </div>
 
         {/* Main Content Container */}
         <div className="container mx-auto flex flex-col lg:flex-row items-center justify-between relative z-10 gap-8 lg:gap-16">
-          
           {/* Left Column - Text Content */}
           <div className="w-full lg:w-1/2 relative">
             {/* Decorative Blurs */}
