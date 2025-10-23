@@ -7,6 +7,7 @@ import GautengRentalsImg from "@/assets/img/gauteng-rentals.png";
 import RealHomesImg from "@/assets/img/real-homes.png";
 import WebAppConverterImg from "@/assets/img/web-app-converter.jpeg";
 import UbizoiMarketImg from "@/assets/img/ubizo.png";
+import IsongCafeImg from "@/assets/img/Isong.png"
 
 const projects = [
   {
@@ -35,6 +36,15 @@ const projects = [
     color: "#87fd51ff",
     githubLink: "https://github.com/KodEx-SA/web_app_temp_conveter",
     liveLink: "https://my-web-app-temperature-conveter.vercel.app/",
+  },
+  {
+    title: "Isong Cafe - Bar & Grill",
+    description: "A simple and reliable website for a local cafe.",
+    src: IsongCafeImg,
+    link: "https://i.postimg.cc/3x3Q8y7W/Annotation-2025-04-01-203130.png",
+    color: "#ff3838ff",
+    githubLink: "https://github.com/KodEx-SA/Isong-Cafe-website",
+    liveLink: "https://isong-cafe.vercel.app/",
   },
   {
     title: "Gauteng Rentals Directory",
