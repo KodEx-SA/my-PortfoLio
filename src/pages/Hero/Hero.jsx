@@ -99,12 +99,12 @@ const profile = {
 
             {/* Name Section */}
             <div className="relative mb-8">
-              <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold leading-tight">
+              <h1 className="text-3xl sm:text-4xl lg:text-6xl font-bold leading-tight">
                 <SparklesText text="Hello" />
                 <span className="relative inline-block">
                   I&apos;m
                   <span className="typing-effect gradient-text ml-2">
-                    Ashley Motsie
+                    Ashley K Motsie
                   </span>
                 </span>
               </h1>
