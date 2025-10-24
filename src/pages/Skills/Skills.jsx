@@ -38,7 +38,7 @@ const SkillCard = ({ icon: Icon, title, skills, color }) => (
         >
           <Icon className="w-8 h-8" />
         </div>
-        <h3 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-green-400">
+        <h3 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-teal-300 to-green-400">
           {title}
         </h3>
       </div>
@@ -201,7 +201,7 @@ const SkillsSection = () => {
   ];
 
   return (
-    <main className="pt-16 lg:pt-20 text-white min-h-screen bg-[#04081A] relative">
+    <main className="pt-16 lg:pt-20 text-white min-h-screen bg-[#000000] relative">
       {/* Grid Background */}
       <div 
         className="absolute inset-0 opacity-20 pointer-events-none"
@@ -217,10 +217,10 @@ const SkillsSection = () => {
       <section className="container mx-auto px-4 py-12 relative z-10">
         {/* Header Section */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-green-500 via-teal-600 to-emerald-500 mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-teal-500 via-green-500 to-emerald-500 mb-4">
             Skills & Technologies
           </h2>
-          <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+          <p className="text-gray-300 text-lg max-w-2xl mx-auto">
             A comprehensive overview of my technical skills and the tools I use to build amazing digital experiences.
           </p>
         </div>

@@ -3,7 +3,7 @@ import LogoImage from "@/assets/images/logo_images/Logo.png";
 
 export default function About() {
   return (
-    <section id="about" className="py-16 md:py-32 text-white bg-[#04081A] min-h-screen">
+    <section id="about" className="py-16 md:py-32 text-white bg-[#000000] min-h-screen">
       <div className="mx-auto max-w-5xl space-y-8 px-6 md:space-y-16">
         <h2 className="relative z-10 max-w-xl text-4xl font-medium lg:text-5xl text-white">
           Forever a Student, sometimes a Teacher, always a Coder.
