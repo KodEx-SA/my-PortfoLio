@@ -177,12 +177,12 @@ const profile = {
           {/* Right Column - Code Window */}
           <div className="w-full lg:w-1/2">
             <div className="gradient-border">
-              <div className="code-window bg-[#091121]">
+              <div className="code-window bg-[#000000]">
                 <div className="window-header">
                   <div className="window-dot bg-red-500"></div>
                   <div className="window-dot bg-yellow-500"></div>
                   <div className="window-dot bg-green-500"></div>
-                  <span className="ml-2 text-sm text-gray-400 flex items-center gap-2">
+                  <span className="ml-2 text-sm text-green-400 flex items-center gap-2">
                     <Code className="w-4 h-4" />
                     developer.js
                   </span>
