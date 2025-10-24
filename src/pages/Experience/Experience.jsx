@@ -57,17 +57,17 @@ const ExperienceSection = () => {
   const experiences = [
     {
       icon: Network,
-      title: "Junior Software Dev & IT Technician",
+      title: "Jr Software Dev & IT Technician",
       company: "ETS",
       period: "June 2025 - Current",
-      description: "Worked on developing and customizing WordPress websites for clients globally.",
+      description: "Collaborate with cross-functional teams to contribute to agile project development. Work on code optimization techniques & play a key part in the overall development process.",
     },
     {
       icon: Code2,
       title: "AI Software Developer",
       company: "AI Global Networks",
       period: "July 2025 - Current",
-      description: "Assisted in building and optimizing user interfaces with a focus on responsive and interactive designs.",
+      description: "Responsible for developing scalable applications with integrated AI features. Focused on improving app performance & efficiency. Implementing robust testing protocols to ensure high-quality software.",
     },
   ];
 
