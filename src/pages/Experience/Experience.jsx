@@ -75,7 +75,7 @@ const ExperienceSection = () => {
     <>
       <div className="min-h-screen bg-gradient-to-b relative overflow-hidden pt-32 pb-20">
         {/* Animated gradient background */}
-        <div className="absolute inset-0 bg-[#04081A]" />
+        <div className="absolute inset-0 bg-[#000000]" />
 
         {/* Grid background */}
         <div className="absolute inset-0 bg-[linear-gradient(rgba(50,50,70,0.15)_1px,transparent_1px),linear-gradient(90deg,rgba(50,50,70,0.15)_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_80%_80%_at_50%_50%,#000_70%,transparent_100%)]" />
@@ -85,7 +85,7 @@ const ExperienceSection = () => {
           {[...Array(20)].map((_, i) => (
             <div
               key={i}
-              className="absolute w-2 h-2 bg-blue-500/20 rounded-full animate-float"
+              className="absolute w-2 h-2 bg-green-700 rounded-full animate-float"
               style={{
                 top: `${Math.random() * 100}%`,
                 left: `${Math.random() * 100}%`,

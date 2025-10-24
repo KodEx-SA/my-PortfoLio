@@ -46,11 +46,10 @@ const profile = {
     name: 'Ashley K Motsie',
     title: 'Developer',
     skills: [
-        'React', 'Flask', 'Django', 'MSSQL', 
-        'Python', 'Javascript', 'HTML & CSS',
-        'MySQL', 'PostgreSQL', 'Docker',
-        'Bootstrap', 'Tailwindcss','Git',
-        'GitHub'
+        'React', 'Flask', 'Django', 'MSSQL',
+        'Python', 'Javascript', 'MySQL', 
+        'PostgreSQL', 'Docker','Bootstrap', 
+        'Tailwindcss','Git', 'GitHub'
     ],
     hardWorker: true,
     quickLearner: true,
@@ -91,7 +90,7 @@ const profile = {
             <div className="absolute top-40 -right-20 w-64 h-64 bg-green-400/10 rounded-full blur-3xl hidden lg:block"></div>
 
             {/* Welcome Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gray-900/50 backdrop-blur-sm border border-green-700/50 mb-8">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-black backdrop-blur-sm border border-green-700/50 mb-8">
               <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
               <span className="text-green-400 text-sm font-medium">
                 Welcome to my universe
