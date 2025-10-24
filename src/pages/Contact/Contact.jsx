@@ -103,14 +103,14 @@ export default function Contact() {
   };
 
   return (
-    <main className="pt-20 lg:pt-[0rem] bg-[#04081A] text-white min-h-screen">
+    <main className="pt-20 lg:pt-[0rem] bg-[#000000] text-white min-h-screen">
       <section className="hero min-h-screen flex items-center relative px-4 sm:px-6 lg:px-8">
         <div className="container mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Contact Info */}
             <div className="space-y-8">
               <div>
-                <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-green-400 to-teal-500 bg-clip-text text-transparent">
+                <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-green-500 to-teal-700 bg-clip-text text-transparent">
                   Get in Touch
                 </h2>
                 <p className="text-gray-300 text-lg">

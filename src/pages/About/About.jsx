@@ -26,7 +26,7 @@ export default function About() {
 
           <div className="relative space-y-4">
             <p className="text-gray-300 leading-relaxed">
-              I&apos;m Ashley Motsie, a passionate <strong className="text-white">Full-Stack Developer</strong> based in{" "}
+              I&apos;m Ashley Motsie, a passionate <strong className="text-white">Software Developer</strong> based in{" "}
               <em className="text-emerald-400">South Africa</em> with expertise in building efficient, 
               user-friendly modern web applications. My journey in tech has been driven by curiosity 
               and a desire to solve complex problems through innovative solutions.{" "}
@@ -37,8 +37,8 @@ export default function About() {
             </p>
             
             <p className="text-gray-300 leading-relaxed">
-              My focus is on web development and currently, I&apos;m expanding into
-              backend development to grow as a full-stack developer and create
+              My focus is on software development and currently, I&apos;m expanding
+              to be a full-stack developer and create
               efficient, robust web applications.
             </p>
 
@@ -46,14 +46,15 @@ export default function About() {
               <blockquote className="border-l-4 border-emerald-400 pl-4 bg-gray-800/20 p-4 rounded-r-lg">
                 <p className="text-gray-300 italic">
                   I&apos;m a lifelong learner, sometimes a teacher and innovator,
-                  driven by a desire to contribute to the developer community with new ideas and
-                  tools that deliver real value. I&apos;m learning JavaScript frameworks to build scalable applications.
+                  driven by a desire to contribute to the developer community.
+                  {/* with new ideas and
+                  tools that deliver real value. I&apos;m learning JavaScript frameworks to build scalable applications. */}
                 </p>
 
                 <div className="mt-6 space-y-3">
-                  <cite className="block font-medium text-white not-italic">
+                  {/* <cite className="block font-medium text-white not-italic">
                     Ashley K Motsie, Software Developer
-                  </cite>
+                  </cite> */}
                   <div className="flex items-center gap-2">
                     <img
                       className="h-5 w-auto"

@@ -59,12 +59,12 @@ const EducationSection = () => {
   };
 
   return (
-    <section className="min-h-screen relative overflow-hidden py-40 bg-[#04081A]">
+    <section className="min-h-screen relative overflow-hidden py-40 bg-[#000000]">
       {/* Grid Background */}
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-grid-white/[0.05] bg-[length:50px_50px]" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#04081A] via-transparent to-[#04081A]" />
-        <div className="absolute inset-0 border border-white/[0.05] grid grid-cols-2 md:grid-cols-4" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#02040c] via-transparent to-[#0d0e11]" />
+        <div className="absolute inset-0 border border-green-700 grid grid-cols-2 md:grid-cols-4" />
       </div>
 
       <div className="max-w-6xl mx-auto px-4 relative z-10">
@@ -96,7 +96,7 @@ const EducationSection = () => {
               className={`relative border rounded-xl p-8 transition-all duration-300 bg-gray-900/50 backdrop-blur-sm ${
                 hoveredIndex === index
                   ? "border-teal-500 scale-[1.02]"
-                  : "border-green-400/20"
+                  : "border-green-500/20"
               }`}
               onMouseEnter={() => setHoveredIndex(index)}
               onMouseLeave={() => setHoveredIndex(null)}
@@ -105,21 +105,21 @@ const EducationSection = () => {
                 <div className="space-y-2">
                   <div className="flex items-center gap-3">
                     <span className="text-3xl">{edu.mascot}</span>
-                    <h3 className="text-2xl font-bold text-white">
+                    <h3 className="text-2xl font-bold text-green-500">
                       {edu.degree}
                     </h3>
                   </div>
-                  <p className="text-lg text-gray-300 flex items-center gap-2">
+                  <p className="text-lg text-green-400 flex items-center gap-2">
                     <BookOpen className="w-5 h-5 text-teal-500" />
                     {edu.school}
                   </p>
-                  <p className="text-gray-400 flex items-center gap-2">
+                  <p className="text-gray-200 flex items-center gap-2">
                     <Calendar className="w-4 h-4" />
                     {edu.year}
                   </p>
                 </div>
 
-                <p className="text-gray-300 text-sm italic border-l-2 border-teal-500 pl-3">
+                <p className="text-gray-200 text-sm italic border-l-2 border-teal-500 pl-3">
                   {edu.description}
                 </p>
 
@@ -145,7 +145,7 @@ const EducationSection = () => {
                   {edu.skills.map((skill, i) => (
                     <span
                       key={i}
-                      className="px-2 py-1 text-xs rounded bg-blue-500/10 text-green-300"
+                      className="px-2 py-1 text-xs rounded bg-blue-500/10 text-green-400"
                     >
                       {skill}
                     </span>

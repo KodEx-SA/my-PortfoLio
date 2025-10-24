@@ -11,7 +11,7 @@ import {
   FaDocker,
   FaGitAlt,
   FaFigma,
-  FaAws,
+  // FaAws,
 } from "react-icons/fa";
 import {
   SiBootstrap,
@@ -26,19 +26,19 @@ import {
 import { TbBrandVscode } from "react-icons/tb";
 import { BsFileEarmarkCode, BsGrid1X2 } from "react-icons/bs";
 import { MdAnimation } from "react-icons/md";
-import { FcWorkflow } from "react-icons/fc";
+// import { FcWorkflow } from "react-icons/fc";
 
 const SkillCard = ({ icon: Icon, title, skills, color }) => (
-  <Card className="group relative overflow-hidden bg-gray-900/80 border-gray-700 hover:scale-[1.02] transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/20 backdrop-blur-sm">
-    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-blue-500/10 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 ease-out"></div>
+  <Card className="group relative overflow-hidden bg-black border-green-700 hover:scale-[1.02] transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/20 backdrop-blur-sm">
+    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-green-500/10 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 ease-out"></div>
     <CardContent className="p-6 relative z-10">
       <div className="flex items-center gap-4 mb-6">
         <div
-          className={`p-3 rounded-xl bg-gray-800/50 ${color} group-hover:scale-110 transition-transform duration-300`}
+          className={`p-3 rounded-xl bg-green-800/50 ${color} group-hover:scale-110 transition-transform duration-300`}
         >
           <Icon className="w-8 h-8" />
         </div>
-        <h3 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400">
+        <h3 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-green-400">
           {title}
         </h3>
       </div>
@@ -47,7 +47,7 @@ const SkillCard = ({ icon: Icon, title, skills, color }) => (
           <Badge
             key={index}
             variant="outline"
-            className="group/badge relative bg-gray-800/50 hover:bg-gray-700/80 text-gray-100 border-gray-600 flex items-center gap-2 py-2 px-3 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-blue-500/20"
+            className="group/badge relative bg-gray-900/50 hover:bg-gray-700/80 text-green-400 border-gray-600 flex items-center gap-2 py-2 px-3 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-blue-500/20"
           >
             <span className="transform group-hover/badge:scale-110 transition-transform duration-300">
               {skill.icon}
@@ -126,10 +126,10 @@ const SkillsSection = () => {
       color: "text-purple-400",
       skills: [
         { name: "Figma", icon: <FaFigma className="w-4 h-4 text-[#F24E1E]" /> },
-        {
-          name: "Responsive Design",
-          icon: <Layout className="w-4 h-4 text-[#38B2AC]" />,
-        },
+        // {
+        //   name: "Responsive Design",
+        //   icon: <Layout className="w-4 h-4 text-[#38B2AC]" />,
+        // },
         {
           name: "Wireframing",
           icon: <BsGrid1X2 className="w-4 h-4 text-[#9CA3AF]" />,
@@ -145,16 +145,16 @@ const SkillsSection = () => {
       title: "Cloud & DevOps",
       color: "text-orange-400",
       skills: [
-        { name: "AWS", icon: <FaAws className="w-4 h-4 text-[#FF9900]" /> },
+        // { name: "AWS", icon: <FaAws className="w-4 h-4 text-[#FF9900]" /> },
         {
           name: "Docker",
           icon: <FaDocker className="w-4 h-4 text-[#2496ED]" />,
         },
-        { name: "CI/CD", icon: <FcWorkflow className="w-4 h-4" /> },
-        {
-          name: "Kubernetes",
-          icon: <BsGrid1X2 className="w-4 h-4 text-[#326CE5]" />,
-        },
+        // { name: "CI/CD", icon: <FcWorkflow className="w-4 h-4" /> },
+        // {
+        //   name: "Kubernetes",
+        //   icon: <BsGrid1X2 className="w-4 h-4 text-[#326CE5]" />,
+        // },
         { name: "Git", icon: <FaGitAlt className="w-4 h-4 text-[#F05032]" /> },
       ],
     },
@@ -180,22 +180,22 @@ const SkillsSection = () => {
       title: "Creative Skills",
       color: "text-yellow-400",
       skills: [
-        {
-          name: "UI Animation",
-          icon: <MdAnimation className="w-4 h-4 text-[#FF4081]" />,
-        },
+        // {
+        //   name: "UI Animation",
+        //   icon: <MdAnimation className="w-4 h-4 text-[#FF4081]" />,
+        // },
         {
           name: "SVG Animation",
           icon: <MdAnimation className="w-4 h-4 text-[#00C853]" />,
         },
-        {
-          name: "3D Modeling",
-          icon: <Cpu className="w-4 h-4 text-[#7C4DFF]" />,
-        },
-        {
-          name: "Motion Graphics",
-          icon: <MdAnimation className="w-4 h-4 text-[#FF6D00]" />,
-        },
+        // {
+        //   name: "3D Modeling",
+        //   icon: <Cpu className="w-4 h-4 text-[#7C4DFF]" />,
+        // },
+        // {
+        //   name: "Motion Graphics",
+        //   icon: <MdAnimation className="w-4 h-4 text-[#FF6D00]" />,
+        // },
       ],
     },
   ];

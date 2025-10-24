@@ -15,9 +15,9 @@ const ExperienceCard = ({
     <div className="absolute inset-0 backdrop-blur-lg bg-white/5 rounded-lg" />
 
     {/* Animated gradient border */}
-    <div className="absolute -inset-[2px] bg-gradient-to-r from-cyan-500 via-green-500 to-purple-500 rounded-lg opacity-0 group-hover:opacity-100 animate-gradient-xy transition-all duration-500" />
+    <div className="absolute -inset-[2px] bg-gradient-to-r from-cyan-500 via-green-500 to-green-700 rounded-lg opacity-0 group-hover:opacity-100 animate-gradient-xy transition-all duration-500" />
 
-    <div className="relative bg-gray-900/90 rounded-lg p-8 h-full border border-gray-800/50 shadow-xl backdrop-blur-xl">
+    <div className="relative bg-black rounded-lg p-8 h-full border border-green-800/50 shadow-xl backdrop-blur-xl">
       {/* Floating icon with pulse effect */}
       <div className="relative mb-6">
         <div className="absolute -inset-4 bg-gradient-to-r from-cyan-500 to-green-500 opacity-25 rounded-full blur-xl group-hover:opacity-75 animate-pulse transition-all duration-500" />
@@ -100,10 +100,10 @@ const ExperienceSection = () => {
           {/* Section header with enhanced effects */}
           <div className="flex flex-col items-center space-y-8 mb-20">
             <div className="relative">
-              <h2 className="text-5xl md:text-7xl font-black text-transparent bg-gradient-to-r from-teal-400 to-blue-500 bg-clip-text text-center">
+              <h2 className="text-5xl md:text-7xl font-black text-transparent bg-gradient-to-r from-teal-400 to-green-500 bg-clip-text text-center">
                 Professional Journey
               </h2>
-              <div className="absolute inset-0 -z-10 bg-gradient-to-r from-cyan-500/20 to-purple-500/20 blur-3xl rounded-full" />
+              <div className="absolute inset-0 -z-10 bg-gradient-to-r from-teal-500/20 to-green-500/20 blur-3xl rounded-full" />
             </div>
             <p className="text-lg md:text-xl text-gray-400 font-medium tracking-wide text-center max-w-2xl">
               &quot;Transforming ideas into digital reality, one project at a time&quot;
@@ -119,7 +119,7 @@ const ExperienceSection = () => {
         </div>
 
         {/* Enhanced background effects */}
-        <div className="absolute top-20 left-20 w-96 h-96 bg-cyan-500/10 rounded-full filter blur-3xl animate-pulse" />
+        <div className="absolute top-20 left-20 w-96 h-96 bg-gray-900/10 rounded-full filter blur-3xl animate-pulse" />
         <div className="absolute bottom-20 right-20 w-96 h-96 bg-purple-500/10 rounded-full filter blur-3xl animate-pulse delay-1000" />
       </div>
     </>
