@@ -104,7 +104,7 @@ const profile = {
                 <span className="relative inline-block">
                   I&apos;m
                   <span className="typing-effect gradient-text ml-2">
-                    Ashley K Motsie
+                    Ashley Motsie
                   </span>
                 </span>
               </h1>
