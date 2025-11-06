@@ -46,11 +46,15 @@ const profile = {
     name: 'Ashley K Motsie',
     title: 'Developer',
     skills: [
-        'React', 'Flask', 'Django', 'MSSQL',
-        'Python', 'Javascript', 'MySQL', 
-        'PostgreSQL', 'Docker','Bootstrap', 
-        'Tailwindcss','Git', 'GitHub'
+        'React', 'Flask', 'Python', 'Javascript','PostgreSQL',
+        'Nodejs', 'Bootstrap', 'Tailwindcss', 'Git', 'GitHub'
     ],
+    currentFocus = [
+        "Django REST APIs", "AI, NLP, ML, with Python",
+        "Cloud automation & scalability"
+    ];
+    motto = "Learn, Code, Build, Repeat!";
+    getVision(): string { return "Empowering ideas with scalable tech."; }
     hardWorker: true,
     quickLearner: true,
     problemSolver: true,
