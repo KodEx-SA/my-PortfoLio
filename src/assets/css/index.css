@@ -2,17 +2,18 @@
 
 @keyframes meteor {
   0% {
-    transform: translateX(0) translateY(0);
     opacity: 1;
+    transform: rotate(215deg) translateX(0);
   }
+  70% { opacity: 1; }
   100% {
-    transform: translateX(-100vw) translateY(100vw);
     opacity: 0;
+    transform: rotate(215deg) translateX(-600px);
   }
 }
 
 .animate-meteor {
-  animation: meteor linear;
+  animation: meteor linear infinite;
 }
 
 @keyframes float-slow {

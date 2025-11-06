@@ -82,7 +82,7 @@ const profile = {
 
         {/* Meteors Effect */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none z-20">
-          <Meteors number={10} />
+          <Meteors number={50} />
         </div>
 
         {/* Main Content Container */}
