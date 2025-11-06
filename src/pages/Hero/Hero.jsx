@@ -54,9 +54,7 @@ const profile = {
         "Cloud automation & scalability"
     ];
     motto = "Learn, Code, Build, Repeat!";
-    getVision(): string {
-    return "Empowering ideas with scalable tech.";
-    }
+    getVision(): string { return "Empowering ideas with scalable tech."; }
     hardWorker: true,
     quickLearner: true,
     problemSolver: true,
