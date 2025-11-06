@@ -4,17 +4,15 @@ import PropTypes from 'prop-types';
 
 import { cn } from "@/lib/utils";
 
-export const Meteors = ({
-  number = 20
-}) => {
+export const Meteors = ({ number = 20 }) => {
   const [meteorStyles, setMeteorStyles] = useState([]);
 
   useEffect(() => {
     const styles = [...new Array(number)].map(() => ({
-      top: -5,
-      left: Math.floor(Math.random() * (window.innerWidth || 1000)) + "px",
-      animationDelay: Math.random() * 1 + 0.2 + "s",
-      animationDuration: Math.floor(Math.random() * 8 + 2) + "s",
+      top: Math.floor(Math.random() * 200) - 200 + "px",
+      left: Math.floor(Math.random() * window.innerWidth || 1200) + "px",
+      animationDelay: (Math.random() * 1.5 + 0.2).toFixed(2) + "s",
+      animationDuration: (Math.floor(Math.random() * 6) + 4) + "s",
     }));
     setMeteorStyles(styles);
   }, [number]);
@@ -25,12 +23,14 @@ export const Meteors = ({
       (<span
         key={idx}
         className={cn(
-          "pointer-events-none absolute left-1/2 top-1/2 size-0.5 rotate-[215deg] animate-meteor rounded-full bg-slate-500 shadow-[0_0_0_1px_#ffffff10]"
+          "pointer-events-none absolute size-1.5 rounded-full bg-gray-900",
+          "shadow-[0_0_8px_2px_#34d39980] animate-meteor",
+          "rotate-[215deg]"
         )}
         style={style}>
         {/* Meteor Tail */}
         <div
-          className="pointer-events-none absolute top-1/2 -z-10 h-px w-[50px] -translate-y-1/2 bg-gradient-to-r from-slate-500 to-transparent" />
+          className="absolute top-1/2 left-0 h-0.5 w-20 -translate-y-1/2 -translate-x-full" />
       </span>)
     ))}
   </>);
