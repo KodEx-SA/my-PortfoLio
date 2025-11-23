@@ -55,15 +55,6 @@ const projects = [
     githubLink: "https://github.com/KodEx-SA/jhb-rental-directory",
     liveLink: "https://gauteng-rental-directory-landing-pa.vercel.app/",
   },
-  {
-    title: "RealHomes",
-    description: "Luxury real estate platform with advanced search and authentication.",
-    src: RealHomesImg,
-    link: "https://i.postimg.cc/3x3Q8y7W/Annotation-2025-04-01-203130.png",
-    color: "#64eda8ff",
-    githubLink: "https://github.com/KodEx-SA/RealHomes",
-    liveLink: "",
-  },
 ];
 
 export default function Projects() {
