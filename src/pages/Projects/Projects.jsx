@@ -55,7 +55,16 @@ const projects = [
     githubLink: "https://github.com/KodEx-SA/jhb-rental-directory",
     liveLink: "https://gauteng-rental-directory-landing-pa.vercel.app/",
   },
-    {
+  {
+    title: "TMA Modelling Agency",
+    description: "Mahikeng Modelling Agency.",
+    src: "",
+    link: "https://i.postimg.cc/3x3Q8y7W/Annotation-2025-04-01-203130.png",
+    color: "#fff",
+    githubLink: "https://github.com/KodEx-SA/TMA",
+    liveLink: "https://tma-psi-rosy.vercel.app/",
+  },
+  {
     title: "Sasbo-ai-symposium",
     description: "Sasbo Finance Union.",
     src: "",
