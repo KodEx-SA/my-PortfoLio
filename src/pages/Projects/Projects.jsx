@@ -62,7 +62,7 @@ const projects = [
     link: "https://i.postimg.cc/3x3Q8y7W/Annotation-2025-04-01-203130.png",
     color: "#fff",
     githubLink: "https://github.com/KodEx-SA/sasbo-ai-symposium",
-    liveLink: "neon-griffin-dbc4e9.netlify.app/",
+    liveLink: "https://sasbo-ai-symposium.vercel.app/",
   },
 ];
 
