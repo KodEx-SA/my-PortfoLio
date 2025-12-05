@@ -55,6 +55,15 @@ const projects = [
     githubLink: "https://github.com/KodEx-SA/jhb-rental-directory",
     liveLink: "https://gauteng-rental-directory-landing-pa.vercel.app/",
   },
+    {
+    title: "Sasbo-ai-symposium",
+    description: "Sasbo Finance Union.",
+    src: "",
+    link: "https://i.postimg.cc/3x3Q8y7W/Annotation-2025-04-01-203130.png",
+    color: "#fff",
+    githubLink: "https://github.com/KodEx-SA/sasbo-ai-symposium",
+    liveLink: "neon-griffin-dbc4e9.netlify.app/",
+  },
 ];
 
 export default function Projects() {
