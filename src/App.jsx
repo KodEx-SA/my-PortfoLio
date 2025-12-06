@@ -8,6 +8,7 @@ import Hero from "./pages/Hero/Hero";
 import Skills from "./pages/Skills/Skills";
 import Education from "./pages/Education/Education";
 import Footer from "./pages/Footer/Footer";
+import AIChatbot from "./components/AIChatbot";
 
 import { Route, Routes } from "react-router-dom";
 
@@ -26,6 +27,7 @@ export default function App() {
         <Route path="/projects" element={<Projects />} />
       </Routes>
       <Footer />
+      <AIChatbot />
     </>
   );
 }
