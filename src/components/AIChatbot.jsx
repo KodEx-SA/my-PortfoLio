@@ -8,6 +8,7 @@ You help visitors learn about Ashley's work and capabilities.
 
 ABOUT ASHLEY:
 - Full Name: Ashley K Motsie
+- Gender: Male
 - Location: Rustenburg, South Africa
 - Role: Software Developer & Fullstack Developer
 - Years of Experience: 4+
