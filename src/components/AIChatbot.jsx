@@ -1,13 +1,23 @@
 import { useState, useRef, useEffect } from "react";
-import { X, Send, MessageSquare, Loader2, Download, Mail } from "lucide-react";
+import {
+  X,
+  Send,
+  MessageSquare,
+  Loader2,
+  Download,
+  Mail,
+  Minimize2,
+  Maximize2,
+} from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 // Portfolio context for AI
-const PORTFOLIO_CONTEXT = `You are Ashley Motsie's professional portfolio assistant. 
+const PORTFOLIO_CONTEXT = `You are Smith, Ashley Motsie's professional portfolio assistant. 
 You help visitors learn about Ashley's work and capabilities.
 
 ABOUT ASHLEY:
 - Full Name: Ashley K Motsie
+- Gender: Male
 - Location: Rustenburg, South Africa
 - Role: Software Developer & Fullstack Developer
 - Years of Experience: 4+
@@ -28,7 +38,7 @@ EXPERIENCE:
     - Scalable applications with AI features
     - Performance optimization
     - Testing protocols
-3. Web Developer & Graphic Designer at MapsMediaProductions (Nov 205 - Current)
+3. Web Developer & Graphic Designer at MapsMediaProductions (Nov 2025 - Current)
     - Cross-functional team collaboration
     - Designing and Development 
 
@@ -64,11 +74,12 @@ INSTRUCTIONS:
 
 export default function AIChatbot() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isMinimized, setIsMinimized] = useState(false);
   const [messages, setMessages] = useState([
     {
       role: "assistant",
       content:
-        "Hi! I'm Ashley's AI assistant. I can help you learn about his work, skills, and projects. What would you like to know?",
+        "Hi! I'm Smith, Ashley's AI assistant. I can help you learn about his work, skills, and projects. What would you like to know?",
     },
   ]);
   const [input, setInput] = useState("");
@@ -85,10 +96,10 @@ export default function AIChatbot() {
   }, [messages]);
 
   useEffect(() => {
-    if (isOpen && inputRef.current) {
+    if (isOpen && !isMinimized && inputRef.current) {
       inputRef.current.focus();
     }
-  }, [isOpen]);
+  }, [isOpen, isMinimized]);
 
   const sendMessage = async (messageText = input) => {
     if (!messageText.trim() || isLoading) return;
@@ -106,8 +117,7 @@ export default function AIChatbot() {
           ...prev,
           {
             role: "assistant",
-            content:
-              "Error!, Please try again.",
+            content: "Error!, Please try again.",
           },
         ]);
         setIsLoading(false);
@@ -180,7 +190,7 @@ export default function AIChatbot() {
       action: () => sendMessage("What are Ashley's technical skills?"),
     },
     {
-      label: "Get Contact Info",
+      label: "Contact Info",
       action: () => sendMessage("How can I contact Ashley?"),
     },
   ];
@@ -197,10 +207,10 @@ export default function AIChatbot() {
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
             onClick={() => setIsOpen(true)}
-            className="fixed bottom-6 right-6 z-50 p-4 rounded-full bg-gradient-to-r from-green-500 to-green-600 text-white shadow-lg shadow-green-500/50 hover:shadow-xl hover:shadow-green-500/60 transition-all"
+            className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 p-3 sm:p-4 rounded-full bg-gradient-to-r from-green-500 to-green-600 text-white shadow-lg shadow-green-500/50 hover:shadow-xl hover:shadow-green-500/60 transition-all"
             aria-label="Open AI Assistant"
           >
-            <MessageSquare className="w-6 h-6" />
+            <MessageSquare className="w-5 h-5 sm:w-6 sm:h-6" />
             <span className="absolute -top-1 -right-1 w-3 h-3 bg-green-400 rounded-full animate-pulse" />
           </motion.button>
         )}
@@ -209,136 +219,203 @@ export default function AIChatbot() {
       {/* Chat Widget */}
       <AnimatePresence>
         {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: 100, scale: 0.8 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 100, scale: 0.8 }}
-            className="fixed bottom-6 right-6 z-50 w-[95vw] sm:w-[450px] h-[600px] bg-[#1a1a1a] border-2 border-green-500/30 rounded-2xl shadow-2xl flex flex-col overflow-hidden"
-          >
-            {/* Header */}
-            <div className="bg-gradient-to-r from-green-500 to-green-600 p-4 flex items-center justify-between">
-              <div className="flex items-center gap-3">
-                <div className="relative">
-                  <MessageSquare className="w-6 h-6 text-white" />
-                  <span className="absolute -bottom-1 -right-1 w-3 h-3 bg-green-300 rounded-full border-2 border-green-600" />
-                </div>
-                <div>
-                  <h3 className="text-white font-semibold">
-                    AI Portfolio Assistant
-                  </h3>
-                  <p className="text-green-100 text-xs">Powered by Groq AI</p>
-                </div>
-              </div>
-              <button
-                onClick={() => setIsOpen(false)}
-                className="p-2 hover:bg-white/10 rounded-lg transition-colors"
-                aria-label="Close chat"
-              >
-                <X className="w-5 h-5 text-white" />
-              </button>
-            </div>
+          <>
+            {/* Mobile Overlay */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setIsOpen(false)}
+              className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 md:hidden"
+            />
 
-            {/* Messages */}
-            <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-[#0a0a0a]">
-              {messages.map((msg, idx) => (
-                <motion.div
-                  key={idx}
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className={`flex ${
-                    msg.role === "user" ? "justify-end" : "justify-start"
-                  }`}
-                >
-                  <div
-                    className={`max-w-[80%] rounded-2xl px-4 py-3 ${
-                      msg.role === "user"
-                        ? "bg-green-500 text-white rounded-br-none"
-                        : "bg-[#1a1a1a] text-gray-200 border border-green-500/20 rounded-bl-none"
-                    }`}
-                  >
-                    <p className="text-sm leading-relaxed whitespace-pre-wrap">
-                      {msg.content}
+            {/* Chat Container */}
+            <motion.div
+              initial={{ opacity: 0, y: 100, scale: 0.8 }}
+              animate={{
+                opacity: 1,
+                y: 0,
+                scale: 1,
+                height: isMinimized ? "auto" : undefined,
+              }}
+              exit={{ opacity: 0, y: 100, scale: 0.8 }}
+              className={`fixed z-50 bg-[#1a1a1a] border-2 border-green-500/30 shadow-2xl flex flex-col overflow-hidden
+                ${
+                  isMinimized
+                    ? "bottom-4 right-4 sm:bottom-6 sm:right-6 rounded-2xl"
+                    : ""
+                }
+                ${
+                  !isMinimized
+                    ? "inset-4 sm:inset-auto sm:bottom-4 sm:right-4 sm:w-[450px] sm:h-[650px] md:bottom-6 md:right-6 md:w-[480px] md:h-[680px] rounded-2xl"
+                    : ""
+                }
+              `}
+            >
+              {/* Header */}
+              <div className="bg-gradient-to-r from-green-500 to-green-600 p-3 sm:p-4 flex items-center justify-between flex-shrink-0">
+                <div className="flex items-center gap-2 sm:gap-3">
+                  <div className="relative">
+                    <MessageSquare className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+                    <span className="absolute -bottom-1 -right-1 w-2.5 h-2.5 sm:w-3 sm:h-3 bg-green-300 rounded-full border-2 border-green-600" />
+                  </div>
+                  <div>
+                    <h3 className="text-white font-semibold text-sm sm:text-base">
+                      Smith - AI Assistant
+                    </h3>
+                    <p className="text-green-100 text-[10px] sm:text-xs">
+                      Powered by Groq API
                     </p>
                   </div>
-                </motion.div>
-              ))}
-
-              {isLoading && (
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  className="flex justify-start"
-                >
-                  <div className="bg-[#1a1a1a] border border-green-500/20 rounded-2xl rounded-bl-none px-4 py-3">
-                    <Loader2 className="w-5 h-5 text-green-400 animate-spin" />
-                  </div>
-                </motion.div>
-              )}
-
-              <div ref={messagesEndRef} />
-            </div>
-
-            {/* Quick Actions */}
-            {messages.length === 1 && (
-              <div className="p-4 bg-[#0a0a0a] border-t border-green-500/20">
-                <p className="text-xs text-gray-400 mb-2">Quick actions:</p>
-                <div className="flex flex-wrap gap-2">
-                  {quickActions.map((action, idx) => (
-                    <button
-                      key={idx}
-                      onClick={action.action}
-                      className="px-3 py-1.5 text-xs rounded-lg bg-green-500/10 border border-green-500/30 text-green-400 hover:bg-green-500/20 hover:border-green-400/50 transition-all"
-                    >
-                      {action.label}
-                    </button>
-                  ))}
+                </div>
+                <div className="flex items-center gap-1 sm:gap-2">
+                  <button
+                    onClick={() => setIsMinimized(!isMinimized)}
+                    className="p-1.5 sm:p-2 hover:bg-white/10 rounded-lg transition-colors hidden sm:block"
+                    aria-label={isMinimized ? "Maximize chat" : "Minimize chat"}
+                  >
+                    {isMinimized ? (
+                      <Maximize2 className="w-4 h-4 text-white" />
+                    ) : (
+                      <Minimize2 className="w-4 h-4 text-white" />
+                    )}
+                  </button>
+                  <button
+                    onClick={() => setIsOpen(false)}
+                    className="p-1.5 sm:p-2 hover:bg-white/10 rounded-lg transition-colors"
+                    aria-label="Close chat"
+                  >
+                    <X className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
+                  </button>
                 </div>
               </div>
-            )}
 
-            {/* Action Buttons */}
-            <div className="p-3 bg-[#1a1a1a] border-t border-green-500/20 flex gap-2">
-              <a
-                href="/Ashley Motsie's Resume_20250807_043908_0000.pdf"
-                download
-                className="flex-1 flex items-center justify-center gap-2 px-3 py-2 rounded-lg bg-green-500/10 border border-green-500/30 text-green-400 hover:bg-green-500/20 text-xs font-medium transition-all"
-              >
-                <Download className="w-3 h-3" />
-                Resume
-              </a>
-              <a
-                href="/contact"
-                className="flex-1 flex items-center justify-center gap-2 px-3 py-2 rounded-lg bg-green-500/10 border border-green-500/30 text-green-400 hover:bg-green-500/20 text-xs font-medium transition-all"
-              >
-                <Mail className="w-3 h-3" />
-                Contact
-              </a>
-            </div>
+              {/* Minimized State */}
+              {isMinimized && (
+                <div className="p-4 text-center">
+                  <p className="text-gray-400 text-sm mb-3">Chat minimized</p>
+                  <button
+                    onClick={() => setIsMinimized(false)}
+                    className="px-4 py-2 rounded-lg bg-green-500/10 border border-green-500/30 text-green-400 hover:bg-green-500/20 text-sm font-medium transition-all"
+                  >
+                    Restore Chat
+                  </button>
+                </div>
+              )}
 
-            {/* Input */}
-            <div className="p-4 bg-[#1a1a1a] border-t border-green-500/20">
-              <div className="flex gap-2">
-                <input
-                  ref={inputRef}
-                  type="text"
-                  value={input}
-                  onChange={(e) => setInput(e.target.value)}
-                  onKeyPress={handleKeyPress}
-                  placeholder="Ask me anything..."
-                  disabled={isLoading}
-                  className="flex-1 px-4 py-2.5 rounded-lg bg-[#0a0a0a] border border-green-500/30 focus:border-green-400 focus:outline-none focus:ring-2 focus:ring-green-500/20 text-white placeholder-gray-500 text-sm disabled:opacity-50 transition-all"
-                />
-                <button
-                  onClick={() => sendMessage()}
-                  disabled={!input.trim() || isLoading}
-                  className="px-4 py-2.5 rounded-lg bg-gradient-to-r from-green-500 to-green-600 text-white hover:from-green-600 hover:to-green-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
-                  aria-label="Send message"
-                >
-                  <Send className="w-4 h-4" />
-                </button>
-              </div>
-            </div>
-          </motion.div>
+              {/* Full Chat View */}
+              {!isMinimized && (
+                <>
+                  {/* Messages */}
+                  <div className="flex-1 overflow-y-auto p-3 sm:p-4 space-y-3 sm:space-y-4 bg-[#0a0a0a] min-h-0">
+                    {messages.map((msg, idx) => (
+                      <motion.div
+                        key={idx}
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className={`flex ${
+                          msg.role === "user" ? "justify-end" : "justify-start"
+                        }`}
+                      >
+                        <div
+                          className={`max-w-[85%] sm:max-w-[80%] rounded-2xl px-3 py-2 sm:px-4 sm:py-3 ${
+                            msg.role === "user"
+                              ? "bg-green-500 text-white rounded-br-none"
+                              : "bg-[#1a1a1a] text-gray-200 border border-green-500/20 rounded-bl-none"
+                          }`}
+                        >
+                          <p className="text-xs sm:text-sm leading-relaxed whitespace-pre-wrap">
+                            {msg.content}
+                          </p>
+                        </div>
+                      </motion.div>
+                    ))}
+
+                    {isLoading && (
+                      <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        className="flex justify-start"
+                      >
+                        <div className="bg-[#1a1a1a] border border-green-500/20 rounded-2xl rounded-bl-none px-3 py-2 sm:px-4 sm:py-3 flex items-center gap-2">
+                          <Loader2 className="w-4 h-4 sm:w-5 sm:h-5 text-green-400 animate-spin" />
+                          <span className="text-xs text-gray-400">
+                            Thinking...
+                          </span>
+                        </div>
+                      </motion.div>
+                    )}
+
+                    <div ref={messagesEndRef} />
+                  </div>
+
+                  {/* Quick Actions */}
+                  {messages.length === 1 && (
+                    <div className="p-3 sm:p-4 bg-[#0a0a0a] border-t border-green-500/20 flex-shrink-0">
+                      <p className="text-[10px] sm:text-xs text-gray-400 mb-2">
+                        Quick actions:
+                      </p>
+                      <div className="flex flex-wrap gap-1.5 sm:gap-2">
+                        {quickActions.map((action, idx) => (
+                          <button
+                            key={idx}
+                            onClick={action.action}
+                            disabled={isLoading}
+                            className="px-2.5 py-1.5 sm:px-3 sm:py-1.5 text-[10px] sm:text-xs rounded-lg bg-green-500/10 border border-green-500/30 text-green-400 hover:bg-green-500/20 hover:border-green-400/50 transition-all disabled:opacity-50 whitespace-nowrap"
+                          >
+                            {action.label}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Action Buttons */}
+                  <div className="p-2 sm:p-3 bg-[#1a1a1a] border-t border-green-500/20 flex gap-2 flex-shrink-0">
+                    <a
+                      href="/Ashley Motsie's Resume_20250807_043908_0000.pdf"
+                      download
+                      className="flex-1 flex items-center justify-center gap-1.5 sm:gap-2 px-2 sm:px-3 py-2 rounded-lg bg-green-500/10 border border-green-500/30 text-green-400 hover:bg-green-500/20 text-[10px] sm:text-xs font-medium transition-all"
+                    >
+                      <Download className="w-3 h-3" />
+                      <span className="hidden xs:inline">Resume</span>
+                    </a>
+                    <a
+                      href="/contact"
+                      className="flex-1 flex items-center justify-center gap-1.5 sm:gap-2 px-2 sm:px-3 py-2 rounded-lg bg-green-500/10 border border-green-500/30 text-green-400 hover:bg-green-500/20 text-[10px] sm:text-xs font-medium transition-all"
+                    >
+                      <Mail className="w-3 h-3" />
+                      <span className="hidden xs:inline">Contact</span>
+                    </a>
+                  </div>
+
+                  {/* Input */}
+                  <div className="p-3 sm:p-4 bg-[#1a1a1a] border-t border-green-500/20 flex-shrink-0">
+                    <div className="flex gap-2">
+                      <input
+                        ref={inputRef}
+                        type="text"
+                        value={input}
+                        onChange={(e) => setInput(e.target.value)}
+                        onKeyPress={handleKeyPress}
+                        placeholder="Ask me anything..."
+                        disabled={isLoading}
+                        className="flex-1 px-3 py-2 sm:px-4 sm:py-2.5 rounded-lg bg-[#0a0a0a] border border-green-500/30 focus:border-green-400 focus:outline-none focus:ring-2 focus:ring-green-500/20 text-white placeholder-gray-500 text-xs sm:text-sm disabled:opacity-50 transition-all"
+                      />
+                      <button
+                        onClick={() => sendMessage()}
+                        disabled={!input.trim() || isLoading}
+                        className="px-3 py-2 sm:px-4 sm:py-2.5 rounded-lg bg-gradient-to-r from-green-500 to-green-600 text-white hover:from-green-600 hover:to-green-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all flex-shrink-0"
+                        aria-label="Send message"
+                      >
+                        <Send className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                      </button>
+                    </div>
+                  </div>
+                </>
+              )}
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
     </>
