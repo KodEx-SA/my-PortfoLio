@@ -3,7 +3,7 @@ import { X, Send, MessageSquare, Loader2, Download, Mail } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 // Portfolio context for AI
-const PORTFOLIO_CONTEXT = `You are Ashley Motsie's professional portfolio assistant. 
+const PORTFOLIO_CONTEXT = `You are Smith, Ashley Motsie's professional portfolio assistant. 
 You help visitors learn about Ashley's work and capabilities.
 
 ABOUT ASHLEY:
@@ -68,7 +68,7 @@ export default function AIChatbot() {
     {
       role: "assistant",
       content:
-        "Hi! I'm Ashley's AI assistant. I can help you learn about his work, skills, and projects. What would you like to know?",
+        "Hi! I'm Smith, Ashley's AI assistant. I can help you learn about his work, skills, and projects. What would you like to know?",
     },
   ]);
   const [input, setInput] = useState("");
@@ -226,7 +226,7 @@ export default function AIChatbot() {
                   <h3 className="text-white font-semibold">
                     AI Portfolio Assistant
                   </h3>
-                  <p className="text-green-100 text-xs">Powered by Groq AI</p>
+                  <p className="text-green-100 text-xs">Powered by Groq API</p>
                 </div>
               </div>
               <button
