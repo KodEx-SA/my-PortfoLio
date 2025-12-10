@@ -73,11 +73,11 @@ const ExperienceSection = () => {
     },
     {
       icon: Code2,
-      title: "Web Developer",
+      title: "Web Developer & Graphic Designer",
       company: "Maps Media Productions",
       period: "November 2025 - Current",
       description:
-        "Responsible for developing scalable applications with integrated AI features. Focused on improving app performance & efficiency. Implementing robust testing protocols to ensure high-quality software.",
+        "Responsible for developing & maintaining client websites. Collaborating on graphic design projects as needed. Ensuring timely project delivery. Communicating with clients under the company's direction.",
     },
   ];
 
