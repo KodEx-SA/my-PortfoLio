@@ -161,7 +161,7 @@ const ExperienceSection = () => {
           <div className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-green-500/10 border border-green-500/30 backdrop-blur-sm">
             <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
             <span className="text-green-400 font-medium">
-              Currently open to new opportunities
+              Open to new opportunities
             </span>
           </div>
         </div>
