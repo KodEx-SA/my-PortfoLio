@@ -37,7 +37,7 @@ export default function Footer() {
     {
       name: "LinkedIn",
       icon: Linkedin,
-      url: "https://linkedin.com/in/ashley-motsie", // Update with your LinkedIn
+      url: "https://www.linkedin.com/in/ashley-k-motsie-718686263/",
       color: "hover:text-green-400",
     },
     {
