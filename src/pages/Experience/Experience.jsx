@@ -1,11 +1,12 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import React from "react";
-import { Code2, Activity, Cpu, Layers, Network, Binary } from "lucide-react";
+import { Code2, Activity, Cpu, Layers, Network, Binary, MapPin } from "lucide-react";
 
 const ExperienceCard = ({
   title,
   company,
+  location,
   period,
   description,
   icon: Icon,
@@ -29,12 +30,30 @@ const ExperienceCard = ({
         <h3 className="text-2xl font-bold bg-gradient-to-r from-green-400 to-green-500 bg-clip-text text-transparent">
           {title}
         </h3>
-        <div className="flex justify-between items-center text-gray-300 flex-wrap gap-2">
-          <span className="font-semibold text-green-400">{company}</span>
-          <span className="text-sm font-mono bg-green-500/10 px-3 py-1 rounded-full border border-green-500/20">
-            {period}
-          </span>
+        
+        {/* Company and Location */}
+        <div className="space-y-2">
+          <div className="flex items-center gap-2 flex-wrap">
+            <span className="font-semibold text-green-400 text-lg">{company}</span>
+            {location && (
+              <>
+                <span className="text-gray-500">•</span>
+                <div className="flex items-center gap-1.5 text-gray-400">
+                  <MapPin className="w-4 h-4" />
+                  <span className="text-sm">{location}</span>
+                </div>
+              </>
+            )}
+          </div>
+          
+          {/* Period Badge */}
+          <div>
+            <span className="text-sm font-mono bg-green-500/10 px-3 py-1 rounded-full border border-green-500/20 text-gray-300 inline-block">
+              {period}
+            </span>
+          </div>
         </div>
+        
         <p className="text-gray-300 border-l-4 border-green-500/50 pl-4 mt-4 leading-relaxed">
           {description}
         </p>
@@ -59,6 +78,7 @@ const ExperienceSection = () => {
       icon: Network,
       title: "Jr Software Dev & IT Technician",
       company: "ETS",
+      location: "Rustenburg, SA",
       period: "June 2024 - Current",
       description:
         "Collaborate with cross-functional teams to contribute to agile project development. Work on code optimization techniques & play a key part in the overall development process.",
@@ -67,6 +87,7 @@ const ExperienceSection = () => {
       icon: Code2,
       title: "AI Software Developer",
       company: "AI Global Networks",
+      location: "Remote",
       period: "July 2024 - Current",
       description:
         "Responsible for developing scalable applications with integrated AI features. Focused on improving app performance & efficiency. Implementing robust testing protocols to ensure high-quality software.",
@@ -75,6 +96,7 @@ const ExperienceSection = () => {
       icon: Code2,
       title: "Web Developer & Graphic Designer",
       company: "Maps Media Productions",
+      location: "Mahikeng, SA",
       period: "November 2025 - Current",
       description:
         "Responsible for developing & maintaining client websites. Collaborating on graphic design projects as needed. Ensuring timely project delivery. Communicating with clients under the company's direction.",
@@ -122,7 +144,7 @@ const ExperienceSection = () => {
         </div>
 
         {/* Experience grid with improved layout */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
           {experiences.map((exp, index) => (
             <div
               key={index}
@@ -135,14 +157,14 @@ const ExperienceSection = () => {
         </div>
 
         {/* Call to action or additional info */}
-        {/* <div className="mt-20 text-center">
+        <div className="mt-20 text-center">
           <div className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-green-500/10 border border-green-500/30 backdrop-blur-sm">
             <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
             <span className="text-green-400 font-medium">
               Currently open to new opportunities
             </span>
           </div>
-        </div> */}
+        </div>
       </div>
 
       {/* Enhanced background gradient effects */}
