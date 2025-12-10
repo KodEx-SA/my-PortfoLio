@@ -28,6 +28,7 @@ import {
   SiFirebase,
   SiVercel,
   SiVite,
+  SiTypescript,
 } from "react-icons/si";
 import { TbBrandVscode } from "react-icons/tb";
 import { BsFileEarmarkCode, BsGrid1X2 } from "react-icons/bs";
@@ -74,6 +75,10 @@ const SkillsSection = () => {
         {
           name: "React",
           icon: <FaReact className="w-4 h-4 text-[#61DAFB]" />,
+        },
+        {
+          name: "TypeScript",
+          icon: <SiTypescript className="w-4 h-4 text-[#3178C6]" />,
         },
         {
           name: "Bootstrap",
