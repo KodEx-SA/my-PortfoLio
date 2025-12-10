@@ -78,7 +78,7 @@ const ExperienceSection = () => {
       icon: Network,
       title: "Jr Software Dev & IT Technician",
       company: "ETS",
-      location: "Rustenburg, SA",
+      location: "On-Site - Rustenburg, SA",
       period: "June 2024 - Current",
       description:
         "Collaborate with cross-functional teams to contribute to agile project development. Work on code optimization techniques & play a key part in the overall development process.",
@@ -87,7 +87,7 @@ const ExperienceSection = () => {
       icon: Code2,
       title: "AI Software Developer",
       company: "AI Global Networks",
-      location: "Remote",
+      location: "Remote - Jhb",
       period: "July 2024 - Current",
       description:
         "Responsible for developing scalable applications with integrated AI features. Focused on improving app performance & efficiency. Implementing robust testing protocols to ensure high-quality software.",
@@ -96,7 +96,7 @@ const ExperienceSection = () => {
       icon: Code2,
       title: "Web Developer & Graphic Designer",
       company: "Maps Media Productions",
-      location: "Mahikeng, SA",
+      location: "Rmote - Mahikeng, SA",
       period: "November 2025 - Current",
       description:
         "Responsible for developing & maintaining client websites. Collaborating on graphic design projects as needed. Ensuring timely project delivery. Communicating with clients under the company's direction.",
