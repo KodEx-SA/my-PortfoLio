@@ -77,7 +77,7 @@ const ExperienceSection = () => {
     {
       icon: Network,
       title: "Software Developer & IT Technician",
-      company: "ETS",
+      company: "Eullafied Tech Solutions",
       location: "On-Site - Rustenburg, SA",
       period: "June 2024 - Current",
       description:
@@ -95,7 +95,7 @@ const ExperienceSection = () => {
     {
       icon: Code2,
       title: "Web Developer & Graphic Designer",
-      company: "Maps Media Productions",
+      company: "MapsMediaProductions",
       location: "Rmote - Mahikeng, SA",
       period: "November 2025 - Current",
       description:
