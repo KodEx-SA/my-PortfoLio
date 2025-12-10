@@ -76,7 +76,7 @@ const ExperienceSection = () => {
   const experiences = [
     {
       icon: Network,
-      title: "Jr Software Dev & IT Technician",
+      title: "Software Developer & IT Technician",
       company: "ETS",
       location: "On-Site - Rustenburg, SA",
       period: "June 2024 - Current",
