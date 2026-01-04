@@ -63,7 +63,7 @@ const projects = [
     src: "",
     tags: ["HTML", "CSS", "Javascript"],
     githubLink: "https://github.com/KodEx-SA/TMA",
-    liveLink: "https://tma-psi-rosy.vercel.app/",
+    liveLink: "https://tmaofficial.co.za/",
   },
   {
     title: "Sasbo AI Symposium",
