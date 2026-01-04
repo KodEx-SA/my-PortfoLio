@@ -96,8 +96,8 @@ const ExperienceSection = () => {
       icon: Code2,
       title: "Web Developer & Graphic Designer",
       company: "MapsMediaProductions",
-      location: "Rmote - Mahikeng, SA",
-      period: "November 2025 - Current",
+      location: "Remote - Mahikeng, SA",
+      period: "August 2025 - Current",
       description:
         "Responsible for developing & maintaining client websites. Collaborating on graphic design projects as needed. Ensuring timely project delivery. Communicating with clients under the company's direction.",
     },

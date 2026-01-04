@@ -30,15 +30,15 @@ SKILLS:
 - Design: Figma, Wireframing, Prototyping, SVG Animation
 
 EXPERIENCE:
-1. Jr Software Dev & IT Technician at ETS (June 2024 - Current)
+1. Jr Software Dev & IT Technician at ETS (June 2025 - Current)
     - Cross-functional team collaboration
     - Code optimization
     - Agile development
-2. AI Software Developer at AI Global Networks (July 2024 - Current)
+2. AI Software Developer at AI Global Networks (July 2025 - Current)
     - Scalable applications with AI features
     - Performance optimization
     - Testing protocols
-3. Web Developer & Graphic Designer at MapsMediaProductions (Nov 2025 - Current)
+3. Web Developer & Graphic Designer at MapsMediaProductions (August 2025 - Current)
     - Cross-functional team collaboration
     - Designing and Development 
 
