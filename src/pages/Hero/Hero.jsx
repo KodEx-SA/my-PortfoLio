@@ -36,7 +36,7 @@ const GridBackground = () => {
 };
 
 export default function Hero() {
-  const words = ["Software Developer", "Problem Solver", "Tech Enthusiast"];
+  const words = ["Full-stack Developer", "Problem Solver", "Tech Enthusiast"];
 
   const [code] = useState(`const profile = {
   name: 'Ashley K Motsie',
