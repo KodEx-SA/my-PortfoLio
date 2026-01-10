@@ -84,7 +84,7 @@ export default function Footer() {
               </h3>
             </div>
             <p className="text-gray-400 text-sm leading-relaxed">
-              Software Developer specializing in building exceptional digital
+              Full-stack Developer specializing in building exceptional digital
               experiences with modern web technologies.
             </p>
             <div className="flex items-center gap-2 text-sm text-gray-400">
