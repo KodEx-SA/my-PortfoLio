@@ -36,11 +36,7 @@ const GridBackground = () => {
 };
 
 export default function Hero() {
-  const words = [
-    "Software Developer",
-    "Problem Solver", 
-    "Tech Enthusiast"
-  ];
+  const words = ["Software Developer", "Problem Solver", "Tech Enthusiast"];
 
   const [code] = useState(`const profile = {
   name: 'Ashley K Motsie',
@@ -153,8 +149,10 @@ export default function Hero() {
 
               {/* Resume Button */}
               <a
-                href="/Ashley K Motsie_Resume2026.pdf"
-                download="Ashley_K_Motsie_Resume.pdf"
+                href="/Ashley's_resume.pdf"
+                download="Ashley_Motsie_Resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="group relative inline-flex items-center justify-center gap-3 px-8 py-4 rounded-xl border-2 border-green-500/50 bg-[#1a1a1a] transition-all duration-300 hover:scale-105 hover:border-green-400 hover:bg-green-500/10"
               >
                 <span className="flex items-center gap-2 text-gray-300 font-medium group-hover:text-green-400 transition-colors">
