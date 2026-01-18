@@ -239,7 +239,7 @@ export default function AIChatbot() {
                 height: isMinimized ? "auto" : undefined,
               }}
               exit={{ opacity: 0, y: 100, scale: 0.8 }}
-              className={`fixed z-50 bg-[#1a1a1a] border-2 border-green-500/30 shadow-2xl flex flex-col overflow-hidden
+              className={`fixed z-50 bg-[#1a1a1a] border-2 border-green-500/30 shadow-2xl flex flex-col overflow-hidden rounded-2xl
                 ${
                   isMinimized
                     ? "bottom-4 right-4 sm:bottom-6 sm:right-6 rounded-2xl"
@@ -247,7 +247,7 @@ export default function AIChatbot() {
                 }
                 ${
                   !isMinimized
-                    ? "inset-4 sm:inset-auto sm:bottom-4 sm:right-4 sm:w-[450px] sm:h-[650px] md:bottom-6 md:right-6 md:w-[480px] md:h-[680px] rounded-2xl"
+                    ? "bottom-4 left-4 right-4 top-4 sm:inset-auto sm:bottom-4 sm:right-4 sm:w-[450px] sm:h-[650px] sm:max-h-[calc(100vh-2rem)] md:bottom-6 md:right-6 md:w-[480px] md:h-[680px] md:max-h-[calc(100vh-3rem)] rounded-2xl"
                     : ""
                 }
               `}
