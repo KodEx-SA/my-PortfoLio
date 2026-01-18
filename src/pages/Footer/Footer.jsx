@@ -80,7 +80,7 @@ export default function Footer() {
                 className="h-10 w-auto"
               />
               <h3 className="text-xl font-bold bg-gradient-to-r from-green-400 to-green-500 bg-clip-text text-transparent">
-                Ashley Motsie
+                Ashley K Motsie
               </h3>
             </div>
             <p className="text-gray-400 text-sm leading-relaxed">
@@ -139,8 +139,7 @@ export default function Footer() {
           <div className="space-y-4">
             <h4 className="text-lg font-semibold text-white">Get in Touch</h4>
             <p className="text-gray-400 text-sm">
-              Have a project in mind? Let's work together to bring your ideas to
-              life.
+              Have a project in mind? Let&apos;s work together to bring your ideas to life.
             </p>
             <Link
               to="/contact"
@@ -159,7 +158,7 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row justify-between items-center gap-4">
           {/* Copyright */}
           <div className="flex items-center gap-2 text-gray-400 text-sm">
-            <span>© {currentYear} Ashley Motsie.</span>
+            <span>© {currentYear} Ashley K Motsie.</span>
             <span className="hidden sm:inline">Made with</span>
             <Heart className="w-4 h-4 text-green-400 fill-green-400 animate-pulse hidden sm:inline" />
             <span className="hidden sm:inline">and</span>
