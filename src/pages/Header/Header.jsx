@@ -63,16 +63,16 @@ export default function Header() {
       <header className="fixed top-0 left-0 w-full z-50">
         {/* Desktop Navigation */}
         <div className="hidden md:block md:fixed md:top-4 md:left-1/2 md:transform md:-translate-x-1/2">
-          <nav className={`relative bg-[#0a0a0a]/80 backdrop-blur-md rounded-full px-6 py-2.5 transition-all duration-300 ${
+          <nav className={`relative bg-[#0a0a0a]/90 backdrop-blur-xl rounded-xl px-6 py-2.5 transition-all duration-300 ${
             scrolled ? "shadow-lg shadow-green-500/10" : ""
           }`}>
             {/* Scan line effect */}
-            <div className="absolute inset-0 rounded-full overflow-hidden pointer-events-none">
+            <div className="absolute inset-0 rounded-xl overflow-hidden pointer-events-none">
               <div className="scanline" />
             </div>
 
             {/* Floating particles background */}
-            <div className="absolute inset-0 overflow-hidden rounded-full pointer-events-none">
+            <div className="absolute inset-0 overflow-hidden rounded-xl pointer-events-none">
               {[...Array(8)].map((_, i) => (
                 <div
                   key={i}
@@ -93,7 +93,7 @@ export default function Header() {
                   key={id}
                   to={path}
                   onClick={() => setActiveLink(id)}
-                  className={`group relative px-4 py-2 rounded-full text-sm font-medium
+                  className={`group relative px-4 py-2 rounded-lg text-sm font-medium
                     transition-all duration-300 flex items-center gap-2 overflow-hidden
                     ${
                       activeLink === id
@@ -132,16 +132,28 @@ export default function Header() {
               ))}
             </div>
 
-            {/* Tech corner brackets */}
-            <div className="absolute top-2 left-2 w-3 h-3 border-l-2 border-t-2 border-green-500/30 rounded-tl" />
-            <div className="absolute top-2 right-2 w-3 h-3 border-r-2 border-t-2 border-green-500/30 rounded-tr" />
-            <div className="absolute bottom-2 left-2 w-3 h-3 border-l-2 border-b-2 border-green-500/30 rounded-bl" />
-            <div className="absolute bottom-2 right-2 w-3 h-3 border-r-2 border-b-2 border-green-500/30 rounded-br" />
+            {/* Tech corner brackets - larger and more visible */}
+            <div className="absolute top-2 left-2 w-4 h-4 opacity-50">
+              <div className="absolute top-0 left-0 w-full h-[2px] bg-green-400" />
+              <div className="absolute top-0 left-0 w-[2px] h-full bg-green-400" />
+            </div>
+            <div className="absolute top-2 right-2 w-4 h-4 opacity-50">
+              <div className="absolute top-0 right-0 w-full h-[2px] bg-green-400" />
+              <div className="absolute top-0 right-0 w-[2px] h-full bg-green-400" />
+            </div>
+            <div className="absolute bottom-2 left-2 w-4 h-4 opacity-50">
+              <div className="absolute bottom-0 left-0 w-full h-[2px] bg-green-400" />
+              <div className="absolute bottom-0 left-0 w-[2px] h-full bg-green-400" />
+            </div>
+            <div className="absolute bottom-2 right-2 w-4 h-4 opacity-50">
+              <div className="absolute bottom-0 right-0 w-full h-[2px] bg-green-400" />
+              <div className="absolute bottom-0 right-0 w-[2px] h-full bg-green-400" />
+            </div>
           </nav>
         </div>
 
         {/* Mobile Navigation */}
-        <div className="md:hidden bg-[#0a0a0a]/95 backdrop-blur-md relative overflow-hidden">
+        <div className="md:hidden bg-[#0a0a0a]/95 backdrop-blur-xl relative overflow-hidden">
           {/* Scan line effect for mobile */}
           <div className="absolute inset-0 pointer-events-none">
             <div className="scanline" />
