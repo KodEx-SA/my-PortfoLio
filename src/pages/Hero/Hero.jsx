@@ -190,7 +190,7 @@ const TerminalTyping = ({ text }) => {
 };
 
 export default function Hero() {
-  const words = ["Full-stack Developer", "Problem Solver", "Tech Enthusiast"];
+  const words = ["Developer | Engineer", "Problem Solver", "Tech Enthusiast"];
   const [showCode, setShowCode] = useState(false);
 
   const [code] = useState(`const profile = {
