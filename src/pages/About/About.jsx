@@ -145,7 +145,7 @@ export default function About() {
           >
             <div className="space-y-4">
               <p className="text-gray-300 leading-relaxed text-lg font-mono">
-                <span className="text-green-400">&gt;</span> I&apos;m <strong className="text-white">Ashley Motsie</strong>,
+                <span className="text-green-400">&gt;</span> I&apos;m <strong className="text-white">Ashley K Motsie</strong>,
                 a passionate{" "}
                 <strong className="text-green-400">Software Developer</strong>{" "}
                 based in{" "}
