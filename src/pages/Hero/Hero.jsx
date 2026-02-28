@@ -8,6 +8,7 @@ import "@/assets/css/tomorrow.css";
 import Meteors from "@/components/ui/meteors";
 import SparklesText from "@/components/ui/sparkles-text";
 import { FlipWords } from "@/components/ui/flip-words";
+import { FaGithub } from "react-icons/fa";
 import {
   Rocket,
   Code,
@@ -26,7 +27,7 @@ const NeuralNetwork = () => {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas.getContext("2d");
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
 
@@ -44,7 +45,7 @@ const NeuralNetwork = () => {
     }
 
     function animate() {
-      ctx.fillStyle = 'rgba(10, 10, 10, 0.1)';
+      ctx.fillStyle = "rgba(10, 10, 10, 0.1)";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       // Update and draw nodes
@@ -57,7 +58,7 @@ const NeuralNetwork = () => {
         if (node.y < 0 || node.y > canvas.height) node.vy *= -1;
 
         // Draw node
-        ctx.fillStyle = 'rgba(74, 222, 128, 0.3)';
+        ctx.fillStyle = "rgba(74, 222, 128, 0.3)";
         ctx.beginPath();
         ctx.arc(node.x, node.y, 2, 0, Math.PI * 2);
         ctx.fill();
@@ -90,8 +91,8 @@ const NeuralNetwork = () => {
       canvas.height = window.innerHeight;
     };
 
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   return (
@@ -105,16 +106,19 @@ const NeuralNetwork = () => {
 
 // Data Stream Component
 const DataStream = () => {
-  const chars = '01アイウエオカキクケコサシスセソ';
+  const chars = "01アイウエオカキクケコサシスセソ";
   const [streams] = useState(() =>
     Array.from({ length: 8 }, (__, i) => ({
       left: `${Math.random() * 100}%`,
       delay: `${Math.random() * 3}s`,
-    }))
+    })),
   );
 
   return (
-    <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-10" style={{ zIndex: 8 }}>
+    <div
+      className="absolute inset-0 pointer-events-none overflow-hidden opacity-10"
+      style={{ zIndex: 8 }}
+    >
       {streams.map((stream, i) => (
         <div
           key={i}
@@ -124,9 +128,10 @@ const DataStream = () => {
             animationDelay: stream.delay,
           }}
         >
-          {Array.from({ length: 20 }, () =>
-            chars[Math.floor(Math.random() * chars.length)]
-          ).join('')}
+          {Array.from(
+            { length: 20 },
+            () => chars[Math.floor(Math.random() * chars.length)],
+          ).join("")}
         </div>
       ))}
     </div>
@@ -157,7 +162,7 @@ const GridBackground = () => {
 
 // Terminal Typing Effect
 const TerminalTyping = ({ text }) => {
-  const [displayText, setDisplayText] = useState('');
+  const [displayText, setDisplayText] = useState("");
   const [cursorVisible, setCursorVisible] = useState(true);
 
   useEffect(() => {
@@ -176,7 +181,7 @@ const TerminalTyping = ({ text }) => {
 
   useEffect(() => {
     const cursorInterval = setInterval(() => {
-      setCursorVisible(v => !v);
+      setCursorVisible((v) => !v);
     }, 500);
     return () => clearInterval(cursorInterval);
   }, []);
@@ -184,7 +189,11 @@ const TerminalTyping = ({ text }) => {
   return (
     <span>
       {displayText}
-      <span className={`${cursorVisible ? 'opacity-100' : 'opacity-0'} transition-opacity`}>▋</span>
+      <span
+        className={`${cursorVisible ? "opacity-100" : "opacity-0"} transition-opacity`}
+      >
+        ▋
+      </span>
     </span>
   );
 };
@@ -257,7 +266,10 @@ export default function Hero() {
           <div className="w-full lg:w-1/2 relative">
             {/* Decorative Blurs */}
             <div className="absolute -top-20 -left-20 w-64 h-64 bg-green-500/10 rounded-full blur-3xl hidden lg:block animate-pulse-slow"></div>
-            <div className="absolute top-40 -right-20 w-64 h-64 bg-green-400/10 rounded-full blur-3xl hidden lg:block animate-pulse-slow" style={{ animationDelay: '1s' }}></div>
+            <div
+              className="absolute top-40 -right-20 w-64 h-64 bg-green-400/10 rounded-full blur-3xl hidden lg:block animate-pulse-slow"
+              style={{ animationDelay: "1s" }}
+            ></div>
 
             {/* Welcome Badge with Glitch */}
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#1a1a1a] backdrop-blur-sm border border-green-500/30 mb-8 hover:border-green-400/50 transition-colors group relative overflow-hidden">
@@ -304,36 +316,47 @@ export default function Hero() {
             {/* Description */}
             <div className="relative mb-12 max-w-xl">
               <p className="text-xl text-gray-300 leading-relaxed font-mono">
-                <span className="text-green-400">&gt;</span> Tech Enthusiast | Utilizing frameworks and coding the future
+                <span className="text-green-400">&gt;</span> Tech Enthusiast |
+                Utilizing frameworks and coding the future
               </p>
             </div>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4">
-              {/* View Projects Button */}
+            <div className="flex flex-col sm:flex-row flex-wrap gap-4">
+              {/* View Projects Button — solid green */}
               <a
-                href="https://github.com/KodEx-SA"
-                target="_blank"
-                rel="noopener noreferrer"
+                href="/projects"
                 className="group relative inline-flex items-center justify-center gap-3 px-8 py-4 rounded-xl bg-gradient-to-r from-green-500 to-green-600 transition-all duration-300 hover:scale-105 hover:shadow-[0_0_2rem_-0.5rem_#22c55e] overflow-hidden"
               >
-                <div className="absolute inset-0 bg-gradient-to-r from-green-600 to-green-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-green-600 to-green-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 <span className="relative flex items-center gap-2 text-white font-medium font-mono">
-                  Learn More
+                  View Projects
                   <ArrowRight className="w-4 h-4 transform transition-transform duration-300 group-hover:translate-x-1" />
                 </span>
               </a>
 
-              {/* Resume Button */}
+              {/* GitHub Button — outline */}
               <a
-                href="/Ashley's_resume.pdf"
-                download="Ashley_Motsie_Resume.pdf"
+                href="https://github.com/KodEx-SA"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group relative inline-flex items-center justify-center gap-3 px-8 py-4 rounded-xl border-2 border-green-500/50 bg-[#1a1a1a] transition-all duration-300 hover:scale-105 hover:border-green-400 hover:bg-green-500/10 overflow-hidden"
               >
                 <span className="absolute inset-0 bg-green-500/5 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 ease-out" />
                 <span className="relative flex items-center gap-2 text-gray-300 font-medium font-mono group-hover:text-green-400 transition-colors">
+                  <FaGithub className="w-4 h-4" />
+                  GitHub
+                </span>
+              </a>
+
+              {/* Resume Button — ghost/subtle */}
+              <a
+                href="/Ashley's_resume.pdf"
+                download="Ashley_Motsie_Resume.pdf"
+                className="group relative inline-flex items-center justify-center gap-3 px-8 py-4 rounded-xl border border-green-500/30 bg-transparent transition-all duration-300 hover:scale-105 hover:border-green-400/60 hover:bg-green-500/5 overflow-hidden"
+              >
+                <span className="absolute inset-0 bg-green-500/5 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 ease-out" />
+                <span className="relative flex items-center gap-2 text-gray-400 font-medium font-mono group-hover:text-green-400 transition-colors">
                   Get Resume
                   <Download className="w-4 h-4 transform transition-transform duration-300 group-hover:translate-y-1" />
                 </span>
@@ -379,12 +402,16 @@ export default function Hero() {
                     <Terminal className="w-4 h-4 animate-pulse" />
                     developer.js
                   </span>
-                  <span className="ml-auto text-xs text-green-500/50 font-mono">Live</span>
+                  <span className="ml-auto text-xs text-green-500/50 font-mono">
+                    Live
+                  </span>
                 </div>
 
                 {/* Code Content */}
                 <pre className="language-javascript p-6 max-h-[500px] overflow-y-auto custom-scrollbar">
-                  {showCode && <code className="language-javascript">{code}</code>}
+                  {showCode && (
+                    <code className="language-javascript">{code}</code>
+                  )}
                 </pre>
 
                 {/* Tech corner brackets */}

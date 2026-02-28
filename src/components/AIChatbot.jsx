@@ -30,11 +30,11 @@ SKILLS:
 - Design: Figma, Wireframing, Prototyping, SVG Animation
 
 EXPERIENCE:
-1. Jr Software Dev & IT Technician at ETS (June 2025 - Current)
+1. Jr Software Dev & IT Technician at ETS (June 2024 - Current)
     - Cross-functional team collaboration
     - Code optimization
     - Agile development
-2. AI Software Developer at AI Global Networks (July 2025 - Current)
+2. AI Software Developer at AI Global Networks (July 2024 - Current)
     - Scalable applications with AI features
     - Performance optimization
     - Testing protocols
@@ -142,7 +142,7 @@ export default function AIChatbot() {
             temperature: 0.7,
             max_tokens: 300,
           }),
-        }
+        },
       );
 
       if (!response.ok) {
@@ -373,8 +373,8 @@ export default function AIChatbot() {
                   {/* Action Buttons */}
                   <div className="p-2 sm:p-3 bg-[#1a1a1a] border-t border-green-500/20 flex gap-2 flex-shrink-0">
                     <a
-                      href="/Ashley Motsie's Resume_20250807_043908_0000.pdf"
-                      download
+                      href="/Ashley's_resume.pdf"
+                      download="Ashley_Motsie_Resume.pdf"
                       className="flex-1 flex items-center justify-center gap-1.5 sm:gap-2 px-2 sm:px-3 py-2 rounded-lg bg-green-500/10 border border-green-500/30 text-green-400 hover:bg-green-500/20 text-[10px] sm:text-xs font-medium transition-all"
                     >
                       <Download className="w-3 h-3" />
@@ -382,6 +382,11 @@ export default function AIChatbot() {
                     </a>
                     <a
                       href="/contact"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        window.location.href = "/contact";
+                        setIsOpen(false);
+                      }}
                       className="flex-1 flex items-center justify-center gap-1.5 sm:gap-2 px-2 sm:px-3 py-2 rounded-lg bg-green-500/10 border border-green-500/30 text-green-400 hover:bg-green-500/20 text-[10px] sm:text-xs font-medium transition-all"
                     >
                       <Mail className="w-3 h-3" />
