@@ -9,6 +9,7 @@ import Meteors from "@/components/ui/meteors";
 import SparklesText from "@/components/ui/sparkles-text";
 import { FlipWords } from "@/components/ui/flip-words";
 import { FaGithub } from "react-icons/fa";
+import DataStream from "@/components/DataStream";
 import {
   Rocket,
   Code,
@@ -27,7 +28,7 @@ const NeuralNetwork = () => {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    const ctx = canvas.getContext("2d");
+    const ctx = canvas.getContext('2d');
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
 
@@ -45,7 +46,7 @@ const NeuralNetwork = () => {
     }
 
     function animate() {
-      ctx.fillStyle = "rgba(10, 10, 10, 0.1)";
+      ctx.fillStyle = 'rgba(10, 10, 10, 0.1)';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       // Update and draw nodes
@@ -58,7 +59,7 @@ const NeuralNetwork = () => {
         if (node.y < 0 || node.y > canvas.height) node.vy *= -1;
 
         // Draw node
-        ctx.fillStyle = "rgba(74, 222, 128, 0.3)";
+        ctx.fillStyle = 'rgba(74, 222, 128, 0.3)';
         ctx.beginPath();
         ctx.arc(node.x, node.y, 2, 0, Math.PI * 2);
         ctx.fill();
@@ -91,8 +92,8 @@ const NeuralNetwork = () => {
       canvas.height = window.innerHeight;
     };
 
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   return (
@@ -104,39 +105,7 @@ const NeuralNetwork = () => {
   );
 };
 
-// Data Stream Component
-const DataStream = () => {
-  const chars = "01アイウエオカキクケコサシスセソ";
-  const [streams] = useState(() =>
-    Array.from({ length: 8 }, (__, i) => ({
-      left: `${Math.random() * 100}%`,
-      delay: `${Math.random() * 3}s`,
-    })),
-  );
 
-  return (
-    <div
-      className="absolute inset-0 pointer-events-none overflow-hidden opacity-10"
-      style={{ zIndex: 8 }}
-    >
-      {streams.map((stream, i) => (
-        <div
-          key={i}
-          className="absolute top-0 text-green-400 text-xs font-mono animate-data-stream"
-          style={{
-            left: stream.left,
-            animationDelay: stream.delay,
-          }}
-        >
-          {Array.from(
-            { length: 20 },
-            () => chars[Math.floor(Math.random() * chars.length)],
-          ).join("")}
-        </div>
-      ))}
-    </div>
-  );
-};
 
 // Grid Background Component with Scan Line
 const GridBackground = () => {
@@ -162,7 +131,7 @@ const GridBackground = () => {
 
 // Terminal Typing Effect
 const TerminalTyping = ({ text }) => {
-  const [displayText, setDisplayText] = useState("");
+  const [displayText, setDisplayText] = useState('');
   const [cursorVisible, setCursorVisible] = useState(true);
 
   useEffect(() => {
@@ -181,7 +150,7 @@ const TerminalTyping = ({ text }) => {
 
   useEffect(() => {
     const cursorInterval = setInterval(() => {
-      setCursorVisible((v) => !v);
+      setCursorVisible(v => !v);
     }, 500);
     return () => clearInterval(cursorInterval);
   }, []);
@@ -189,17 +158,13 @@ const TerminalTyping = ({ text }) => {
   return (
     <span>
       {displayText}
-      <span
-        className={`${cursorVisible ? "opacity-100" : "opacity-0"} transition-opacity`}
-      >
-        ▋
-      </span>
+      <span className={`${cursorVisible ? 'opacity-100' : 'opacity-0'} transition-opacity`}>▋</span>
     </span>
   );
 };
 
 export default function Hero() {
-  const words = ["Developer | Engineer", "Problem Solver", "Tech Enthusiast"];
+  const words = ["Full-stack Developer", "Problem Solver", "Tech Enthusiast"];
   const [showCode, setShowCode] = useState(false);
 
   const [code] = useState(`const profile = {
@@ -250,7 +215,7 @@ export default function Hero() {
         <NeuralNetwork />
 
         {/* Data Stream Effect */}
-        <DataStream />
+        <DataStream count={8} opacity="opacity-10" />
 
         {/* Grid Background with Scan Line */}
         <GridBackground />
@@ -266,10 +231,7 @@ export default function Hero() {
           <div className="w-full lg:w-1/2 relative">
             {/* Decorative Blurs */}
             <div className="absolute -top-20 -left-20 w-64 h-64 bg-green-500/10 rounded-full blur-3xl hidden lg:block animate-pulse-slow"></div>
-            <div
-              className="absolute top-40 -right-20 w-64 h-64 bg-green-400/10 rounded-full blur-3xl hidden lg:block animate-pulse-slow"
-              style={{ animationDelay: "1s" }}
-            ></div>
+            <div className="absolute top-40 -right-20 w-64 h-64 bg-green-400/10 rounded-full blur-3xl hidden lg:block animate-pulse-slow" style={{ animationDelay: '1s' }}></div>
 
             {/* Welcome Badge with Glitch */}
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#1a1a1a] backdrop-blur-sm border border-green-500/30 mb-8 hover:border-green-400/50 transition-colors group relative overflow-hidden">
@@ -316,13 +278,13 @@ export default function Hero() {
             {/* Description */}
             <div className="relative mb-12 max-w-xl">
               <p className="text-xl text-gray-300 leading-relaxed font-mono">
-                <span className="text-green-400">&gt;</span> Tech Enthusiast |
-                Utilizing frameworks and coding the future
+                <span className="text-green-400">&gt;</span> Tech Enthusiast | Utilizing frameworks and coding the future
               </p>
             </div>
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row flex-wrap gap-4">
+
               {/* View Projects Button — solid green */}
               <a
                 href="/projects"
@@ -361,6 +323,7 @@ export default function Hero() {
                   <Download className="w-4 h-4 transform transition-transform duration-300 group-hover:translate-y-1" />
                 </span>
               </a>
+
             </div>
 
             {/* Floating Badges */}
@@ -402,16 +365,12 @@ export default function Hero() {
                     <Terminal className="w-4 h-4 animate-pulse" />
                     developer.js
                   </span>
-                  <span className="ml-auto text-xs text-green-500/50 font-mono">
-                    Live
-                  </span>
+                  <span className="ml-auto text-xs text-green-500/50 font-mono">Live</span>
                 </div>
 
                 {/* Code Content */}
                 <pre className="language-javascript p-6 max-h-[500px] overflow-y-auto custom-scrollbar">
-                  {showCode && (
-                    <code className="language-javascript">{code}</code>
-                  )}
+                  {showCode && <code className="language-javascript">{code}</code>}
                 </pre>
 
                 {/* Tech corner brackets */}

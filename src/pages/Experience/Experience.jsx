@@ -3,6 +3,7 @@
 /* eslint-disable react/prop-types */
 import React from "react";
 import { Code2, Activity, Cpu, Layers, Network, Binary, MapPin, Terminal } from "lucide-react";
+import DataStream from "@/components/DataStream";
 
 const ExperienceCard = ({
   title,
@@ -82,34 +83,6 @@ const ExperienceCard = ({
   </div>
 );
 
-// Data Stream Component
-const DataStream = () => {
-  const chars = '01アイウエオ';
-  const streams = Array.from({ length: 6 }, (_, i) => ({
-    left: `${15 + i * 15}%`,
-    delay: `${Math.random() * 3}s`,
-  }));
-
-  return (
-    <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-5 z-5">
-      {streams.map((stream, i) => (
-        <div
-          key={i}
-          className="absolute top-0 text-green-400 text-xs font-mono animate-data-stream"
-          style={{
-            left: stream.left,
-            animationDelay: stream.delay,
-          }}
-        >
-          {Array.from({ length: 30 }, () =>
-            chars[Math.floor(Math.random() * chars.length)]
-          ).join('')}
-        </div>
-      ))}
-    </div>
-  );
-};
-
 // Circuit Lines Component
 const CircuitLines = () => {
   return (
@@ -173,7 +146,7 @@ const ExperienceSection = () => {
   return (
     <div className="min-h-screen bg-[#0a0a0a] relative overflow-hidden pt-32 pb-20">
       {/* Data Stream Effect */}
-      <DataStream />
+      <DataStream count={6} />
 
       {/* Circuit Lines */}
       <CircuitLines />

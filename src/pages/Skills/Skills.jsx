@@ -35,34 +35,7 @@ import {
 import { TbBrandVscode } from "react-icons/tb";
 import { BsFileEarmarkCode, BsGrid1X2 } from "react-icons/bs";
 import { MdAnimation } from "react-icons/md";
-
-// Data Stream Component
-const DataStream = () => {
-  const chars = '01アイウエオ';
-  const streams = Array.from({ length: 5 }, (_, i) => ({
-    left: `${20 + i * 18}%`,
-    delay: `${Math.random() * 3}s`,
-  }));
-
-  return (
-    <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-5 z-5">
-      {streams.map((stream, i) => (
-        <div
-          key={i}
-          className="absolute top-0 text-green-400 text-xs font-mono animate-data-stream"
-          style={{
-            left: stream.left,
-            animationDelay: stream.delay,
-          }}
-        >
-          {Array.from({ length: 35 }, () =>
-            chars[Math.floor(Math.random() * chars.length)]
-          ).join('')}
-        </div>
-      ))}
-    </div>
-  );
-};
+import DataStream from "@/components/DataStream";
 
 const SkillCard = ({ icon: Icon, title, skills }) => (
   <Card className="group relative overflow-hidden bg-[#1a1a1a] border-green-500/30 hover:border-green-400/50 hover:scale-[1.02] transition-all duration-300 hover:shadow-xl hover:shadow-green-500/20 backdrop-blur-sm">
@@ -239,7 +212,7 @@ const SkillsSection = () => {
   return (
     <main className="pt-16 lg:pt-20 text-white min-h-screen bg-[#0a0a0a] relative overflow-hidden">
       {/* Data Stream Effect */}
-      <DataStream />
+      <DataStream count={5} />
 
       {/* Background decorative elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
