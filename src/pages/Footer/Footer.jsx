@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/purity */
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import {
@@ -14,34 +13,7 @@ import {
   Radio,
 } from "lucide-react";
 import LogoImage from "@/assets/images/logo_images/Logo.png";
-
-// Data Stream Component
-const DataStream = () => {
-  const chars = '01アイウエオ';
-  const streams = Array.from({ length: 3 }, (_, i) => ({
-    left: `${20 + i * 30}%`,
-    delay: `${Math.random() * 3}s`,
-  }));
-
-  return (
-    <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-5 z-5">
-      {streams.map((stream, i) => (
-        <div
-          key={i}
-          className="absolute bottom-0 text-green-400 text-xs font-mono animate-data-stream-up"
-          style={{
-            left: stream.left,
-            animationDelay: stream.delay,
-          }}
-        >
-          {Array.from({ length: 20 }, () =>
-            chars[Math.floor(Math.random() * chars.length)]
-          ).join('')}
-        </div>
-      ))}
-    </div>
-  );
-};
+import DataStream from "@/components/DataStream";
 
 // Circuit Lines Component
 const CircuitLines = () => {
@@ -116,7 +88,7 @@ export default function Footer() {
   return (
     <footer className="relative bg-[#0a0a0a] border-t border-green-500/20 text-white overflow-hidden">
       {/* Data Stream Effect */}
-      <DataStream />
+      <DataStream count={3} direction="up" />
 
       {/* Circuit Lines */}
       <CircuitLines />
@@ -124,8 +96,8 @@ export default function Footer() {
       {/* Background decorative elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute -top-20 left-1/4 w-64 h-64 bg-green-500/5 rounded-full blur-3xl animate-pulse-slow" />
-        <div 
-          className="absolute -bottom-20 right-1/4 w-64 h-64 bg-green-600/5 rounded-full blur-3xl animate-pulse-slow" 
+        <div
+          className="absolute -bottom-20 right-1/4 w-64 h-64 bg-green-600/5 rounded-full blur-3xl animate-pulse-slow"
           style={{ animationDelay: '1s' }}
         />
       </div>
@@ -284,7 +256,7 @@ export default function Footer() {
                   >
                     {/* Hover sweep effect */}
                     <span className="absolute inset-0 bg-green-500/5 translate-x-[-100%] group-hover/social:translate-x-[100%] transition-transform duration-500 ease-out" />
-                    
+
                     <div className="relative p-2 rounded-lg bg-green-500/10 border border-green-500/20 group-hover/social:bg-green-500/20 group-hover/social:border-green-400/40 transition-all">
                       <Icon className="w-4 h-4 relative z-10" />
                       {/* Pulsing ring */}
@@ -327,7 +299,7 @@ export default function Footer() {
             >
               {/* Sweep effect */}
               <span className="absolute inset-0 bg-green-500/5 translate-x-[-100%] group-hover/cta:translate-x-[100%] transition-transform duration-500 ease-out" />
-              
+
               <Terminal className="w-4 h-4 relative z-10" />
               <span className="relative z-10">Contact Me</span>
               <Zap className="w-3 h-3 relative z-10 group-hover/cta:rotate-12 transition-transform" />
@@ -374,7 +346,7 @@ export default function Footer() {
           >
             {/* Sweep effect */}
             <span className="absolute inset-0 bg-green-500/5 translate-x-[-100%] group-hover/top:translate-x-[100%] transition-transform duration-500 ease-out" />
-            
+
             <Terminal className="w-3 h-3 relative z-10" />
             <span className="relative z-10">Back to Top</span>
             <ArrowUp className="w-4 h-4 group-hover/top:-translate-y-1 transition-transform relative z-10 animate-pulse" />

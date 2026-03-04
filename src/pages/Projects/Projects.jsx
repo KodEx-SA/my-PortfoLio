@@ -10,6 +10,7 @@ import WebAppConverterImg from "@/assets/img/web-app-converter.jpeg";
 import UbizoiMarketImg from "@/assets/img/ubizo.png";
 import IsongCafeImg from "@/assets/img/Isong.png";
 import { Code2, ExternalLink, Folder, Terminal, Sparkles } from "lucide-react";
+import DataStream from "@/components/DataStream";
 
 const projects = [
   {
@@ -77,34 +78,6 @@ const projects = [
   },
 ];
 
-// Data Stream Component
-const DataStream = () => {
-  const chars = '01アイウエオ';
-  const streams = Array.from({ length: 5 }, (_, i) => ({
-    left: `${20 + i * 18}%`,
-    delay: `${Math.random() * 3}s`,
-  }));
-
-  return (
-    <div className="fixed inset-0 pointer-events-none overflow-hidden opacity-5 z-5">
-      {streams.map((stream, i) => (
-        <div
-          key={i}
-          className="absolute top-0 text-green-400 text-xs font-mono animate-data-stream"
-          style={{
-            left: stream.left,
-            animationDelay: stream.delay,
-          }}
-        >
-          {Array.from({ length: 40 }, () =>
-            chars[Math.floor(Math.random() * chars.length)]
-          ).join('')}
-        </div>
-      ))}
-    </div>
-  );
-};
-
 export default function Projects() {
   const container = useRef(null);
   const { scrollYProgress } = useScroll({
@@ -158,7 +131,7 @@ export default function Projects() {
     <ReactLenis root>
       <main className="bg-[#0a0a0a] relative" ref={container}>
         {/* Data Stream Effect */}
-        <DataStream />
+        <DataStream count={5} fixed />
 
         {/* Grid background */}
         <div className="fixed inset-0 bg-[linear-gradient(rgba(34,197,94,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(34,197,94,0.05)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none z-0" />

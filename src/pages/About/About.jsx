@@ -2,34 +2,7 @@ import { motion } from "framer-motion";
 import HeroImg from "@/assets/img/my_pic.png";
 import LogoImage from "@/assets/images/logo_images/Logo.png";
 import { Code2, Heart, Sparkles, GraduationCap, Terminal, Zap } from "lucide-react";
-
-// Data Stream Component
-const DataStream = () => {
-  const chars = '01アイウエオ';
-  const streams = Array.from({ length: 4 }, (_, i) => ({
-    left: `${25 + i * 20}%`,
-    delay: `${Math.random() * 3}s`,
-  }));
-
-  return (
-    <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-5 z-5">
-      {streams.map((stream, i) => (
-        <div
-          key={i}
-          className="absolute top-0 text-green-400 text-xs font-mono animate-data-stream"
-          style={{
-            left: stream.left,
-            animationDelay: stream.delay,
-          }}
-        >
-          {Array.from({ length: 30 }, () =>
-            chars[Math.floor(Math.random() * chars.length)]
-          ).join('')}
-        </div>
-      ))}
-    </div>
-  );
-};
+import DataStream from "@/components/DataStream";
 
 export default function About() {
   return (
@@ -38,7 +11,7 @@ export default function About() {
       className="relative py-16 md:py-32 text-white bg-[#0a0a0a] min-h-screen overflow-hidden"
     >
       {/* Data Stream Effect */}
-      <DataStream />
+      <DataStream count={4} />
 
       {/* Background decorative elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -145,7 +118,7 @@ export default function About() {
           >
             <div className="space-y-4">
               <p className="text-gray-300 leading-relaxed text-lg font-mono">
-                <span className="text-green-400">&gt;</span> I&apos;m <strong className="text-white">Ashley K Motsie</strong>,
+                <span className="text-green-400">&gt;</span> I&apos;m <strong className="text-white">Ashley Motsie</strong>,
                 a passionate{" "}
                 <strong className="text-green-400">Software Developer</strong>{" "}
                 based in{" "}

@@ -1,5 +1,3 @@
-/* eslint-disable react-hooks/purity */
-/* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import {
   Send,
@@ -13,35 +11,7 @@ import {
   Radio,
 } from "lucide-react";
 import { motion } from "framer-motion";
-
-// Data Stream Component
-const DataStream = () => {
-  const chars = "01アイウエオ";
-  const streams = Array.from({ length: 5 }, (_, i) => ({
-    left: `${15 + i * 20}%`,
-    delay: `${Math.random() * 3}s`,
-  }));
-
-  return (
-    <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-5 z-5">
-      {streams.map((stream, i) => (
-        <div
-          key={i}
-          className="absolute top-0 text-green-400 text-xs font-mono animate-data-stream"
-          style={{
-            left: stream.left,
-            animationDelay: stream.delay,
-          }}
-        >
-          {Array.from(
-            { length: 30 },
-            () => chars[Math.floor(Math.random() * chars.length)],
-          ).join("")}
-        </div>
-      ))}
-    </div>
-  );
-};
+import DataStream from "@/components/DataStream";
 
 // Transmission Particles Component
 const TransmissionParticles = () => {
@@ -117,7 +87,7 @@ export default function Contact() {
 
     if (!import.meta.env.VITE_WEB3FORMS_KEY) {
       setStatus(
-        "Error: Web3Forms access key is missing. Please contact the site owner.",
+        "Error: Web3Forms access key is missing. Please contact the site owner."
       );
       return;
     }
@@ -148,7 +118,7 @@ export default function Contact() {
 
       if (result.success) {
         setStatus(
-          "Your message is sent successfully! I'll get back to you soon.",
+          "Your message is sent successfully! I'll get back to you soon."
         );
         setFormData({
           name: "",
@@ -170,7 +140,7 @@ export default function Contact() {
   return (
     <main className="pt-20 lg:pt-0 bg-[#0a0a0a] text-white min-h-screen relative overflow-hidden">
       {/* Data Stream Effect */}
-      <DataStream />
+      <DataStream count={5} />
 
       {/* Transmission Particles */}
       <TransmissionParticles />
@@ -233,8 +203,7 @@ export default function Contact() {
             </h2>
 
             <p className="text-gray-400 text-lg max-w-2xl mx-auto leading-relaxed font-mono">
-              <span className="text-green-400">&gt;</span> Have a question or
-              want to work together? Drop a message!
+              <span className="text-green-400">&gt;</span> Have a question or want to work together? Drop a message!
             </p>
 
             <div className="relative w-24 h-1 bg-gradient-to-r from-transparent via-green-500 to-transparent rounded-full mx-auto overflow-hidden">
@@ -338,17 +307,14 @@ export default function Contact() {
                     <h3 className="font-semibold font-mono">Quick Response</h3>
                   </div>
                   <p className="text-gray-300 text-sm leading-relaxed font-mono">
-                    <span className="text-green-400">&gt;</span> I typically
-                    respond within 24 hours. Looking forward to hearing from
-                    you!
+                    <span className="text-green-400">&gt;</span> I typically respond within 24 hours. Looking forward to
+                    hearing from you!
                   </p>
 
                   {/* Pulsing indicator */}
                   <div className="flex items-center gap-2 mt-4 pt-4 border-t border-green-500/20">
                     <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-                    <span className="text-xs text-green-400 font-mono">
-                      SYSTEM ONLINE
-                    </span>
+                    <span className="text-xs text-green-400 font-mono">SYSTEM ONLINE</span>
                   </div>
                 </div>
               </div>
@@ -380,11 +346,7 @@ export default function Contact() {
                   <div className="absolute bottom-0 left-0 w-[2px] h-full bg-green-400 scale-y-0 group-hover:scale-y-100 origin-bottom transition-transform duration-500 delay-100" />
                 </div>
 
-                <form
-                  onSubmit={handleSubmit}
-                  className="space-y-6 relative z-10"
-                  noValidate
-                >
+                <form onSubmit={handleSubmit} className="space-y-6 relative z-10" noValidate>
                   <div className="grid grid-cols-1 gap-6">
                     {/* Name Input */}
                     <div className="relative">
@@ -403,16 +365,13 @@ export default function Contact() {
                           id="name"
                           type="text"
                           placeholder="John Doe"
-                          className={`w-full pl-8 pr-4 py-3 rounded-lg bg-[#0a0a0a] border ${
-                            errors.name
-                              ? "border-red-500"
-                              : "border-green-500/30"
-                          } focus:border-green-400 focus:outline-none focus:ring-2 focus:ring-green-500/20 transition-all text-white placeholder-gray-500 font-mono`}
+                          className={`w-full pl-8 pr-4 py-3 rounded-lg bg-[#0a0a0a] border ${errors.name ? "border-red-500" : "border-green-500/30"
+                            } focus:border-green-400 focus:outline-none focus:ring-2 focus:ring-green-500/20 transition-all text-white placeholder-gray-500 font-mono`}
                           value={formData.name}
                           onChange={(e) =>
                             setFormData({ ...formData, name: e.target.value })
                           }
-                          onFocus={() => setFocusedField("name")}
+                          onFocus={() => setFocusedField('name')}
                           onBlur={() => setFocusedField(null)}
                           aria-invalid={!!errors.name}
                           aria-describedby={
@@ -420,7 +379,7 @@ export default function Contact() {
                           }
                         />
                         {/* Focus indicator */}
-                        {focusedField === "name" && (
+                        {focusedField === 'name' && (
                           <div className="absolute right-3 top-1/2 -translate-y-1/2 w-2 h-2 bg-green-400 rounded-full animate-pulse" />
                         )}
                       </div>
@@ -451,16 +410,15 @@ export default function Contact() {
                           id="email"
                           type="email"
                           placeholder="john@example.com"
-                          className={`w-full pl-8 pr-4 py-3 rounded-lg bg-[#0a0a0a] border ${
-                            errors.email
+                          className={`w-full pl-8 pr-4 py-3 rounded-lg bg-[#0a0a0a] border ${errors.email
                               ? "border-red-500"
                               : "border-green-500/30"
-                          } focus:border-green-400 focus:outline-none focus:ring-2 focus:ring-green-500/20 transition-all text-white placeholder-gray-500 font-mono`}
+                            } focus:border-green-400 focus:outline-none focus:ring-2 focus:ring-green-500/20 transition-all text-white placeholder-gray-500 font-mono`}
                           value={formData.email}
                           onChange={(e) =>
                             setFormData({ ...formData, email: e.target.value })
                           }
-                          onFocus={() => setFocusedField("email")}
+                          onFocus={() => setFocusedField('email')}
                           onBlur={() => setFocusedField(null)}
                           aria-invalid={!!errors.email}
                           aria-describedby={
@@ -468,7 +426,7 @@ export default function Contact() {
                           }
                         />
                         {/* Focus indicator */}
-                        {focusedField === "email" && (
+                        {focusedField === 'email' && (
                           <div className="absolute right-3 top-1/2 -translate-y-1/2 w-2 h-2 bg-green-400 rounded-full animate-pulse" />
                         )}
                       </div>
@@ -499,19 +457,15 @@ export default function Contact() {
                           id="subject"
                           type="text"
                           placeholder="Project Inquiry"
-                          className={`w-full pl-8 pr-4 py-3 rounded-lg bg-[#0a0a0a] border ${
-                            errors.subject
+                          className={`w-full pl-8 pr-4 py-3 rounded-lg bg-[#0a0a0a] border ${errors.subject
                               ? "border-red-500"
                               : "border-green-500/30"
-                          } focus:border-green-400 focus:outline-none focus:ring-2 focus:ring-green-500/20 transition-all text-white placeholder-gray-500 font-mono`}
+                            } focus:border-green-400 focus:outline-none focus:ring-2 focus:ring-green-500/20 transition-all text-white placeholder-gray-500 font-mono`}
                           value={formData.subject}
                           onChange={(e) =>
-                            setFormData({
-                              ...formData,
-                              subject: e.target.value,
-                            })
+                            setFormData({ ...formData, subject: e.target.value })
                           }
-                          onFocus={() => setFocusedField("subject")}
+                          onFocus={() => setFocusedField('subject')}
                           onBlur={() => setFocusedField(null)}
                           aria-invalid={!!errors.subject}
                           aria-describedby={
@@ -519,7 +473,7 @@ export default function Contact() {
                           }
                         />
                         {/* Focus indicator */}
-                        {focusedField === "subject" && (
+                        {focusedField === 'subject' && (
                           <div className="absolute right-3 top-1/2 -translate-y-1/2 w-2 h-2 bg-green-400 rounded-full animate-pulse" />
                         )}
                       </div>
@@ -528,8 +482,7 @@ export default function Contact() {
                           id="subject-error"
                           className="text-red-400 text-sm mt-1 font-mono flex items-center gap-1"
                         >
-                          <span className="text-red-500">✗</span>{" "}
-                          {errors.subject}
+                          <span className="text-red-500">✗</span> {errors.subject}
                         </p>
                       )}
                     </div>
@@ -551,19 +504,15 @@ export default function Contact() {
                           id="message"
                           placeholder="Tell me about your project..."
                           rows="4"
-                          className={`w-full pl-8 pr-4 py-3 rounded-lg bg-[#0a0a0a] border ${
-                            errors.message
+                          className={`w-full pl-8 pr-4 py-3 rounded-lg bg-[#0a0a0a] border ${errors.message
                               ? "border-red-500"
                               : "border-green-500/30"
-                          } focus:border-green-400 focus:outline-none focus:ring-2 focus:ring-green-500/20 transition-all resize-none text-white placeholder-gray-500 font-mono`}
+                            } focus:border-green-400 focus:outline-none focus:ring-2 focus:ring-green-500/20 transition-all resize-none text-white placeholder-gray-500 font-mono`}
                           value={formData.message}
                           onChange={(e) =>
-                            setFormData({
-                              ...formData,
-                              message: e.target.value,
-                            })
+                            setFormData({ ...formData, message: e.target.value })
                           }
-                          onFocus={() => setFocusedField("message")}
+                          onFocus={() => setFocusedField('message')}
                           onBlur={() => setFocusedField(null)}
                           aria-invalid={!!errors.message}
                           aria-describedby={
@@ -571,7 +520,7 @@ export default function Contact() {
                           }
                         ></textarea>
                         {/* Focus indicator */}
-                        {focusedField === "message" && (
+                        {focusedField === 'message' && (
                           <div className="absolute right-3 top-3 w-2 h-2 bg-green-400 rounded-full animate-pulse" />
                         )}
                       </div>
@@ -580,8 +529,7 @@ export default function Contact() {
                           id="message-error"
                           className="text-red-400 text-sm mt-1 font-mono flex items-center gap-1"
                         >
-                          <span className="text-red-500">✗</span>{" "}
-                          {errors.message}
+                          <span className="text-red-500">✗</span> {errors.message}
                         </p>
                       )}
                     </div>
@@ -598,9 +546,7 @@ export default function Contact() {
                     <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent translate-x-[-100%] group-hover/btn:translate-x-[100%] transition-transform duration-700 ease-out" />
 
                     <Terminal className="w-4 h-4 relative z-10" />
-                    <span className="relative z-10">
-                      {loading ? "TRANSMITTING..." : "SEND MESSAGE"}
-                    </span>
+                    <span className="relative z-10">{loading ? "TRANSMITTING..." : "SEND MESSAGE"}</span>
                     <Send className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform relative z-10" />
 
                     {/* Loading animation */}
@@ -617,11 +563,10 @@ export default function Contact() {
                   <motion.div
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className={`mt-4 relative p-4 rounded-lg overflow-hidden ${
-                      status.includes("success") || status.includes("sent")
+                    className={`mt-4 relative p-4 rounded-lg overflow-hidden ${status.includes("success") || status.includes("sent")
                         ? "bg-green-500/10 text-green-400 border border-green-500/30"
                         : "bg-red-500/10 text-red-400 border border-red-500/30"
-                    }`}
+                      }`}
                     role="alert"
                     aria-live="polite"
                   >
