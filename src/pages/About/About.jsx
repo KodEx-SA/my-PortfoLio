@@ -1,8 +1,17 @@
 import { motion } from "framer-motion";
 import HeroImg from "@/assets/img/my_pic.png";
 import LogoImage from "@/assets/images/logo_images/Logo.png";
-import { Code2, Heart, Sparkles, GraduationCap, Terminal, Zap } from "lucide-react";
+import {
+  Code2,
+  Heart,
+  Sparkles,
+  GraduationCap,
+  Terminal,
+  Zap,
+} from "lucide-react";
 import DataStream from "@/components/DataStream";
+import GitHubStats from "@/components/GitHubStats";
+import ErrorBoundary from "@/components/ErrorBoundary";
 
 export default function About() {
   return (
@@ -16,7 +25,10 @@ export default function About() {
       {/* Background decorative elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-20 left-10 w-72 h-72 bg-green-500/5 rounded-full blur-3xl animate-pulse-slow" />
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-green-600/5 rounded-full blur-3xl animate-pulse-slow" style={{ animationDelay: '1s' }} />
+        <div
+          className="absolute bottom-20 right-10 w-96 h-96 bg-green-600/5 rounded-full blur-3xl animate-pulse-slow"
+          style={{ animationDelay: "1s" }}
+        />
       </div>
 
       {/* Grid background */}
@@ -33,7 +45,9 @@ export default function About() {
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-500/10 border border-green-500/30 backdrop-blur-sm relative overflow-hidden group">
             <span className="absolute inset-0 bg-green-500/5 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 ease-out" />
             <Sparkles className="w-4 h-4 text-green-400 relative z-10 animate-pulse" />
-            <span className="text-green-400 text-sm font-medium font-mono relative z-10">About Me</span>
+            <span className="text-green-400 text-sm font-medium font-mono relative z-10">
+              About Me
+            </span>
           </div>
 
           <motion.h2
@@ -118,8 +132,9 @@ export default function About() {
           >
             <div className="space-y-4">
               <p className="text-gray-300 leading-relaxed text-lg font-mono">
-                <span className="text-green-400">&gt;</span> I&apos;m <strong className="text-white">Ashley Motsie</strong>,
-                a passionate{" "}
+                <span className="text-green-400">&gt;</span> I&apos;m{" "}
+                <strong className="text-white">Ashley Motsie</strong>, a
+                passionate{" "}
                 <strong className="text-green-400">Software Developer</strong>{" "}
                 based in{" "}
                 <span className="text-green-400 font-medium">South Africa</span>{" "}
@@ -182,14 +197,18 @@ export default function About() {
             <div className="grid grid-cols-3 gap-4 pt-6">
               <div className="group relative text-center p-4 bg-green-500/5 border border-green-500/20 rounded-xl hover:border-green-400/40 transition-all overflow-hidden">
                 <span className="absolute inset-0 bg-green-500/5 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 ease-out" />
-                <div className="text-2xl font-bold text-green-400 mb-1 font-mono relative z-10">4+</div>
+                <div className="text-2xl font-bold text-green-400 mb-1 font-mono relative z-10">
+                  4+
+                </div>
                 <div className="text-xs text-gray-400 font-medium font-mono relative z-10">
                   Years Experience
                 </div>
               </div>
               <div className="group relative text-center p-4 bg-green-500/5 border border-green-500/20 rounded-xl hover:border-green-400/40 transition-all overflow-hidden">
                 <span className="absolute inset-0 bg-green-500/5 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 ease-out" />
-                <div className="text-2xl font-bold text-green-400 mb-1 font-mono relative z-10">7+</div>
+                <div className="text-2xl font-bold text-green-400 mb-1 font-mono relative z-10">
+                  7+
+                </div>
                 <div className="text-xs text-gray-400 font-medium font-mono relative z-10">
                   Projects Built
                 </div>
@@ -206,6 +225,11 @@ export default function About() {
             </div>
           </motion.div>
         </div>
+
+        {/* GitHub Stats Widget */}
+        <ErrorBoundary>
+          <GitHubStats username="KodEx-SA" />
+        </ErrorBoundary>
       </div>
 
       <style>{`

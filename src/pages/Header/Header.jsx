@@ -11,6 +11,9 @@ import {
   FaBars,
   FaTimes,
   FaQuoteLeft,
+  FaConciergeBell,
+  FaNewspaper,
+  FaTrophy,
 } from "react-icons/fa";
 import { Link, useLocation } from "react-router-dom";
 
@@ -58,6 +61,9 @@ export default function Header() {
     },
     { id: "contact", icon: FaEnvelope, text: "Contact", path: "/contact" },
     { id: "testimonials", icon: FaQuoteLeft, text: "Testimonials", path: "/testimonials" },
+    { id: "services", icon: FaConciergeBell, text: "Services", path: "/services" },
+    { id: "blog", icon: FaNewspaper, text: "Blog", path: "/blog" },
+    { id: "achievements", icon: FaTrophy, text: "Achievements", path: "/achievements" },
   ];
 
   return (
