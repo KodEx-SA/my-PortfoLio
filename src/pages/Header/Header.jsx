@@ -10,6 +10,7 @@ import {
   FaEnvelope,
   FaBars,
   FaTimes,
+  FaQuoteLeft,
 } from "react-icons/fa";
 import { Link, useLocation } from "react-router-dom";
 
@@ -56,6 +57,7 @@ export default function Header() {
       path: "/education",
     },
     { id: "contact", icon: FaEnvelope, text: "Contact", path: "/contact" },
+    { id: "testimonials", icon: FaQuoteLeft, text: "Testimonials", path: "/testimonials" },
   ];
 
   return (
@@ -63,9 +65,8 @@ export default function Header() {
       <header className="fixed top-0 left-0 w-full z-50">
         {/* Desktop Navigation */}
         <div className="hidden md:block md:fixed md:top-4 md:left-1/2 md:transform md:-translate-x-1/2">
-          <nav className={`relative bg-[#0a0a0a]/90 backdrop-blur-xl rounded-xl px-6 py-2.5 transition-all duration-300 ${
-            scrolled ? "shadow-lg shadow-green-500/10" : ""
-          }`}>
+          <nav className={`relative bg-[#0a0a0a]/90 backdrop-blur-xl rounded-xl px-6 py-2.5 transition-all duration-300 ${scrolled ? "shadow-lg shadow-green-500/10" : ""
+            }`}>
             {/* Scan line effect */}
             <div className="absolute inset-0 rounded-xl overflow-hidden pointer-events-none">
               <div className="scanline" />
@@ -95,10 +96,9 @@ export default function Header() {
                   onClick={() => setActiveLink(id)}
                   className={`group relative px-4 py-2 rounded-lg text-sm font-medium
                     transition-all duration-300 flex items-center gap-2 overflow-hidden
-                    ${
-                      activeLink === id
-                        ? "bg-green-500/20 text-green-400"
-                        : "text-gray-400 hover:text-green-400"
+                    ${activeLink === id
+                      ? "bg-green-500/20 text-green-400"
+                      : "text-gray-400 hover:text-green-400"
                     }
                   `}
                 >
@@ -113,11 +113,10 @@ export default function Header() {
                   )}
 
                   <Icon
-                    className={`relative z-10 text-base transition-transform duration-300 ${
-                      activeLink === id
+                    className={`relative z-10 text-base transition-transform duration-300 ${activeLink === id
                         ? "scale-110 drop-shadow-[0_0_8px_rgba(74,222,128,0.5)]"
                         : "group-hover:scale-110"
-                    }`}
+                      }`}
                   />
                   <span className="relative z-10 font-mono tracking-wide">{text}</span>
 
@@ -201,14 +200,13 @@ export default function Header() {
 
           {/* Mobile Menu Dropdown */}
           <div
-            className={`overflow-hidden transition-all duration-300 ease-in-out ${
-              isMenuOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0"
-            }`}
+            className={`overflow-hidden transition-all duration-300 ease-in-out ${isMenuOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0"
+              }`}
           >
             <div className="px-4 py-3 space-y-1 relative">
               {/* Data stream effect */}
               <div className="absolute right-0 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-green-500/30 to-transparent" />
-              
+
               {navLinks.map(({ id, icon: Icon, text, path }, index) => (
                 <Link
                   key={id}
@@ -218,20 +216,18 @@ export default function Header() {
                     setIsMenuOpen(false);
                   }}
                   className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200 relative overflow-hidden group
-                    ${
-                      activeLink === id
-                        ? "bg-green-500/20 text-green-400"
-                        : "text-gray-400 hover:text-green-400 hover:bg-green-500/5"
+                    ${activeLink === id
+                      ? "bg-green-500/20 text-green-400"
+                      : "text-gray-400 hover:text-green-400 hover:bg-green-500/5"
                     }
                   `}
                   style={{ animationDelay: `${index * 0.05}s` }}
                 >
                   {/* Hover glitch effect */}
                   <span className="absolute inset-0 bg-green-500/5 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-500 ease-out" />
-                  
-                  <Icon className={`relative z-10 text-lg transition-transform duration-200 ${
-                    activeLink === id ? "drop-shadow-[0_0_6px_rgba(74,222,128,0.5)]" : ""
-                  }`} />
+
+                  <Icon className={`relative z-10 text-lg transition-transform duration-200 ${activeLink === id ? "drop-shadow-[0_0_6px_rgba(74,222,128,0.5)]" : ""
+                    }`} />
                   <span className="relative z-10 font-medium font-mono tracking-wide">{text}</span>
 
                   {/* Active indicator */}
