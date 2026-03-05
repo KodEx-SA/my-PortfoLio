@@ -9,7 +9,11 @@ import Skills from "./pages/Skills/Skills";
 import Education from "./pages/Education/Education";
 import Footer from "./pages/Footer/Footer";
 import Testimonials from "./pages/Testimonials/Testimonials";
+import Services from "./pages/Services/Services";
+import Blog from "./pages/Blog/Blog";
+import Achievements from "./pages/Achievements/Achievements";
 import AIChatbot from "./components/AIChatbot";
+import ScrollUtils from "./components/ScrollUtils";
 
 import { Route, Routes } from "react-router-dom";
 
@@ -17,6 +21,7 @@ export default function App() {
   return (
     <>
       <Header />
+      <ScrollUtils />
       {/* Router Mode: Use routes for navigation */}
       <Routes>
         <Route path="/" element={<Hero />} />
@@ -27,6 +32,9 @@ export default function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/projects" element={<Projects />} />
         <Route path="/testimonials" element={<Testimonials />} />
+        <Route path="/services" element={<Services />} />
+        <Route path="/blog" element={<Blog />} />
+        <Route path="/achievements" element={<Achievements />} />
       </Routes>
       <Footer />
       <AIChatbot />

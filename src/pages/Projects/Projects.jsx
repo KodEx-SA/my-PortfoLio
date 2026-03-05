@@ -16,65 +16,86 @@ const projects = [
   {
     title: "Generative AI Chatbot",
     description:
-      "Real-time conversational chatbot powered by Groq AI with advanced natural language processing capabilities.",
+      "Real-time conversational AI chatbot powered by Groq with streaming responses, context memory, typing indicators, and a polished dark UI. Built for production at AI Global Networks.",
     src: AIAssistantImg,
-    tags: ["React", "AI", "Groq API"],
+    tags: ["React", "Groq API", "TypeScript", "Tailwind CSS"],
+    stack: ["Frontend", "AI / LLM", "REST API"],
     githubLink: "https://github.com/KodEx-SA/ReactJs-ChatBot",
     liveLink: "https://react-js-chat-bot-1.vercel.app/",
+    status: "Live",
+    year: "2024",
   },
   {
     title: "Modern Ubizo iMarket",
     description:
-      "Connect buyers and sellers across South Africa on one powerful Ubizo iMarket platform.",
+      "Full-featured South African e-commerce landing platform connecting buyers and sellers. Responsive, fast, and built with a modern Vite-powered React stack.",
     src: UbizoiMarketImg,
-    tags: ["React", "Vite"],
+    tags: ["React", "Vite", "Tailwind CSS", "JavaScript"],
+    stack: ["Frontend", "E-Commerce"],
     githubLink: "https://github.com/KodEx-SA/ubizo-e-commerce-landing-page",
     liveLink: "https://ubizo-e-commerce-landing-page.onrender.com/",
+    status: "Live",
+    year: "2024",
   },
   {
     title: "Temperature Converter",
     description:
-      "Efficient web app for temperature conversions with a clean, intuitive interface.",
+      "Clean, efficient web app for temperature unit conversions with an intuitive UI. A focused tool demonstrating state management and real-time calculation logic.",
     src: WebAppConverterImg,
-    tags: ["JavaScript", "HTML", "CSS"],
+    tags: ["JavaScript", "HTML5", "CSS3"],
+    stack: ["Frontend", "Utility"],
     githubLink: "https://github.com/KodEx-SA/web_app_temp_conveter",
     liveLink: "https://my-web-app-temperature-conveter.vercel.app/",
+    status: "Live",
+    year: "2023",
   },
   {
     title: "Isong Cafe - Bar & Grill",
     description:
-      "A simple and reliable website for a local cafe with menu showcase and location info.",
+      "A polished, mobile-first website for a local cafe and grill featuring a full menu showcase, brand story, location info, and smooth scroll UX.",
     src: IsongCafeImg,
-    tags: ["HTML", "Tailwind", "Javascript"],
+    tags: ["HTML5", "Tailwind CSS", "JavaScript"],
+    stack: ["Frontend", "Hospitality"],
     githubLink: "https://github.com/KodEx-SA/Isong-Cafe-website",
     liveLink: "https://isong-cafe.vercel.app/",
+    status: "Live",
+    year: "2023",
   },
   {
     title: "Gauteng Rentals Directory",
     description:
-      "Fast, simple, reliable rental search with AI recommendations for Gauteng province.",
+      "AI-powered rental property search for Gauteng province — fast filtering, smart recommendations, and a clean UI designed for South African users.",
     src: GautengRentalsImg,
-    tags: ["HTML", "CSS", "JavaScript"],
+    tags: ["HTML5", "CSS3", "JavaScript", "AI Features"],
+    stack: ["Frontend", "AI-Assisted", "Real Estate"],
     githubLink: "https://github.com/KodEx-SA/jhb-rental-directory",
     liveLink: "https://gauteng-rental-directory-landing-pa.vercel.app/",
+    status: "Live",
+    year: "2024",
   },
   {
     title: "TMA Modelling Agency",
     description:
-      "Professional modeling agency website for Mahikeng Modelling Agency showcasing talent and services.",
+      "Professional brand website for Taahirah Modelling Agency in Mahikeng — showcasing talent, services, and bookings with a high-fashion aesthetic.",
     src: "",
-    tags: ["HTML", "CSS", "Javascript"],
+    tags: ["HTML5", "CSS3", "JavaScript"],
+    stack: ["Frontend", "Branding"],
     githubLink: "https://github.com/KodEx-SA/TMA",
     liveLink: "https://tmaofficial.co.za/",
+    status: "Live",
+    year: "2023",
   },
   {
     title: "Sasbo AI Symposium",
     description:
-      "Finance Union event platform for Sasbo AI Symposium with registration and information.",
+      "Finance union AI Symposium 2026 platform — advanced animations, event schedule, speaker showcase, and registration. Built with Next.js 15 and TypeScript.",
     src: "",
-    tags: ["Typescript", "Next.js", "Tailwind"],
+    tags: ["TypeScript", "Next.js 15", "Tailwind CSS", "Framer Motion"],
+    stack: ["Full-Stack", "Events", "Next.js"],
     githubLink: "https://github.com/KodEx-SA/sasbo-ai-symposium",
     liveLink: "https://sasbo-ai-symposium.vercel.app/",
+    status: "Live",
+    year: "2025",
   },
 ];
 
@@ -187,6 +208,9 @@ export default function Projects() {
                 title={project.title}
                 description={project.description}
                 tags={project.tags}
+                stack={project.stack}
+                status={project.status}
+                year={project.year}
                 progress={scrollYProgress}
                 range={[i * 0.25, 1]}
                 targetScale={targetScale}
@@ -207,6 +231,9 @@ function Card({
   description,
   src,
   tags,
+  stack,
+  status,
+  year,
   progress,
   range,
   targetScale,
@@ -331,19 +358,45 @@ function Card({
                 {title}
               </h2>
 
+              {/* Status + Year badges */}
+              <div className="flex items-center gap-2 mb-3">
+                {status && (
+                  <span className="inline-flex items-center gap-1 text-[10px] font-mono px-2 py-0.5 rounded-full bg-green-500/15 border border-green-500/40 text-green-400">
+                    <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse inline-block" />
+                    {status}
+                  </span>
+                )}
+                {year && (
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-white/3 border border-green-500/15 text-gray-500">
+                    {year}
+                  </span>
+                )}
+              </div>
+
               <p className="text-sm md:text-base text-gray-400 leading-relaxed mb-4 font-mono">
                 <span className="text-green-400">&gt;</span> {description}
               </p>
 
               {/* Tags */}
               {tags && tags.length > 0 && (
-                <div className="flex flex-wrap gap-2 mb-4">
+                <div className="flex flex-wrap gap-2 mb-3">
                   {tags.map((tag, idx) => (
                     <span
                       key={idx}
                       className="px-3 py-1 text-xs font-medium font-mono bg-green-500/10 text-green-400 rounded-full border border-green-500/20 hover:border-green-400/40 transition-colors"
                     >
                       #{tag}
+                    </span>
+                  ))}
+                </div>
+              )}
+
+              {/* Stack / Domain badges */}
+              {stack && stack.length > 0 && (
+                <div className="flex flex-wrap gap-1.5">
+                  {stack.map((s, idx) => (
+                    <span key={idx} className="text-[10px] font-mono px-2 py-0.5 rounded bg-white/3 border border-green-500/10 text-gray-500">
+                      {s}
                     </span>
                   ))}
                 </div>
