@@ -18,7 +18,7 @@ const experiences = [
     title: "Software Developer & IT Technician",
     company: "Eullafied Tech Solutions",
     location: "On-Site · Rustenburg, SA",
-    period: "June 2024 — Present",
+    period: "June 2025 — Present",
     description:
       "Collaborate with cross-functional teams to contribute to agile project development. Work on code optimization techniques & play a key part in the overall development process.",
     tags: ["Agile", "IT Support", "Full-Stack"],
@@ -30,7 +30,7 @@ const experiences = [
     title: "AI Software Developer",
     company: "AI Global Networks",
     location: "Remote · Johannesburg",
-    period: "July 2024 — Present",
+    period: "July 2025 — Present",
     description:
       "Responsible for developing scalable applications with integrated AI features. Focused on improving app performance & efficiency. Implementing robust testing protocols to ensure high-quality software.",
     tags: ["React", "Groq API", "TypeScript", "AI/LLM"],
