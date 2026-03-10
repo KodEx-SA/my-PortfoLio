@@ -21,7 +21,13 @@ const CircuitLines = () => {
     <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-10">
       <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
         <defs>
-          <linearGradient id="circuit-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+          <linearGradient
+            id="circuit-gradient"
+            x1="0%"
+            y1="0%"
+            x2="100%"
+            y2="0%"
+          >
             <stop offset="0%" stopColor="rgba(34, 197, 94, 0)" />
             <stop offset="50%" stopColor="rgba(34, 197, 94, 0.5)" />
             <stop offset="100%" stopColor="rgba(34, 197, 94, 0)" />
@@ -40,7 +46,7 @@ const CircuitLines = () => {
           strokeWidth="2"
           fill="none"
           className="animate-circuit-flow"
-          style={{ animationDelay: '1s' }}
+          style={{ animationDelay: "1s" }}
         />
       </svg>
     </div>
@@ -56,12 +62,16 @@ export default function Footer() {
 
   const quickLinks = [
     { name: "Home", path: "/" },
+    { name: "About", path: "/about" },
+    { name: "Projects", path: "/projects" },
     { name: "Skills", path: "/skills" },
     { name: "Experience", path: "/experience" },
     { name: "Education", path: "/education" },
-    { name: "Projects", path: "/projects" },
+    { name: "Services", path: "/services" },
+    { name: "Blog", path: "/blog" },
+    { name: "Testimonials", path: "/testimonials" },
+    { name: "Achievements", path: "/achievements" },
     { name: "Contact", path: "/contact" },
-    { name: "About", path: "/about" },
   ];
 
   const socialLinks = [
@@ -86,7 +96,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="relative bg-[#0a0a0a] border-t border-green-500/20 text-white overflow-hidden">
+    <footer className="relative bg-[#0a0a0a] border-t border-green-500/15 text-white overflow-hidden">
       {/* Data Stream Effect */}
       <DataStream count={3} direction="up" />
 
@@ -98,7 +108,7 @@ export default function Footer() {
         <div className="absolute -top-20 left-1/4 w-64 h-64 bg-green-500/5 rounded-full blur-3xl animate-pulse-slow" />
         <div
           className="absolute -bottom-20 right-1/4 w-64 h-64 bg-green-600/5 rounded-full blur-3xl animate-pulse-slow"
-          style={{ animationDelay: '1s' }}
+          style={{ animationDelay: "1s" }}
         />
       </div>
 
@@ -171,8 +181,9 @@ export default function Footer() {
               </h3>
             </div>
             <p className="text-gray-400 text-sm leading-relaxed font-mono">
-              <span className="text-green-400">&gt;</span> Full-stack Developer specializing in building exceptional digital
-              experiences with modern web technologies.
+              <span className="text-green-400">&gt;</span> Full-stack Developer
+              specializing in building exceptional digital experiences with
+              modern web technologies.
             </p>
             <div className="flex items-center gap-2 text-sm text-gray-400 font-mono group/location hover:text-green-400 transition-colors">
               <MapPin className="w-4 h-4 text-green-400 animate-pulse" />
@@ -291,7 +302,8 @@ export default function Footer() {
               Get in Touch
             </h4>
             <p className="text-gray-400 text-sm font-mono">
-              <span className="text-green-400">&gt;</span> Have a project in mind? Let&apos;s work together to bring your ideas to life.
+              <span className="text-green-400">&gt;</span> Have a project in
+              mind? Let&apos;s work together to bring your ideas to life.
             </p>
             <Link
               to="/contact"
@@ -337,20 +349,6 @@ export default function Footer() {
             <span className="hidden sm:inline">and</span>
             <Code2 className="w-4 h-4 text-green-400 hidden sm:inline animate-pulse" />
           </div>
-
-          {/* Back to Top Button */}
-          <button
-            onClick={scrollToTop}
-            className="relative group/top flex items-center gap-2 px-4 py-2 rounded-lg bg-green-500/10 border border-green-500/30 text-green-400 hover:bg-green-500/20 hover:border-green-400/50 transition-all text-sm font-medium font-mono overflow-hidden"
-            aria-label="Scroll to top"
-          >
-            {/* Sweep effect */}
-            <span className="absolute inset-0 bg-green-500/5 translate-x-[-100%] group-hover/top:translate-x-[100%] transition-transform duration-500 ease-out" />
-
-            <Terminal className="w-3 h-3 relative z-10" />
-            <span className="relative z-10">Back to Top</span>
-            <ArrowUp className="w-4 h-4 group-hover/top:-translate-y-1 transition-transform relative z-10 animate-pulse" />
-          </button>
         </motion.div>
 
         {/* Bottom status indicator */}
