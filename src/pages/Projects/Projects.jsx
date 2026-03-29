@@ -20,7 +20,7 @@ const projects = [
     tags: ["React", "Groq API", "TypeScript", "Tailwind CSS"],
     stack: ["Frontend", "AI / LLM", "REST API"],
     githubLink: "https://github.com/KodEx-SA/ReactJs-ChatBot",
-    liveLink: "https://react-js-chat-bot-1.vercel.app/",
+    liveLink: "https://generativechatbot.netlify.app/",
     status: "Live",
     year: "2024",
     accent: "from-green-400 to-emerald-500",
