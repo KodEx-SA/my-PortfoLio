@@ -396,7 +396,7 @@ export default function Hero() {
 
               {/* Resume — ghost (tertiary) */}
               <a
-                href="/Ashley's_resume.pdf"
+                href="/Ashley_Motsie_Resume.pdf"
                 download="Ashley_Motsie_Resume.pdf"
                 className="group relative inline-flex items-center justify-center gap-3 px-8 py-4 rounded-xl border border-green-500/20 bg-transparent transition-all duration-300 hover:scale-105 hover:border-green-400/40 hover:bg-green-500/5 overflow-hidden"
               >
