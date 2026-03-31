@@ -52,24 +52,24 @@ const services = [
     ],
     badge: "Specialisation",
   },
-  {
-    id: "ui",
-    icon: Palette,
-    title: "UI/UX & Graphic Design",
-    tagline: "Interfaces people actually enjoy",
-    color: "from-green-300 to-green-500",
-    glow: "rgba(134,239,172,0.12)",
-    description:
-      "I design visually striking interfaces that balance aesthetics with usability — using Figma for wireframes and Tailwind CSS for pixel-perfect implementation.",
-    features: [
-      "Figma wireframes & prototypes",
-      "Tailwind CSS implementation",
-      "Brand identity & logo design",
-      "Dark & light theme systems",
-      "Motion & micro-interaction design",
-    ],
-    badge: "Creative",
-  },
+  // {
+  //   id: "ui",
+  //   icon: Palette,
+  //   title: "UI/UX & Graphic Design",
+  //   tagline: "Interfaces people actually enjoy",
+  //   color: "from-green-300 to-green-500",
+  //   glow: "rgba(134,239,172,0.12)",
+  //   description:
+  //     "I design visually striking interfaces that balance aesthetics with usability — using Figma for wireframes and Tailwind CSS for pixel-perfect implementation.",
+  //   features: [
+  //     "Figma wireframes & prototypes",
+  //     "Tailwind CSS implementation",
+  //     "Brand identity & logo design",
+  //     "Dark & light theme systems",
+  //     "Motion & micro-interaction design",
+  //   ],
+  //   badge: "Creative",
+  // },
   {
     id: "cloud",
     icon: Cloud,
