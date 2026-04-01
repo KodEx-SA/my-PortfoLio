@@ -1,0 +1,13 @@
+services:
+  portfolio:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - VITE_GROQ_API_KEY=${VITE_GROQ_API_KEY}
+    container_name: ashley-portfolio
+    ports:
+      - "3000:80"         # Visit http://localhost:3000
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
