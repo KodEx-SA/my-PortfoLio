@@ -161,10 +161,10 @@ export default function AIChatbot() {
   const closeChat = () => { setIsOpen(false); setIsMinimized(false); };
 
   const quickActions = [
-    { label: "🚀 Projects", msg: "Tell me about Ashley's projects" },
-    { label: "⚡ Skills", msg: "What are Ashley's technical skills?" },
-    { label: "💼 Experience", msg: "Tell me about Ashley's work experience" },
-    { label: "📬 Contact", msg: "How can I contact Ashley?" },
+    { label: "Projects", msg: "Tell me about Ashley's projects" },
+    { label: "Skills", msg: "What are Ashley's technical skills?" },
+    { label: "Experience", msg: "Tell me about Ashley's work experience" },
+    { label: "Contact", msg: "How can I contact Ashley?" },
   ];
 
   return (
@@ -315,7 +315,7 @@ export default function AIChatbot() {
 
                   {/* Shortcuts */}
                   <div className="px-4 py-2 bg-[#0d0f10] border-t border-green-500/10 flex gap-2 flex-shrink-0">
-                    <a href="/Ashley's_resume.pdf" download="Ashley_Motsie_Resume.pdf"
+                    <a href="/Ashley_Motsie_Resume.pdf" download="Ashley_Motsie_Resume.pdf"
                       className="flex-1 flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg bg-green-500/8 border border-green-500/15 text-green-400/70 hover:bg-green-500/15 hover:text-green-400 hover:border-green-400/30 text-[11px] font-mono transition-all">
                       <Download className="w-3 h-3 flex-shrink-0" />
                       ./resume.pdf
