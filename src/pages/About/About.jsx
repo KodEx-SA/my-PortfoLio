@@ -24,7 +24,6 @@ const bioCode = `const ashley = {
   roles: [
     "Full-Stack Developer",
     "AI Engineer",
-    "Graphic Designer",
   ],
   education:  "NCV — IT & Computer Science",
   interests: [
