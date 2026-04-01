@@ -14,6 +14,7 @@ import Blog from "./pages/Blog/Blog";
 import Achievements from "./pages/Achievements/Achievements";
 import AIChatbot from "./components/AIChatbot";
 import ScrollUtils from "./components/ScrollUtils";
+import NotFound from "./pages/NotFound/NotFound";
 
 import { Route, Routes } from "react-router-dom";
 
@@ -35,6 +36,7 @@ export default function App() {
         <Route path="/services" element={<Services />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/achievements" element={<Achievements />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
       <AIChatbot />
