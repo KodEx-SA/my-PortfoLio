@@ -1,3 +1,4 @@
+import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import HeroImg from "@/assets/img/my_pic.png";
 import LogoImage from "@/assets/images/logo_images/Logo.png";
@@ -8,10 +9,177 @@ import {
   GraduationCap,
   Terminal,
   Zap,
+  GitBranch,
+  CheckCircle2,
 } from "lucide-react";
 import DataStream from "@/components/DataStream";
 import GitHubStats from "@/components/GitHubStats";
 import ErrorBoundary from "@/components/ErrorBoundary";
+
+// ─── Terminal Bio Widget ──────────────────────────────────────────────────────
+const bioCode = `const ashley = {
+  name:       "Ashley Koketso Motsie",
+  alias:      "Ash / KodEx",
+  location:   "Rustenburg, South Africa",
+  roles: [
+    "Full-Stack Developer",
+    "AI Engineer",
+    "Graphic Designer",
+  ],
+  education:  "NCV — IT & Computer Science",
+  interests: [
+    "Building AI-powered apps",
+    "Open-source contribution",
+    "Writing poetry as Lawliet",
+  ],
+  currently: {
+    building:  "SafeCircle · Portfolio v2",
+    learning:  "TypeScript · System Design",
+    working:   ["ETS", "AI Global Networks", "Maps Media"],
+  },
+  hireable:   true,
+  motto:      "Forever a student. Sometimes a teacher. Always a coder.",
+};`;
+
+function TerminalBio() {
+  const lines = bioCode.split("\n");
+  const [visibleLines, setVisibleLines] = useState([]);
+  const [currentLine, setCurrentLine] = useState(0);
+  const [typedChars, setTypedChars] = useState(0);
+  const [done, setDone] = useState(false);
+  const [inView, setInView] = useState(false);
+  const bodyRef = useRef(null);
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) setInView(true); },
+      { threshold: 0.25 }
+    );
+    if (sectionRef.current) observer.observe(sectionRef.current);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!inView) return;
+    if (currentLine >= lines.length) { setDone(true); return; }
+    const line = lines[currentLine];
+    if (typedChars < line.length) {
+      const t = setTimeout(() => setTypedChars((c) => c + 1), 12);
+      return () => clearTimeout(t);
+    } else {
+      const t = setTimeout(() => {
+        setVisibleLines((prev) => [...prev, line]);
+        setCurrentLine((l) => l + 1);
+        setTypedChars(0);
+      }, 30);
+      return () => clearTimeout(t);
+    }
+  }, [inView, currentLine, typedChars, lines]);
+
+  useEffect(() => {
+    if (bodyRef.current) bodyRef.current.scrollTop = bodyRef.current.scrollHeight;
+  }, [visibleLines, typedChars]);
+
+  const currentLinePartial = currentLine < lines.length ? lines[currentLine].slice(0, typedChars) : "";
+
+  function colourLine(line) {
+    line = line.replace(/^(\s*)([\w]+)(\s*:)/g, (_, sp, key, col) =>
+      `${sp}<span class="text-blue-400">${key}</span>${col}`
+    );
+    return line;
+  }
+
+  return (
+    <motion.div
+      ref={sectionRef}
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6 }}
+      viewport={{ once: true }}
+      className="relative w-full"
+    >
+      <div className="absolute -inset-px rounded-2xl bg-gradient-to-r from-green-400 via-emerald-500 to-green-400 blur-sm opacity-15 hover:opacity-25 transition-opacity duration-500" />
+      <div className="relative bg-[#0c0e0f] rounded-2xl overflow-hidden border border-green-500/20 shadow-2xl font-mono">
+        {/* Title bar */}
+        <div className="flex items-center gap-3 px-4 py-3 bg-[#141617] border-b border-green-500/10 select-none">
+          <div className="flex items-center gap-1.5">
+            <div className="w-3 h-3 rounded-full bg-[#ff5f57]" />
+            <div className="w-3 h-3 rounded-full bg-[#febc2e]" />
+            <div className="w-3 h-3 rounded-full bg-[#28c840] animate-pulse" />
+          </div>
+          <div className="flex-1 text-center">
+            <span className="text-[12px] text-gray-500">ashley@kodex-sa: ~/about</span>
+          </div>
+          <span className="flex items-center gap-1 text-[10px] text-green-500/60">
+            <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse inline-block" />
+            LIVE
+          </span>
+        </div>
+        {/* Scanline */}
+        <div className="absolute inset-0 overflow-hidden rounded-2xl pointer-events-none z-10">
+          <div className="scanline-about" />
+        </div>
+        {/* Body */}
+        <div ref={bodyRef} className="p-5 overflow-y-auto relative z-20" style={{ minHeight: "320px", maxHeight: "420px" }}>
+          <div className="mb-2">
+            <p className="text-[12px] leading-5">
+              <span className="text-green-400">ashley@kodex-sa</span>
+              <span className="text-gray-600">:</span>
+              <span className="text-blue-400">~/about</span>
+              <span className="text-gray-500"> $ </span>
+              <span className="text-white">cat ashley.ts</span>
+            </p>
+          </div>
+          <div className="text-[12px] leading-5 whitespace-pre">
+            {visibleLines.map((line, i) => (
+              <div key={i} dangerouslySetInnerHTML={{ __html: colourLine(line) || "&nbsp;" }} className="text-gray-300" />
+            ))}
+          </div>
+          {!done && currentLine < lines.length && (
+            <div className="text-[12px] leading-5 text-gray-300 whitespace-pre">
+              {currentLinePartial}
+              <span className="inline-block w-[7px] h-[13px] bg-green-400 ml-[1px] align-middle animate-cursor-blink" />
+            </div>
+          )}
+          {done && (
+            <div className="mt-3 text-[12px] leading-5">
+              <span className="text-green-400">ashley@kodex-sa</span>
+              <span className="text-gray-600">:</span>
+              <span className="text-blue-400">~/about</span>
+              <span className="text-gray-500"> $ </span>
+              <span className="inline-block w-[7px] h-[13px] bg-green-400 ml-[1px] align-middle animate-cursor-blink" />
+            </div>
+          )}
+        </div>
+        {/* Status bar */}
+        <div className="flex items-center justify-between px-4 py-1.5 bg-green-600/10 border-t border-green-500/15 select-none">
+          <div className="flex items-center gap-4">
+            <span className="flex items-center gap-1 text-[10px] text-green-400/60">
+              <GitBranch className="w-3 h-3" /> main
+            </span>
+            <span className="text-[10px] text-gray-700">bash · zsh</span>
+          </div>
+          <div className="flex items-center gap-3">
+            <span className="text-[10px] text-gray-700">ashley.ts</span>
+            <span className="flex items-center gap-1 text-[10px] text-green-400/50">
+              <CheckCircle2 className="w-3 h-3" /> 0 errors
+            </span>
+          </div>
+        </div>
+      </div>
+      {/* Corner brackets */}
+      <div className="absolute top-3 left-3 w-4 h-4 pointer-events-none opacity-40">
+        <div className="absolute top-0 left-0 w-full h-[1px] bg-green-400" />
+        <div className="absolute top-0 left-0 w-[1px] h-full bg-green-400" />
+      </div>
+      <div className="absolute bottom-3 right-3 w-4 h-4 pointer-events-none opacity-40">
+        <div className="absolute bottom-0 right-0 w-full h-[1px] bg-green-400" />
+        <div className="absolute bottom-0 right-0 w-[1px] h-full bg-green-400" />
+      </div>
+    </motion.div>
+  );
+}
 
 export default function About() {
   return (
@@ -226,6 +394,22 @@ export default function About() {
           </motion.div>
         </div>
 
+        {/* Terminal Bio Widget */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          viewport={{ once: true }}
+          className="space-y-4"
+        >
+          <div className="flex items-center gap-2">
+            <Terminal className="w-4 h-4 text-green-400" />
+            <span className="text-green-400 text-sm font-mono">ashley.ts</span>
+            <div className="flex-1 h-[1px] bg-green-500/20" />
+          </div>
+          <TerminalBio />
+        </motion.div>
+
         {/* GitHub Stats Widget */}
         <ErrorBoundary>
           <GitHubStats username="KodEx-SA" />
@@ -287,6 +471,23 @@ export default function About() {
         }
         .animate-glitch-subtle {
           animation: glitch-subtle 0.4s infinite;
+        }
+        .scanline-about {
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          height: 1px;
+          background: linear-gradient(90deg,
+            transparent 0%,
+            rgba(74, 222, 128, 0.35) 50%,
+            transparent 100%
+          );
+          animation: scan-about 4s linear infinite;
+        }
+        @keyframes scan-about {
+          0% { transform: translateY(0); }
+          100% { transform: translateY(500px); }
         }
         .scanline-main {
           position: absolute;
