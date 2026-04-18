@@ -16,20 +16,18 @@ import DataStream from "@/components/DataStream";
 import GitHubStats from "@/components/GitHubStats";
 import ErrorBoundary from "@/components/ErrorBoundary";
 
-// ─── Terminal Bio Widget ──────────────────────────────────────────────────────
+// ================ Terminal Bio Widget ===================== 
 const bioCode = `const ashley = {
   name:       "Ashley Koketso Motsie",
-  alias:      "Ash / KodEx",
+  alias:      "CodeX",
   location:   "Rustenburg, South Africa",
   roles: [
     "Full-Stack Developer",
-    "AI Engineer",
   ],
-  education:  "NCV — IT & Computer Science",
+  education:  "NQF Level 4 - IT & Computer Science",
   interests: [
-    "Building AI-powered apps",
-    "Open-source contribution",
-    "Writing poetry as Lawliet",
+    "Building scalable & AI-powered apps",
+    "Contribute to open-source",
   ],
   currently: {
     building:  "SafeCircle · Portfolio v2",
@@ -365,7 +363,7 @@ export default function About() {
               <div className="group relative text-center p-4 bg-green-500/5 border border-green-500/20 rounded-xl hover:border-green-400/40 transition-all overflow-hidden">
                 <span className="absolute inset-0 bg-green-500/5 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 ease-out" />
                 <div className="text-2xl font-bold text-green-400 mb-1 font-mono relative z-10">
-                  4+
+                  3+
                 </div>
                 <div className="text-xs text-gray-400 font-medium font-mono relative z-10">
                   Years Experience
