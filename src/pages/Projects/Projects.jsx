@@ -15,10 +15,10 @@ const projects = [
   {
     title: "Generative AI Chatbot",
     description:
-      "Real-time conversational AI chatbot powered by Groq with streaming responses, context memory, typing indicators, and a polished dark UI. Built for production at AI Global Networks.",
+      "Real-time conversational AI chatbot powered by Groq API with streaming responses, context memory, typing indicators, and a polished dark UI. Built for production at AI Global Networks.",
     src: AIAssistantImg,
     tags: ["React", "Groq API", "TypeScript", "Tailwind CSS"],
-    stack: ["Frontend", "AI / LLM", "REST API"],
+    stack: ["React+vite", "Javascript", "Groq API"],
     githubLink: "https://github.com/KodEx-SA/ReactJs-ChatBot",
     liveLink: "https://generativechatbot.netlify.app/",
     status: "Live",
@@ -30,8 +30,8 @@ const projects = [
     description:
       "Full-featured South African e-commerce landing platform connecting buyers and sellers. Responsive, fast, and built with a modern Vite-powered React stack.",
     src: UbizoiMarketImg,
-    tags: ["React", "Vite", "Tailwind CSS", "JavaScript"],
-    stack: ["Frontend", "E-Commerce"],
+    tags: ["E-Commerce"],
+    stack: ["HTML", "CSS", "Javascript"],
     githubLink: "https://github.com/KodEx-SA/ubizo-e-commerce-landing-page",
     liveLink: "https://ubizo-e-commerce-landing-page.onrender.com/",
     status: "Live",
@@ -43,8 +43,8 @@ const projects = [
     description:
       "Clean, efficient web app for temperature unit conversions with an intuitive UI. A focused tool demonstrating state management and real-time calculation logic.",
     src: WebAppConverterImg,
-    tags: ["JavaScript", "HTML5", "CSS3"],
-    stack: ["Frontend", "Utility"],
+    tags: ["Logic"],
+    stack: ["JavaScript", "HTML5", "CSS3"],
     githubLink: "https://github.com/KodEx-SA/web_app_temp_conveter",
     liveLink: "https://my-web-app-temperature-conveter.vercel.app/",
     status: "Live",
@@ -56,8 +56,8 @@ const projects = [
     description:
       "A polished, mobile-first website for a local cafe and grill featuring a full menu showcase, brand story, location info, and smooth scroll UX.",
     src: IsongCafeImg,
-    tags: ["HTML5", "Tailwind CSS", "JavaScript"],
-    stack: ["Frontend", "Hospitality"],
+    tags: ["Hospitality"],
+    stack: ["HTML5", "Tailwind CSS", "JavaScript"],
     githubLink: "https://github.com/KodEx-SA/Isong-Cafe-website",
     liveLink: "https://isong-cafe.vercel.app/",
     status: "Live",
@@ -69,8 +69,8 @@ const projects = [
     description:
       "AI-powered rental property search for Gauteng province — fast filtering, smart recommendations, and a clean UI designed for South African users.",
     src: GautengRentalsImg,
-    tags: ["HTML5", "CSS3", "JavaScript", "AI Features"],
-    stack: ["Frontend", "AI-Assisted", "Real Estate"],
+    tags: ["Real Estates"],
+    stack: ["HTML5", "CSS3", "JavaScript",],
     githubLink: "https://github.com/KodEx-SA/jhb-rental-directory",
     liveLink: "https://gauteng-rental-directory-landing-pa.vercel.app/",
     status: "Live",
@@ -82,8 +82,8 @@ const projects = [
     description:
       "Professional brand website for Taahirah Modelling Agency in Mahikeng — showcasing talent, services, and bookings with a high-fashion aesthetic.",
     src: "",
-    tags: ["HTML5", "CSS3", "JavaScript"],
-    stack: ["Frontend", "Branding"],
+    tags: ["Branding", "Modelling],
+    stack: ["HTML5", "CSS3", "JavaScript"],
     githubLink: "https://github.com/KodEx-SA/TMA",
     liveLink: "https://tmaofficial.co.za/",
     status: "Live",
@@ -95,8 +95,8 @@ const projects = [
     description:
       "Finance union AI Symposium 2026 platform — advanced animations, event schedule, speaker showcase, and registration. Built with Next.js 15 and TypeScript.",
     src: "",
-    tags: ["TypeScript", "Next.js 15", "Tailwind CSS", "Framer Motion"],
-    stack: ["Full-Stack", "Events", "Next.js"],
+    tags: ["Finanace Union - Event"],
+    stack: ["TypeScript", "Next.js 15", "Tailwind CSS", "Framer Motion"],
     githubLink: "https://github.com/KodEx-SA/sasbo-ai-symposium",
     liveLink: "https://sasbo-ai-symposium.vercel.app/",
     status: "Live",
