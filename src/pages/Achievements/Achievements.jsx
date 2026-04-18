@@ -21,13 +21,13 @@ import {
 } from "lucide-react";
 import DataStream from "@/components/DataStream";
 
-// ── Certificate image imports ──────────────────────────────────────────────
+// ============================= Certificate image imports =============================
 import CertItEssentials from "@/assets/certificates/cert-it-essentials.jpeg";
 import CertCybersecurity from "@/assets/certificates/cert-cybersecurity.jpeg";
 import CertItCompletion from "@/assets/certificates/cert-it-completion.jpeg";
 import CertGetConnected from "@/assets/certificates/cert-get-connected.jpeg";
 
-// ── Data ───────────────────────────────────────────────────────────────────
+// ============================= Data =============================
 const certifications = [
   {
     id: 1,
@@ -193,7 +193,7 @@ const itemVariants = {
   },
 };
 
-// ── Lightbox ───────────────────────────────────────────────────────────────
+// ============================= Lightbox =============================
 function Lightbox({ certs, activeIndex, onClose, onPrev, onNext }) {
   const c = certs[activeIndex];
 
@@ -324,7 +324,7 @@ function Lightbox({ certs, activeIndex, onClose, onPrev, onNext }) {
   );
 }
 
-// ── Certificate Card ────────────────────────────────────────────────────────
+// ============================= Certificate Card =============================
 function CertCard({ c, onImageClick }) {
   const Icon = c.icon;
   const [imgError, setImgError] = useState(false);
@@ -355,7 +355,7 @@ function CertCard({ c, onImageClick }) {
       </div>
 
       <div className="relative z-10 flex flex-col h-full">
-        {/* ── Certificate image ── */}
+        {/* ============================= Certificate image ============================= */}
         {hasImage ? (
           <div
             className="relative w-full overflow-hidden bg-[#1c1f20] cursor-zoom-in"
@@ -378,7 +378,7 @@ function CertCard({ c, onImageClick }) {
                 style={{ filter: "drop-shadow(0 4px 24px rgba(0,0,0,0.6))" }}
               />
             </div>
-            {/* Subtle vignette */}
+            {/* ============================= Subtle vignette ============================= */}
             <div className="absolute inset-0 bg-gradient-to-t from-[#111214]/60 via-transparent to-[#111214]/20 pointer-events-none" />
             {/* Scanline */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -392,7 +392,7 @@ function CertCard({ c, onImageClick }) {
             )}
           </div>
         ) : (
-          /* Fallback — no image: icon placeholder */
+          /* ============================= Fallback — no image: icon placeholder ============================= */
           <div
             className={`w-full flex items-center justify-center bg-gradient-to-br ${c.color} bg-opacity-5 border-b border-green-500/10`}
             style={{ aspectRatio: "4/3" }}
@@ -412,7 +412,7 @@ function CertCard({ c, onImageClick }) {
           </div>
         )}
 
-        {/* ── Info section ── */}
+        {/* ============================= Info section ============================= */}
         <div className="p-5 flex flex-col gap-3 flex-1">
           {/* Title + external link */}
           <div className="flex items-start justify-between gap-2">
@@ -431,7 +431,7 @@ function CertCard({ c, onImageClick }) {
             )}
           </div>
 
-          {/* Meta row */}
+          {/* ============================= Meta row ============================= */}
           <div className="flex items-center gap-2 flex-wrap">
             <span
               className={`text-[10px] font-mono px-2 py-0.5 rounded-full border ${typeColors[c.type] ?? typeColors.Technical}`}
@@ -447,12 +447,12 @@ function CertCard({ c, onImageClick }) {
             </span>
           </div>
 
-          {/* Description */}
+          {/* ============================= Description ============================= */}
           <p className="text-gray-400 text-xs font-mono leading-relaxed flex-1">
             {c.description}
           </p>
 
-          {/* Verified row — only for cards without image (image cards show badge on photo) */}
+          {/* ============================= Verified row — only for cards without image (image cards show badge on photo) ============================= */}
           {c.verified && !hasImage && (
             <div className="flex items-center gap-1 text-green-500/60 text-[10px] font-mono">
               <CheckCircle className="w-3 h-3" /> Verified credential
@@ -467,7 +467,7 @@ function CertCard({ c, onImageClick }) {
   );
 }
 
-// ── Page ───────────────────────────────────────────────────────────────────
+// ============================= Page =============================
 export default function Achievements() {
   const [tab, setTab] = useState("achievements");
   const [lightboxIndex, setLightboxIndex] = useState(null);
@@ -480,7 +480,7 @@ export default function Achievements() {
     >
       <DataStream count={4} />
 
-      {/* Ambient blobs */}
+      {/* ============================= Ambient blobs ============================= */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-20 left-10 w-72 h-72 bg-green-500/5 rounded-full blur-3xl animate-pulse-slow" />
         <div
@@ -489,14 +489,14 @@ export default function Achievements() {
         />
       </div>
 
-      {/* Grid */}
+      {/* ============================= Grid ============================= */}
       <div className="fixed inset-0 bg-[linear-gradient(rgba(34,197,94,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(34,197,94,0.05)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none z-0" />
       <div className="fixed inset-0 pointer-events-none z-10">
         <div className="scanline-main" />
       </div>
 
       <div className="relative mx-auto max-w-6xl px-6 z-20">
-        {/* Header */}
+        {/* ============================= Header ============================= */}
         <div className="text-center space-y-6 mb-14">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-500/10 border border-green-500/30 backdrop-blur-sm relative overflow-hidden group">
             <span className="absolute inset-0 bg-green-500/5 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
@@ -532,7 +532,7 @@ export default function Achievements() {
           </div>
         </div>
 
-        {/* Tab switch */}
+        {/* ============================= Tab switch ============================= */}
         <div className="flex justify-center mb-12">
           <div className="inline-flex gap-1 p-1 rounded-xl bg-green-500/5 border border-green-500/20">
             {["achievements", "certifications"].map((t) => (
@@ -551,7 +551,7 @@ export default function Achievements() {
           </div>
         </div>
 
-        {/* Achievements grid */}
+        {/* ============================= Achievements grid ============================= */}
         <AnimatePresence mode="wait">
           {tab === "achievements" && (
             <motion.div
@@ -602,7 +602,7 @@ export default function Achievements() {
             </motion.div>
           )}
 
-          {/* Certifications grid */}
+          {/* ============================= Certifications grid ============================= */}
           {tab === "certifications" && (
             <motion.div
               key="certifications"
@@ -629,7 +629,7 @@ export default function Achievements() {
         </AnimatePresence>
       </div>
 
-      {/* Lightbox */}
+      {/* ============================= Lightbox ============================= */}
       {lightboxIndex !== null && (
         <Lightbox
           certs={imageCerts}
