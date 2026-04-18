@@ -13,7 +13,7 @@ import {
 import { motion } from "framer-motion";
 import DataStream from "@/components/DataStream";
 
-// Transmission Particles Component
+// ============================= Transmission Particles Component =============================
 const TransmissionParticles = () => {
   return (
     <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-20">
