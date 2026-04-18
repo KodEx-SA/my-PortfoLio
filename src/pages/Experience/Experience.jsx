@@ -21,7 +21,7 @@ const experiences = [
     period: "June 2025 — Present",
     description:
       "Collaborate with cross-functional teams to contribute to agile project development. Work on code optimization techniques & play a key part in the overall development process.",
-    tags: ["Agile", "IT Support", "Full-Stack"],
+    tags: ["Agile", "IT Support", "Software"],
     accent: "from-green-400 to-emerald-500",
     index: 0,
   },
@@ -33,7 +33,7 @@ const experiences = [
     period: "July 2025 — Present",
     description:
       "Responsible for developing scalable applications with integrated AI features. Focused on improving app performance & efficiency. Implementing robust testing protocols to ensure high-quality software.",
-    tags: ["React", "Groq API", "TypeScript", "AI/LLM"],
+    tags: ["React", "API", "Software", "AI"],
     accent: "from-emerald-400 to-teal-500",
     index: 1,
   },
