@@ -22,7 +22,7 @@ const bioCode = `const ashley = {
   alias:      "CodeX",
   location:   "Rustenburg, South Africa",
   roles: [
-    "Full-Stack Developer",
+    "Software Developer",
   ],
   education:  "NQF Level 4 - IT & Computer Science",
   interests: [
