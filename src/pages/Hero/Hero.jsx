@@ -23,7 +23,7 @@ import {
   ChevronRight,
 } from "lucide-react";
 
-// Neural Network Background
+// ============================= Neural Network Background =============================
 const NeuralNetwork = () => {
   const canvasRef = useRef(null);
   useEffect(() => {
@@ -88,7 +88,7 @@ const NeuralNetwork = () => {
   );
 };
 
-// Terminal Typing Effect
+// ============================= Terminal Typing Effect =============================
 const TerminalTyping = ({ text }) => {
   const [displayText, setDisplayText] = useState("");
   const [cursorVisible, setCursorVisible] = useState(true);
@@ -118,16 +118,16 @@ const TerminalTyping = ({ text }) => {
   );
 };
 
-// ─── TERMINAL WINDOW ───
+// ============================= TERMINAL WINDOW =============================
 const codeString = `const ashley = {
   name:     "Ashley K Motsie",
-  role:     "Full-Stack Developer & AI Engineer",
+  role:     "Software Developer",
   location: "South Africa, NW - Rustenburg, ZA",
-  exp:      "4+ years",
+  exp:      "3+ years",
   stack: [
-    "Next.js 15", "React", "TypeScript",
-    "Python", "PostgreSQL", "Groq API",
-    "AWS", "Docker", "Tailwind CSS",
+    "React", "TypeScript", "NextJs",
+    "Python", "PostgreSQL", "AWS", 
+    "Docker", "Tailwind CSS",
   ],
   open_to:  ["Full-time", "Freelance", "Remote"],
   hireable: true,
