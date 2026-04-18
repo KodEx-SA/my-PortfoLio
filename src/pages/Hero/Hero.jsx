@@ -276,9 +276,9 @@ const TerminalWindow = ({ showCode }) => {
   );
 };
 
-// ─── HERO ────────────────────────────────────────────────────────────────────
+// ============================= HERO =============================
 export default function Hero() {
-  const words = ["Full-stack Developer", "Problem Solver", "Tech Enthusiast"];
+  const words = ["Software Developer", "Passionate", "Tech Enthusiast"];
   const [showCode, setShowCode] = useState(false);
 
   useEffect(() => {
