@@ -82,7 +82,7 @@ const projects = [
     description:
       "Professional brand website for Taahirah Modelling Agency in Mahikeng — showcasing talent, services, and bookings with a high-fashion aesthetic.",
     src: "",
-    tags: ["Branding", "Modelling],
+    tags: ["Branding", "Modelling"],
     stack: ["HTML5", "CSS3", "JavaScript"],
     githubLink: "https://github.com/KodEx-SA/TMA",
     liveLink: "https://tmaofficial.co.za/",
