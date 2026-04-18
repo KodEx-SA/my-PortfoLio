@@ -15,7 +15,7 @@ import {
 import LogoImage from "@/assets/images/logo_images/Logo.png";
 import DataStream from "@/components/DataStream";
 
-// Circuit Lines Component
+// ============================= Circuit Lines Component =============================
 const CircuitLines = () => {
   return (
     <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-10">
