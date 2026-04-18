@@ -181,7 +181,7 @@ export default function Footer() {
               </h3>
             </div>
             <p className="text-gray-400 text-sm leading-relaxed font-mono">
-              <span className="text-green-400">&gt;</span> Full-stack Developer
+              <span className="text-green-400">&gt;</span> Software Developer
               specializing in building exceptional digital experiences with
               modern web technologies.
             </p>
