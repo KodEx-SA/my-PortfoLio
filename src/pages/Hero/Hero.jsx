@@ -206,7 +206,6 @@ const TerminalWindow = ({ showCode }) => {
           className="p-5 overflow-y-auto custom-scrollbar relative z-20"
           style={{ minHeight: "380px", maxHeight: "460px" }}
         >
-          {/* Initial prompt */}
           <div className="mb-2">
             <p className="text-[12px] leading-5">
               <span className="text-green-400">ashley@kodex-sa</span>
@@ -217,7 +216,6 @@ const TerminalWindow = ({ showCode }) => {
             </p>
           </div>
 
-          {/* Committed lines — syntax highlighted */}
           <pre className="language-javascript !bg-transparent !p-0 !m-0 !text-[12px] !leading-5">
             {showCode && visibleLines.length > 0 && (
               <code className="language-javascript">
@@ -234,7 +232,6 @@ const TerminalWindow = ({ showCode }) => {
             </div>
           )}
 
-          {/* Done — next prompt */}
           {done && (
             <div className="mt-3 text-[12px] leading-5">
               <span className="text-green-400">ashley@kodex-sa</span>
@@ -394,10 +391,10 @@ export default function Hero() {
                 </span>
               </a>
 
-              {/* Resume — ghost (tertiary) */}
+              {/* Resume */}
               <a
-                href="/Ashley_Motsie_Resume.pdf"
-                download="Ashley_Motsie_Resume.pdf"
+                href="/Ashley_K_Motsie_Resume.pdf"
+                download="Ashley_K_Motsie_Resume.pdf"
                 className="group relative inline-flex items-center justify-center gap-3 px-8 py-4 rounded-xl border border-green-500/20 bg-transparent transition-all duration-300 hover:scale-105 hover:border-green-400/40 hover:bg-green-500/5 overflow-hidden"
               >
                 <span className="absolute inset-0 bg-green-500/5 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 ease-out" />
