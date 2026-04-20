@@ -426,7 +426,7 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* ── RIGHT — VS Code window ── */}
+          {/*  Right vs Code window */}
           <div className="w-full lg:w-1/2">
             <TerminalWindow showCode={showCode} />
           </div>
