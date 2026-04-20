@@ -8,7 +8,7 @@ import GautengRentalsImg from "@/assets/img/gauteng-rentals.png";
 import WebAppConverterImg from "@/assets/img/web-app-converter.jpeg";
 import UbizoiMarketImg from "@/assets/img/ubizo.png";
 import IsongCafeImg from "@/assets/img/Isong.png";
-import { Code2, ExternalLink, Terminal, Github, Globe, ArrowUpRight } from "lucide-react";
+import { Code2, ExternalLink, Terminal, Github, Globe, ArrowUpRight, Radio } from "lucide-react";
 import DataStream from "@/components/DataStream";
 
 const projects = [
@@ -17,7 +17,7 @@ const projects = [
     description:
       "Real-time conversational AI chatbot powered by Groq API with streaming responses, context memory, typing indicators, and a polished dark UI. Built for production at AI Global Networks.",
     src: AIAssistantImg,
-    tags: ["React", "Groq API", "TypeScript", "Tailwind CSS"],
+    tags: ["Generative AI"],
     stack: ["React+vite", "Javascript", "Groq API"],
     githubLink: "https://github.com/KodEx-SA/ReactJs-ChatBot",
     liveLink: "https://generativechatbot.netlify.app/",
@@ -177,11 +177,11 @@ export default function Projects() {
               <div className="flex items-center gap-6 pt-2">
                 {[
                   { label: "Projects", value: projects.length },
-                  { label: "All Live", value: "✓" },
-                  { label: "Open Source", value: projects.length },
+                  { label: "All Live", value: <Radio className="w-5 h-5 text-green-400 animate-pulse" /> },
+                  // { label: "Open Source", value: projects.length },
                 ].map((s) => (
-                  <div key={s.label} className="text-center">
-                    <div className="text-green-400 font-bold font-mono text-xl">{s.value}</div>
+                  <div key={s.label} className="text-center flex flex-col items-center gap-1">
+                    <div className="text-green-400 font-bold font-mono text-xl leading-none">{s.value}</div>
                     <div className="text-gray-600 font-mono text-xs">{s.label}</div>
                   </div>
                 ))}
