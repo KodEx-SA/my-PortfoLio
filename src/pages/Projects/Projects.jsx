@@ -8,7 +8,8 @@ import GautengRentalsImg from "@/assets/img/gauteng-rentals.png";
 import WebAppConverterImg from "@/assets/img/web-app-converter.jpeg";
 import UbizoiMarketImg from "@/assets/img/ubizo.png";
 import IsongCafeImg from "@/assets/img/Isong.png";
-import { Code2, ExternalLink, Terminal, Github, Globe, ArrowUpRight, Radio } from "lucide-react";
+import SasboImg from "@/assets/img/sasbo.jpeg";
+import { Code2, Terminal, Github, Globe, ArrowUpRight, Radio } from "lucide-react";
 import DataStream from "@/components/DataStream";
 
 const projects = [
@@ -94,8 +95,8 @@ const projects = [
     title: "Sasbo AI Symposium",
     description:
       "Finance union AI Symposium 2026 platform — advanced animations, event schedule, speaker showcase, and registration. Built with Next.js 15 and TypeScript.",
-    src: "",
-    tags: ["Finanace Union - Event"],
+    src: SasboImg,
+    tags: ["Finance Union - Event"],
     stack: ["TypeScript", "Next.js 15", "Tailwind CSS", "Framer Motion"],
     githubLink: "https://github.com/KodEx-SA/sasbo-ai-symposium",
     liveLink: "https://sasbo-ai-symposium.vercel.app/",
