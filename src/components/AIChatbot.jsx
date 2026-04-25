@@ -19,8 +19,8 @@ You help visitors learn about Ashley's work and capabilities.
 ABOUT ASHLEY:
 - Full Name: Ashley K Motsie
 - Location: Rustenburg, South Africa
-- Role: Full-Stack Developer & AI Engineer
-- Years of Experience: 4+
+- Role: Software Developer & AI Engineer
+- Years of Experience: 3+
 - Email: motsieashley31@gmail.com
 - GitHub: https://github.com/KodEx-SA
 
@@ -33,7 +33,7 @@ SKILLS:
 EXPERIENCE:
 1. Jr Software Developer & IT Technician at Eullafied Tech Solutions (June 2024 - Current)
 2. AI Software Developer at AI Global Networks (July 2024 - Current)
-3. Web Developer & Graphic Designer at MapsMediaProductions (August 2025 - Current)
+3. Web Developer & Graphic Designer at MapsMediaProductions (September 2025 - Current)
 
 EDUCATION:
 1. Secondary School Certificate (NSC) - Malefo Secondary School (2016-2020)
