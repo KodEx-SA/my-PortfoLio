@@ -64,11 +64,12 @@ const INITIAL_MESSAGE = {
   timestamp: new Date(),
 };
 
-function formatTime(date) {
+function formatTime(date) { // Formats a Date object into a "HH:MM" time string. Returns an empty string if the date is invalid.
   if (!date) return "";
   return new Date(date).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
 }
 
+// PromptLine component displays the prompt line above each message, showing the user/assistant label and timestamp
 function PromptLine({ isUser, time }) {
   return (
     <p className="text-[11px] font-mono leading-4 mb-0.5 select-none">
@@ -110,10 +111,12 @@ export default function AIChatbot() {
   const messagesEndRef = useRef(null);
   const inputRef = useRef(null);
 
+  // Scroll to the bottom of the messages container whenever messages change or when the chat is opened/unminimized
   useEffect(() => {
     if (!isMinimized) messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages, isMinimized]);
 
+  // Focus the input field when the chat is opened or unminimized
   useEffect(() => {
     if (isOpen && !isMinimized) {
       const t = setTimeout(() => inputRef.current?.focus(), 80);
@@ -121,6 +124,9 @@ export default function AIChatbot() {
     }
   }, [isOpen, isMinimized]);
 
+  // sendMessage handles sending a message to the AI assistant. 
+  // It updates the messages state with the user's message, calls the API, 
+  // and then updates with the assistant's response or an error message if something goes wrong.
   const sendMessage = useCallback(
     async (messageText = input) => {
       const text = (messageText ?? "").trim();
@@ -137,8 +143,8 @@ export default function AIChatbot() {
         }
         const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
           method: "POST",
-          headers: { "Content-Type": "application/json", Authorization: `Bearer ${apiKey}` },
-          body: JSON.stringify({
+          headers: { "Content-Type": "application/json", Authorization: `Bearer ${apiKey}` }, // The API key is sent in the Authorization header as a Bearer token for authentication with the Groq API.
+          body: JSON.stringify({ // The body of the request includes the model to use, the conversation history (messages), and parameters like temperature and max_tokens to control the response generation.
             model: "llama-3.3-70b-versatile",
             messages: [
               { role: "system", content: PORTFOLIO_CONTEXT },
