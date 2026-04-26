@@ -12,6 +12,7 @@ import {
   CheckCircle2,
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import PropTypes from "prop-types";
 
 const PORTFOLIO_CONTEXT = `You are Smith, Ashley Motsie's professional portfolio assistant.
 You help visitors learn about Ashley's work and capabilities.
@@ -90,6 +91,13 @@ function PromptLine({ isUser, time }) {
     </p>
   );
 }
+
+// Prop types for PromptLine -> isUser is a boolean indicating if the message is from the user or assistant, 
+// time is a string representing the timestamp of the message
+PromptLine.propTypes = {
+  isUser: PropTypes.bool.isRequired,
+  time: PropTypes.string.isRequired,
+};
 
 export default function AIChatbot() {
   const navigate = useNavigate();
