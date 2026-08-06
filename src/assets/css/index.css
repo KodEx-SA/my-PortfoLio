@@ -1,513 +1,26 @@
 @import "tailwindcss";
 
-@keyframes meteor {
-  0% {
-    opacity: 1;
-    transform: rotate(215deg) translateX(0);
-  }
-  70% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-    transform: rotate(215deg) translateX(-600px);
-  }
-}
-
-.animate-meteor {
-  animation: meteor linear infinite;
-}
-
-@keyframes float-slow {
-  0%,
-  100% {
-    transform: translateY(0) rotate(1deg);
-  }
-  50% {
-    transform: translateY(-10px) rotate(-1deg);
-  }
-}
-
-@keyframes gradient-shift {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-.gradient-text {
-  background: linear-gradient(90deg, #60a5fa, #34d399, #60a5fa);
-  background-size: 200% auto;
-  animation: gradient-shift 4s linear infinite;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.gradient-border {
-  position: relative;
-  background: linear-gradient(45deg, #60a5fa, #34d399);
-  padding: 2px;
-  border-radius: 0.75rem;
-}
-
-.nav-link {
-  position: relative;
-}
-
-.nav-link::after {
-  content: "";
-  position: absolute;
-  width: 0;
-  height: 2px;
-  bottom: -4px;
-  left: 0;
-  background: linear-gradient(45deg, #60a5fa, #34d399);
-  transition: width 0.3s ease;
-}
-
-.nav-link:hover::after {
-  width: 100%;
-}
-
-.code-window {
-  position: relative;
-  border-radius: 0.75rem;
-  overflow: hidden;
-  transition: all 0.3s ease;
-}
-
-.window-header {
-  background: #0b466359;
-  padding: 0.75rem;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.window-dot {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  transition: transform 0.3s ease;
-}
-
-.window-dot:hover {
-  transform: scale(1.2);
-}
-
-.animate-float-slow {
-  animation: float-slow 7s ease-in-out infinite;
-}
-
-.animate-float {
-  animation: float 6s ease-in-out infinite;
-}
-
-@keyframes float {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-20px);
-  }
-}
-
-.typing-effect::after {
-  content: "|";
-  animation: blink 1s step-end infinite;
-  margin-left: 2px;
-  color: #60a5fa;
-}
-
-@keyframes blink {
-  from,
-  to {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0;
-  }
-}
-
 /* ============================================================
-   SHARED PORTFOLIO ANIMATIONS
-   These replace the repeated <style> blocks in each page.
+   DESIGN TOKENS
+   Warm paper background, near-black ink, a single confident
+   cobalt accent. No neon green, no glow-everything.
    ============================================================ */
-
-/* --- Data Stream Effect --- */
-@keyframes data-stream {
-  0% {
-    transform: translateY(-100%);
-    opacity: 0;
-  }
-  10% {
-    opacity: 1;
-  }
-  90% {
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(100vh);
-    opacity: 0;
-  }
-}
-@keyframes data-stream-up {
-  0% {
-    transform: translateY(100%);
-    opacity: 0;
-  }
-  10% {
-    opacity: 1;
-  }
-  90% {
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(-100vh);
-    opacity: 0;
-  }
-}
-.animate-data-stream {
-  animation: data-stream 12s linear infinite;
-}
-.animate-data-stream-up {
-  animation: data-stream-up 12s linear infinite;
-}
-
-/* --- Scan Lines --- */
-@keyframes scan-main {
-  0% {
-    transform: translateY(0);
-  }
-  100% {
-    transform: translateY(100vh);
-  }
-}
-@keyframes scan-card {
-  0% {
-    transform: translateY(0);
-  }
-  100% {
-    transform: translateY(500px);
-  }
-}
-@keyframes scan-horizontal {
-  0% {
-    transform: translateY(0);
-  }
-  100% {
-    transform: translateY(100vh);
-  }
-}
-@keyframes scan-line {
-  0% {
-    transform: translateX(-100%);
-  }
-  100% {
-    transform: translateX(100%);
-  }
-}
-@keyframes scan-code {
-  0% {
-    transform: translateY(0);
-  }
-  100% {
-    transform: translateY(500px);
-  }
-}
-
-.scanline-main {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(74, 222, 128, 0.3) 50%,
-    transparent 100%
-  );
-  animation: scan-main 5s linear infinite;
-  pointer-events: none;
-}
-.scanline-card {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(74, 222, 128, 0.4) 50%,
-    transparent 100%
-  );
-  animation: scan-card 3s linear infinite;
-  pointer-events: none;
-}
-.scanline-horizontal {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(74, 222, 128, 0.4) 50%,
-    transparent 100%
-  );
-  animation: scan-horizontal 4s linear infinite;
-  pointer-events: none;
-  z-index: 15;
-}
-.scanline-code {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(74, 222, 128, 0.5) 50%,
-    transparent 100%
-  );
-  animation: scan-code 3s linear infinite;
-  pointer-events: none;
-}
-.animate-scan-line {
-  animation: scan-line 2s linear infinite;
-}
-
-/* --- Gradient X --- */
-@keyframes gradient-x {
-  0%,
-  100% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-}
-.animate-gradient-x {
-  animation: gradient-x 3s ease infinite;
-  background-size: 200% 200%;
-}
-
-/* --- Glitch Effects --- */
-@keyframes glitch-subtle {
-  0%,
-  100% {
-    transform: translate(0);
-  }
-  33% {
-    transform: translate(-1px, 1px);
-  }
-  66% {
-    transform: translate(1px, -1px);
-  }
-}
-@keyframes glitch-1 {
-  0%,
-  100% {
-    transform: translate(0);
-  }
-  33% {
-    transform: translate(-2px, 2px);
-  }
-  66% {
-    transform: translate(2px, -2px);
-  }
-}
-@keyframes glitch-2 {
-  0%,
-  100% {
-    transform: translate(0);
-  }
-  33% {
-    transform: translate(2px, -2px);
-  }
-  66% {
-    transform: translate(-2px, 2px);
-  }
-}
-.animate-glitch-subtle {
-  animation: glitch-subtle 0.4s infinite;
-}
-.animate-glitch-1 {
-  animation: glitch-1 0.3s infinite;
-}
-.animate-glitch-2 {
-  animation: glitch-2 0.3s infinite reverse;
-}
-
-/* --- Float Animations --- */
-@keyframes float-standard {
-  0%,
-  100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-20px);
-  }
-}
-@keyframes float-slow-anim {
-  0%,
-  100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-15px);
-  }
-}
-@keyframes float-delayed {
-  0%,
-  100% {
-    transform: translateY(0px) translateX(-50%);
-  }
-  50% {
-    transform: translateY(-20px) translateX(-50%);
-  }
-}
-@keyframes float-particle {
-  0%,
-  100% {
-    transform: translate(0, 0);
-    opacity: 0.2;
-  }
-  50% {
-    transform: translate(-10px, -20px);
-    opacity: 0.5;
-  }
-}
-
-/* --- Pulse & Ping --- */
-@keyframes pulse-slow {
-  0%,
-  100% {
-    opacity: 0.3;
-  }
-  50% {
-    opacity: 0.6;
-  }
-}
-@keyframes ping-slow {
-  0% {
-    transform: scale(1);
-    opacity: 0.5;
-  }
-  50% {
-    transform: scale(1.1);
-    opacity: 0.2;
-  }
-  100% {
-    transform: scale(1);
-    opacity: 0.5;
-  }
-}
-.animate-pulse-slow {
-  animation: pulse-slow 4s ease-in-out infinite;
-}
-.animate-ping-slow {
-  animation: ping-slow 3s ease-in-out infinite;
-}
-
-/* --- Fade In --- */
-@keyframes fade-in {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-.animate-fade-in {
-  animation: fade-in 0.6s ease-out forwards;
-  opacity: 0;
-}
-
-/* --- Gradient Rotate (About image border) --- */
-@keyframes gradient-rotate {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-.animate-gradient-rotate {
-  animation: gradient-rotate 3s ease infinite;
-  background-size: 200% 200%;
-}
-
-/* --- Circuit Flow (Footer) --- */
-@keyframes circuit-flow {
-  0% {
-    stroke-dashoffset: 1000;
-  }
-  100% {
-    stroke-dashoffset: 0;
-  }
-}
-.animate-circuit-flow {
-  stroke-dasharray: 1000;
-  animation: circuit-flow 5s linear infinite;
-}
-
-/* --- Spin Slow (Skills globe ring) --- */
-@keyframes spin-slow {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-.animate-spin-slow {
-  animation: spin-slow linear infinite;
-}
-
-/* ============================================================ */
-
-pre[class*="language-"] {
-  background: #091121 !important;
-  padding: 1.5rem !important;
-  margin: 0 !important;
-  font-size: 0.95rem !important;
-}
-
-.token.comment {
-  color: #8b9cb3 !important;
-  font-style: italic;
-}
-
-.token.string {
-  color: #a5d6ff !important;
-}
-
-.token.keyword {
-  color: #ff79c6 !important;
-}
-
-.token.function {
-  color: #66e7ff !important;
-}
-
 :root {
+  --bg: #fcfcfa;
+  --surface: #f3f3ef;
+  --surface-2: #ececE6;
+  --border: #e2e2db;
+  --ink: #15161a;
+  --ink-muted: #5c5f68;
+  --ink-faint: #94958f;
+  --accent: #2247e0;
+  --accent-ink: #16309e;
+  --accent-soft: #e8ecfd;
+
+  --font-display: "Space Grotesk", "Inter", sans-serif;
+  --font-body: "Inter", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+
   --color-background: oklch(100% 0 0);
   --color-foreground: oklch(3.9% 0 0);
   --color-card: oklch(100% 0 0);
@@ -532,25 +45,88 @@ pre[class*="language-"] {
 }
 
 * {
-  border-color: var(--color-border);
-}
-
-body {
-  background-color: var(--color-background);
-  color: var(--color-foreground);
+  border-color: var(--border);
 }
 
 html {
   scroll-behavior: smooth;
 }
 
-/* Add these classes to adjust the grid colors in the top-left and bottom-right */
-.top-left-grid {
-  background-color: white;
-  opacity: 0.8;
+body {
+  background-color: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
 }
 
-.bottom-right-grid {
-  background-color: white;
-  opacity: 0.8;
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
 }
+
+/* ============================================================
+   SIGNATURE ELEMENT — the eyebrow label
+   A small mono "code comment" style tag used once per section,
+   consistently, instead of scattered decorative effects.
+   e.g. <span class="eyebrow">// about</span>
+   ============================================================ */
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.02em;
+  color: var(--accent);
+}
+
+.section-divider {
+  height: 1px;
+  width: 100%;
+  background: var(--border);
+}
+
+.card-surface {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+}
+
+.card-surface:hover {
+  border-color: var(--ink-faint);
+}
+
+/* Subtle, restrained motion helpers */
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-up {
+  animation: fade-up 0.6s ease-out both;
+}
+
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+.animate-float-slow {
+  animation: float-slow 6s ease-in-out infinite;
+}
+
+::selection {
+  background: var(--accent-soft);
+  color: var(--accent-ink);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--surface); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--ink-faint); }
+
+/* Code block styling used in the profile snippet + terminal-style cards */
+pre[class*="language-"] {
+  background: var(--ink) !important;
+  padding: 1.5rem !important;
+  margin: 0 !important;
+  font-size: 0.9rem !important;
+}
+.token.comment { color: #8b9cb3 !important; font-style: italic; }
+.token.string { color: #9ecbff !important; }
+.token.keyword { color: #f5a3c7 !important; }
+.token.function { color: #7fd4e0 !important; }

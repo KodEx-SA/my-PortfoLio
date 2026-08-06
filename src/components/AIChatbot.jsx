@@ -75,14 +75,14 @@ function PromptLine({ isUser, time }) {
     <p className="text-[11px] font-mono leading-4 mb-0.5 select-none">
       {isUser ? (
         <>
-          <span className="text-green-400">visitor</span>
+          <span className="text-[var(--accent-soft)]">visitor</span>
           <span className="text-gray-600">@</span>
           <span className="text-blue-400">portfolio</span>
           <span className="text-gray-500"> $ </span>
         </>
       ) : (
         <>
-          <span className="text-green-400">smith</span>
+          <span className="text-[var(--accent-soft)]">smith</span>
           <span className="text-gray-600">:</span>
           <span className="text-blue-400">~/chat</span>
           <span className="text-gray-500"> &gt; </span>
@@ -193,11 +193,11 @@ export default function AIChatbot() {
             whileHover={{ scale: 1.08 }}
             whileTap={{ scale: 0.92 }}
             onClick={openChat}
-            className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-[#141617] border border-green-500/30 shadow-xl shadow-black/50 hover:border-green-400/50 transition-all flex items-center justify-center group"
+            className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-[#141617] border border-[var(--accent-soft)]/30 shadow-xl shadow-black/50 hover:border-[var(--accent-soft)]/50 transition-all flex items-center justify-center group"
             aria-label="Open AI Assistant"
           >
-            <Terminal className="w-5 h-5 sm:w-6 sm:h-6 text-green-400 group-hover:text-green-300 transition-colors" />
-            <span className="absolute -top-1 -right-1 w-3 h-3 bg-green-400 rounded-full border-2 border-[#0a0a0a] animate-pulse" />
+            <Terminal className="w-5 h-5 sm:w-6 sm:h-6 text-[var(--accent-soft)] group-hover:text-[var(--accent-soft)] transition-colors" />
+            <span className="absolute -top-1 -right-1 w-3 h-3 bg-[var(--accent-soft)] rounded-full border-2 border-[#0a0a0a] animate-pulse" />
           </motion.button>
         )}
       </AnimatePresence>
@@ -222,7 +222,7 @@ export default function AIChatbot() {
               transition={{ type: "spring", stiffness: 320, damping: 30 }}
               className={[
                 "fixed z-50 flex flex-col overflow-hidden rounded-2xl font-mono",
-                "bg-[#0c0e0f] border border-green-500/20 shadow-2xl shadow-black/60",
+                "bg-[#0c0e0f] border border-[var(--accent-soft)]/20 shadow-2xl shadow-black/60",
                 "transition-[width,height] duration-300 ease-in-out",
                 isMinimized
                   ? "bottom-4 right-4 sm:bottom-6 sm:right-6 w-auto h-auto"
@@ -230,10 +230,10 @@ export default function AIChatbot() {
               ].join(" ")}
             >
               {/* Outer glow */}
-              <div className="absolute -inset-px rounded-2xl bg-gradient-to-r from-green-400/10 via-emerald-500/5 to-green-400/10 blur-sm pointer-events-none" />
+              <div className="absolute -inset-px rounded-2xl bg-gradient-to-r from-[var(--accent-soft)]/10 via-[var(--accent-soft)]/5 to-[var(--accent-soft)]/10 blur-sm pointer-events-none" />
 
               {/* Title bar — macOS chrome */}
-              <div className="flex items-center gap-3 px-4 py-3 bg-[#141617] border-b border-green-500/10 select-none flex-shrink-0 relative z-10">
+              <div className="flex items-center gap-3 px-4 py-3 bg-[#141617] border-b border-[var(--accent-soft)]/10 select-none flex-shrink-0 relative z-10">
                 <div className="flex items-center gap-1.5">
                   <button onClick={closeChat} className="w-3 h-3 rounded-full bg-[#ff5f57] hover:brightness-125 transition-all" aria-label="Close" title="Close" />
                   <button onClick={() => setIsMinimized((v) => !v)} className="w-3 h-3 rounded-full bg-[#febc2e] hover:brightness-125 transition-all" aria-label="Minimize" title="Minimize" />
@@ -248,8 +248,8 @@ export default function AIChatbot() {
                       <Trash2 className="w-3.5 h-3.5 text-gray-600 hover:text-gray-400 transition-colors" />
                     </button>
                   )}
-                  <span className="flex items-center gap-1 text-[10px] text-green-500/60">
-                    <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse inline-block" />
+                  <span className="flex items-center gap-1 text-[10px] text-[var(--accent-soft)]/60">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent-soft)] animate-pulse inline-block" />
                     {isLoading ? "BUSY" : "LIVE"}
                   </span>
                 </div>
@@ -258,9 +258,9 @@ export default function AIChatbot() {
               {/* Minimized bar */}
               {isMinimized && (
                 <button onClick={() => setIsMinimized(false)} className="px-4 py-3 flex items-center gap-3 w-full hover:bg-white/3 transition-colors">
-                  <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse flex-shrink-0" />
+                  <span className="w-2 h-2 rounded-full bg-[var(--accent-soft)] animate-pulse flex-shrink-0" />
                   <p className="text-gray-500 text-[11px] font-mono flex-1 text-left">chat minimized — click to restore</p>
-                  <Maximize2 className="w-3.5 h-3.5 text-green-400/60 flex-shrink-0" />
+                  <Maximize2 className="w-3.5 h-3.5 text-[var(--accent-soft)]/60 flex-shrink-0" />
                 </button>
               )}
 
@@ -271,14 +271,14 @@ export default function AIChatbot() {
                     {showClearConfirm && (
                       <motion.div
                         initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }}
-                        className="absolute top-[52px] left-4 right-4 z-20 bg-[#141617] border border-green-500/20 rounded-xl p-4 shadow-xl"
+                        className="absolute top-[52px] left-4 right-4 z-20 bg-[#141617] border border-[var(--accent-soft)]/20 rounded-xl p-4 shadow-xl"
                       >
                         <p className="text-[11px] text-gray-400 font-mono mb-3">
-                          <span className="text-green-400">$</span> rm -rf ./conversation — are you sure?
+                          <span className="text-[var(--accent-soft)]">$</span> rm -rf ./conversation — are you sure?
                         </p>
                         <div className="flex gap-2">
                           <button onClick={clearChat} className="flex-1 py-1.5 rounded-lg bg-red-500/10 border border-red-500/20 text-red-400 text-[11px] font-mono hover:bg-red-500/20 transition-all">--force</button>
-                          <button onClick={() => setShowClearConfirm(false)} className="flex-1 py-1.5 rounded-lg bg-green-500/10 border border-green-500/20 text-green-400 text-[11px] font-mono hover:bg-green-500/20 transition-all">--cancel</button>
+                          <button onClick={() => setShowClearConfirm(false)} className="flex-1 py-1.5 rounded-lg bg-[var(--accent-soft)]/10 border border-[var(--accent-soft)]/20 text-[var(--accent-soft)] text-[11px] font-mono hover:bg-[var(--accent-soft)]/20 transition-all">--cancel</button>
                         </div>
                       </motion.div>
                     )}
@@ -291,8 +291,8 @@ export default function AIChatbot() {
                         <PromptLine isUser={msg.role === "user"} time={formatTime(msg.timestamp)} />
                         <div className={`ml-2 px-3 py-2 rounded-lg text-[12px] leading-relaxed whitespace-pre-wrap border ${
                           msg.role === "user"
-                            ? "bg-green-500/5 border-green-500/15 text-gray-300 rounded-tl-none"
-                            : "bg-[#141617] border-green-500/10 text-gray-200 rounded-tl-none"
+                            ? "bg-[var(--accent-soft)]/5 border-[var(--accent-soft)]/15 text-gray-300 rounded-tl-none"
+                            : "bg-[#141617] border-[var(--accent-soft)]/10 text-gray-200 rounded-tl-none"
                         }`}>
                           {msg.content}
                         </div>
@@ -302,9 +302,9 @@ export default function AIChatbot() {
                     {isLoading && (
                       <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-1">
                         <PromptLine isUser={false} time="processing…" />
-                        <div className="ml-2 px-3 py-2.5 rounded-lg bg-[#141617] border border-green-500/10 rounded-tl-none flex items-center gap-1.5">
+                        <div className="ml-2 px-3 py-2.5 rounded-lg bg-[#141617] border border-[var(--accent-soft)]/10 rounded-tl-none flex items-center gap-1.5">
                           {[0, 150, 300].map((delay) => (
-                            <span key={delay} className="w-1.5 h-1.5 bg-green-400 rounded-full animate-bounce" style={{ animationDelay: `${delay}ms` }} />
+                            <span key={delay} className="w-1.5 h-1.5 bg-[var(--accent-soft)] rounded-full animate-bounce" style={{ animationDelay: `${delay}ms` }} />
                           ))}
                         </div>
                       </motion.div>
@@ -314,12 +314,12 @@ export default function AIChatbot() {
 
                   {/* Quick actions */}
                   {messages.length === 1 && (
-                    <div className="px-4 py-2.5 bg-[#0a0a0a] border-t border-green-500/10 flex-shrink-0">
+                    <div className="px-4 py-2.5 bg-[#0a0a0a] border-t border-[var(--accent-soft)]/10 flex-shrink-0">
                       <p className="text-[10px] text-gray-700 mb-1.5 font-mono"># quick commands</p>
                       <div className="flex flex-wrap gap-1.5">
                         {quickActions.map(({ label, msg }) => (
                           <button key={label} onClick={() => sendMessage(msg)} disabled={isLoading}
-                            className="px-2.5 py-1.5 text-[10px] rounded-lg bg-green-500/8 border border-green-500/15 text-green-400/80 hover:bg-green-500/15 hover:border-green-400/30 hover:text-green-400 transition-all disabled:opacity-50 font-mono whitespace-nowrap">
+                            className="px-2.5 py-1.5 text-[10px] rounded-lg bg-[var(--accent-soft)]/8 border border-[var(--accent-soft)]/15 text-[var(--accent-soft)]/80 hover:bg-[var(--accent-soft)]/15 hover:border-[var(--accent-soft)]/30 hover:text-[var(--accent-soft)] transition-all disabled:opacity-50 font-mono whitespace-nowrap">
                             {label}
                           </button>
                         ))}
@@ -328,23 +328,23 @@ export default function AIChatbot() {
                   )}
 
                   {/* Shortcuts */}
-                  <div className="px-4 py-2 bg-[#0d0f10] border-t border-green-500/10 flex gap-2 flex-shrink-0">
+                  <div className="px-4 py-2 bg-[#0d0f10] border-t border-[var(--accent-soft)]/10 flex gap-2 flex-shrink-0">
                     <a href="/Ashley_Motsie_Resume.pdf" download="Ashley_Motsie_Resume.pdf"
-                      className="flex-1 flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg bg-green-500/8 border border-green-500/15 text-green-400/70 hover:bg-green-500/15 hover:text-green-400 hover:border-green-400/30 text-[11px] font-mono transition-all">
+                      className="flex-1 flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg bg-[var(--accent-soft)]/8 border border-[var(--accent-soft)]/15 text-[var(--accent-soft)]/70 hover:bg-[var(--accent-soft)]/15 hover:text-[var(--accent-soft)] hover:border-[var(--accent-soft)]/30 text-[11px] font-mono transition-all">
                       <Download className="w-3 h-3 flex-shrink-0" />
                       ./resume.pdf
                     </a>
                     <button onClick={goToContact}
-                      className="flex-1 flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg bg-green-500/8 border border-green-500/15 text-green-400/70 hover:bg-green-500/15 hover:text-green-400 hover:border-green-400/30 text-[11px] font-mono transition-all">
+                      className="flex-1 flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg bg-[var(--accent-soft)]/8 border border-[var(--accent-soft)]/15 text-[var(--accent-soft)]/70 hover:bg-[var(--accent-soft)]/15 hover:text-[var(--accent-soft)] hover:border-[var(--accent-soft)]/30 text-[11px] font-mono transition-all">
                       <Mail className="w-3 h-3 flex-shrink-0" />
                       ./contact
                     </button>
                   </div>
 
                   {/* Input row */}
-                  <div className="px-4 py-3 bg-[#141617] border-t border-green-500/10 flex-shrink-0">
+                  <div className="px-4 py-3 bg-[#141617] border-t border-[var(--accent-soft)]/10 flex-shrink-0">
                     <div className="flex items-center gap-2">
-                      <span className="text-green-400 text-[13px] font-mono flex-shrink-0 select-none">›</span>
+                      <span className="text-[var(--accent-soft)] text-[13px] font-mono flex-shrink-0 select-none">›</span>
                       <div className="flex-1 relative">
                         <input
                           ref={inputRef}
@@ -355,7 +355,7 @@ export default function AIChatbot() {
                           placeholder="type your query…"
                           disabled={isLoading}
                           maxLength={300}
-                          className="w-full bg-transparent border-none outline-none text-gray-200 placeholder-gray-700 text-[12px] font-mono disabled:opacity-50 pr-10 caret-green-400"
+                          className="w-full bg-transparent border-none outline-none text-gray-200 placeholder-gray-700 text-[12px] font-mono disabled:opacity-50 pr-10 caret-[var(--accent-soft)]"
                         />
                         {input.length > 0 && (
                           <span className={`absolute right-0 top-1/2 -translate-y-1/2 text-[9px] font-mono pointer-events-none ${input.length > 260 ? "text-red-400" : "text-gray-700"}`}>
@@ -364,7 +364,7 @@ export default function AIChatbot() {
                         )}
                       </div>
                       <button onClick={() => sendMessage()} disabled={!input.trim() || isLoading}
-                        className="p-1.5 rounded-lg bg-green-500/15 border border-green-500/20 text-green-400 hover:bg-green-500/25 hover:border-green-400/40 disabled:opacity-30 disabled:cursor-not-allowed transition-all flex-shrink-0"
+                        className="p-1.5 rounded-lg bg-[var(--accent-soft)]/15 border border-[var(--accent-soft)]/20 text-[var(--accent-soft)] hover:bg-[var(--accent-soft)]/25 hover:border-[var(--accent-soft)]/40 disabled:opacity-30 disabled:cursor-not-allowed transition-all flex-shrink-0"
                         aria-label="Send message">
                         {isLoading ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <Send className="w-3.5 h-3.5" />}
                       </button>
@@ -372,16 +372,16 @@ export default function AIChatbot() {
                   </div>
 
                   {/* Status bar */}
-                  <div className="flex items-center justify-between px-4 py-1 bg-green-600/5 border-t border-green-500/10 flex-shrink-0 select-none">
+                  <div className="flex items-center justify-between px-4 py-1 bg-[var(--accent-soft)]/5 border-t border-[var(--accent-soft)]/10 flex-shrink-0 select-none">
                     <div className="flex items-center gap-3">
-                      <span className="flex items-center gap-1 text-[10px] text-green-400/40">
+                      <span className="flex items-center gap-1 text-[10px] text-[var(--accent-soft)]/40">
                         <GitBranch className="w-3 h-3" /> main
                       </span>
                       <span className="text-[10px] text-gray-800">llama-3.3-70b</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <span className="text-[10px] text-gray-800">smith.ai</span>
-                      <span className="flex items-center gap-1 text-[10px] text-green-400/40">
+                      <span className="flex items-center gap-1 text-[10px] text-[var(--accent-soft)]/40">
                         <CheckCircle2 className="w-3 h-3" /> online
                       </span>
                     </div>

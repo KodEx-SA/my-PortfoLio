@@ -67,14 +67,14 @@ export default function GitHubStats({ username = "KodEx-SA" }) {
       className="mt-4"
     >
       <div className="flex items-center gap-3 mb-6">
-        <Github className="w-5 h-5 text-green-400" />
-        <h3 className="text-green-400 font-mono text-sm font-semibold">GitHub Activity</h3>
-        <div className="flex-1 h-px bg-green-500/15" />
+        <Github className="w-5 h-5 text-[var(--accent)]" />
+        <h3 className="text-[var(--accent)] text-sm font-semibold">GitHub Activity</h3>
+        <div className="flex-1 h-px bg-[var(--border)]" />
         <a
           href={`https://github.com/${username}`}
           target="_blank"
           rel="noopener noreferrer"
-          className="text-xs font-mono text-gray-500 hover:text-green-400 flex items-center gap-1 transition-colors"
+          className="text-xs text-[var(--ink-muted)] hover:text-[var(--accent)] flex items-center gap-1 transition-colors"
         >
           @{username} <ExternalLink className="w-3 h-3" />
         </a>
@@ -83,15 +83,15 @@ export default function GitHubStats({ username = "KodEx-SA" }) {
       {loading && (
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
           {[0,1,2,3].map((i) => (
-            <div key={i} className="h-20 rounded-xl bg-green-500/5 border border-green-500/10 animate-pulse" />
+            <div key={i} className="h-20 rounded-xl bg-[var(--surface)] border border-[var(--border)] animate-pulse" />
           ))}
         </div>
       )}
 
       {!loading && error && (
-        <div className="text-center py-6 text-gray-600 font-mono text-xs border border-green-500/10 rounded-xl bg-green-500/3">
+        <div className="text-center py-6 text-[var(--ink-faint)] text-xs border border-[var(--border)] rounded-xl bg-[var(--surface)]">
           Could not load GitHub stats — visit{" "}
-          <a href={`https://github.com/${username}`} target="_blank" rel="noopener noreferrer" className="text-green-500/60 hover:text-green-400">
+          <a href={`https://github.com/${username}`} target="_blank" rel="noopener noreferrer" className="text-[var(--ink-faint)] hover:text-[var(--accent)]">
             github.com/{username}
           </a>
         </div>
@@ -101,26 +101,25 @@ export default function GitHubStats({ username = "KodEx-SA" }) {
         <>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
             {[
-              { Icon: BookOpen, label: "Public Repos", value: stats.public_repos ?? "—", color: "text-green-400" },
-              { Icon: Users,    label: "Followers",    value: stats.followers    ?? "—", color: "text-emerald-400" },
-              { Icon: Star,     label: "Total Stars",  value: totalStars,                color: "text-teal-400" },
-              { Icon: GitFork,  label: "Total Forks",  value: totalForks,                color: "text-green-300" },
+              { Icon: BookOpen, label: "Public Repos", value: stats.public_repos ?? "—", color: "text-[var(--accent)]" },
+              { Icon: Users,    label: "Followers",    value: stats.followers    ?? "—", color: "text-[var(--accent)]" },
+              { Icon: Star,     label: "Total Stars",  value: totalStars,                color: "text-[var(--accent)]" },
+              { Icon: GitFork,  label: "Total Forks",  value: totalForks,                color: "text-[var(--accent)]" },
             ].map((s) => (
               <div
                 key={s.label}
-                className="relative p-4 rounded-xl bg-green-500/5 border border-green-500/15 hover:border-green-500/35 hover:bg-green-500/8 transition-all duration-200 text-center group overflow-hidden"
+                className="relative p-4 rounded-xl bg-[var(--surface)] border border-[var(--border)] hover:border-[var(--ink-faint)] hover:bg-[var(--surface-2)] transition-all duration-200 text-center group overflow-hidden"
               >
-                <span className="absolute inset-0 bg-green-500/5 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
                 <s.Icon className={"w-4 h-4 " + s.color + " mx-auto mb-2 relative z-10"} />
-                <div className={"text-xl font-bold font-mono " + s.color + " relative z-10"}>{s.value}</div>
-                <div className="text-[10px] text-gray-500 font-mono relative z-10">{s.label}</div>
+                <div className={"text-xl font-bold " + s.color + " relative z-10"}>{s.value}</div>
+                <div className="text-[10px] text-[var(--ink-muted)] relative z-10">{s.label}</div>
               </div>
             ))}
           </div>
 
-          <div className="mb-6 rounded-xl overflow-hidden border border-green-500/15 bg-green-500/3 p-3">
+          <div className="mb-6 rounded-xl overflow-hidden border border-[var(--border)] bg-[var(--surface)] p-3">
             <img
-              src={"https://ghchart.rshah.org/22c55e/" + username}
+              src={"https://ghchart.rshah.org/2247e0/" + username}
               alt="GitHub contribution chart"
               className="w-full h-auto opacity-80"
               onError={(e) => { if (e.target && e.target.parentElement) e.target.parentElement.style.display = "none"; }}
@@ -129,8 +128,8 @@ export default function GitHubStats({ username = "KodEx-SA" }) {
 
           {repos.length > 0 && (
             <>
-              <p className="text-xs font-mono text-gray-600 mb-3 flex items-center gap-2">
-                <Activity className="w-3 h-3 text-green-500/50" /> Recently updated repositories
+              <p className="text-xs text-[var(--ink-faint)] mb-3 flex items-center gap-2">
+                <Activity className="w-3 h-3 text-[var(--ink-faint)]" /> Recently updated repositories
               </p>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
                 {repos.map((r) => (
@@ -139,31 +138,31 @@ export default function GitHubStats({ username = "KodEx-SA" }) {
                     href={r.html_url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="relative p-4 rounded-xl bg-green-500/3 border border-green-500/12 hover:border-green-500/40 hover:bg-green-500/7 transition-all duration-200 group flex flex-col gap-2"
+                    className="relative p-4 rounded-xl bg-[var(--surface)] border border-[var(--border)] hover:border-[var(--ink-faint)] hover:bg-[var(--surface-2)] transition-all duration-200 group flex flex-col gap-2"
                   >
                     <div className="flex items-start justify-between gap-2">
                       <div className="flex items-center gap-2 min-w-0">
-                        <Code2 className="w-3.5 h-3.5 text-green-500/60 flex-shrink-0" />
-                        <span className="text-green-400 text-xs font-mono font-semibold truncate group-hover:text-green-300 transition-colors">
+                        <Code2 className="w-3.5 h-3.5 text-[var(--ink-faint)] flex-shrink-0" />
+                        <span className="text-[var(--accent)] text-xs font-semibold truncate group-hover:text-[var(--accent)] transition-colors">
                           {r.name}
                         </span>
                       </div>
-                      <ExternalLink className="w-3 h-3 text-gray-600 flex-shrink-0 group-hover:text-green-500/60 transition-colors" />
+                      <ExternalLink className="w-3 h-3 text-[var(--ink-faint)] flex-shrink-0 group-hover:text-[var(--ink-faint)] transition-colors" />
                     </div>
                     {r.description ? (
-                      <p className="text-gray-500 text-[11px] font-mono leading-relaxed line-clamp-2">{r.description}</p>
+                      <p className="text-[var(--ink-muted)] text-[11px] leading-relaxed line-clamp-2">{r.description}</p>
                     ) : null}
                     <div className="flex items-center gap-3 mt-auto pt-1">
                       {r.language ? (
-                        <span className="text-[10px] font-mono text-gray-600 flex items-center gap-1">
-                          <span className="w-2 h-2 rounded-full bg-green-500/60 inline-block" />
+                        <span className="text-[10px] text-[var(--ink-faint)] flex items-center gap-1">
+                          <span className="w-2 h-2 rounded-full bg-[var(--accent)] inline-block" />
                           {r.language}
                         </span>
                       ) : null}
-                      <span className="text-[10px] font-mono text-gray-600 flex items-center gap-1 ml-auto">
+                      <span className="text-[10px] text-[var(--ink-faint)] flex items-center gap-1 ml-auto">
                         <Star className="w-2.5 h-2.5" />{r.stargazers_count ?? 0}
                       </span>
-                      <span className="text-[10px] font-mono text-gray-600 flex items-center gap-1">
+                      <span className="text-[10px] text-[var(--ink-faint)] flex items-center gap-1">
                         <GitFork className="w-2.5 h-2.5" />{r.forks_count ?? 0}
                       </span>
                     </div>

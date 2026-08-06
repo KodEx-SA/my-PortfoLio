@@ -8,22 +8,17 @@ import Hero from "./pages/Hero/Hero";
 import Skills from "./pages/Skills/Skills";
 import Education from "./pages/Education/Education";
 import Footer from "./pages/Footer/Footer";
-import Testimonials from "./pages/Testimonials/Testimonials";
-import Services from "./pages/Services/Services";
-import Blog from "./pages/Blog/Blog";
-import Achievements from "./pages/Achievements/Achievements";
 import AIChatbot from "./components/AIChatbot";
 import ScrollUtils from "./components/ScrollUtils";
 import NotFound from "./pages/NotFound/NotFound";
 
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, Navigate } from "react-router-dom";
 
 export default function App() {
   return (
     <>
       <Header />
       <ScrollUtils />
-      {/* Router Mode: Use routes for navigation */}
       <Routes>
         <Route path="/" element={<Hero />} />
         <Route path="/skills" element={<Skills />} />
@@ -32,10 +27,12 @@ export default function App() {
         <Route path="/education" element={<Education />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/projects" element={<Projects />} />
-        <Route path="/testimonials" element={<Testimonials />} />
-        <Route path="/services" element={<Services />} />
-        <Route path="/blog" element={<Blog />} />
-        <Route path="/achievements" element={<Achievements />} />
+
+        {/* Merged into other sections - keep old links from breaking */}
+        <Route path="/services" element={<Navigate to="/about" replace />} />
+        <Route path="/testimonials" element={<Navigate to="/experience" replace />} />
+        <Route path="/achievements" element={<Navigate to="/education" replace />} />
+
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
