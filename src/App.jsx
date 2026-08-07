@@ -28,7 +28,7 @@ export default function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/projects" element={<Projects />} />
 
-        {/* Merged into other sections - keep old links from breaking */}
+        {/* Merged into other sections — keep old links from breaking */}
         <Route path="/services" element={<Navigate to="/about" replace />} />
         <Route path="/testimonials" element={<Navigate to="/experience" replace />} />
         <Route path="/achievements" element={<Navigate to="/education" replace />} />

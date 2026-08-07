@@ -53,7 +53,7 @@ export default function About() {
   return (
     <section className="bg-[var(--bg)] text-[var(--ink)] py-20 md:py-28">
       <div className="max-w-6xl mx-auto px-5 md:px-8">
-        <span className="eyebrow">// about</span>
+        <span className="eyebrow">{"// about"}</span>
         <h1 className="mt-3 text-3xl md:text-4xl font-bold tracking-tight">
           A bit about me
         </h1>
@@ -79,14 +79,15 @@ export default function About() {
           >
             <p className="text-lg text-[var(--ink-muted)] leading-relaxed">
               I'm <strong className="text-[var(--ink)]">Ashley Motsie</strong>, a
-              software developer based in Rustenburg, South Africa, building
-              efficient, user-friendly web applications. My work is driven by
-              curiosity and a desire to solve real problems through code.
+              software developer and AI engineer based in Rustenburg, South
+              Africa, building production-ready web apps and AI-powered
+              tools. I care about clean code, great UX, and shipping things
+              that work.
             </p>
             <p className="text-lg text-[var(--ink-muted)] leading-relaxed">
-              I'm a lifelong learner — sometimes a teacher, always looking to
-              expand my range as a full-stack developer who builds robust,
-              maintainable software.
+              I freelance for South African businesses under my GitHub
+              organisation, KodEx-SA, and I'm actively seeking international
+              remote opportunities.
             </p>
 
             <div className="grid grid-cols-3 gap-3 pt-2 max-w-sm">
@@ -95,8 +96,8 @@ export default function About() {
                 <div className="text-xs text-[var(--ink-muted)] mt-1">Years experience</div>
               </div>
               <div className="card-surface text-center py-4">
-                <div className="text-xl font-bold text-[var(--accent)]">10+</div>
-                <div className="text-xs text-[var(--ink-muted)] mt-1">Projects built</div>
+                <div className="text-xl font-bold text-[var(--accent)]">15+</div>
+                <div className="text-xs text-[var(--ink-muted)] mt-1">Projects shipped</div>
               </div>
               <div className="card-surface text-center py-4">
                 <div className="text-xl font-bold text-[var(--accent)]">4</div>
@@ -108,7 +109,7 @@ export default function About() {
 
         {/* What I do */}
         <div className="mt-24">
-          <span className="eyebrow">// what I do</span>
+          <span className="eyebrow">{"// what I do"}</span>
           <h2 className="mt-3 text-2xl md:text-3xl font-bold tracking-tight">
             Services & expertise
           </h2>

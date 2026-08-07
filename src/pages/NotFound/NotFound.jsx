@@ -7,7 +7,7 @@ export default function NotFound() {
   return (
     <main className="bg-[var(--bg)] text-[var(--ink)] min-h-[calc(100vh-4rem)] flex items-center">
       <div className="max-w-2xl mx-auto px-5 text-center">
-        <span className="eyebrow">// 404</span>
+        <span className="eyebrow">{"// 404"}</span>
         <h1 className="mt-3 text-6xl md:text-7xl font-bold tracking-tight">
           Page not found
         </h1>

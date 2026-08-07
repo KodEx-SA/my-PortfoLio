@@ -3,34 +3,37 @@ import { Network, Code2, Cpu, MapPin, Briefcase, Quote, Star } from "lucide-reac
 
 const experiences = [
   {
-    icon: Network,
-    title: "Software Developer & IT Technician",
-    company: "Eullafied Tech Solutions",
-    location: "On-site · Rustenburg, SA",
-    period: "June 2025 — Present",
+    icon: Cpu,
+    title: "Web Developer & Graphic Designer",
+    company: "Maps Media Productions",
+    location: "Remote · Rustenburg, SA",
+    period: "August 2024 — Present",
+    current: true,
     description:
-      "Collaborate with cross-functional teams on agile project development, work on code optimisation, and play a key part in the overall development process.",
-    tags: ["Agile", "IT Support", "Software"],
+      "Freelancing under the Maps Media Productions brand — designing and building websites for South African small businesses, hospitality brands, real estate, and modelling agencies, plus brand identity and graphic design.",
+    tags: ["HTML5", "Tailwind CSS", "Figma", "Canva"],
   },
   {
     icon: Code2,
     title: "AI Software Developer",
     company: "AI Global Networks",
-    location: "Remote · Johannesburg",
-    period: "July 2025 — Present",
+    location: "Remote, South Africa",
+    period: "July 2025 — May 2026",
+    current: false,
     description:
-      "Develop scalable applications with integrated AI features, focused on improving app performance and efficiency, with robust testing protocols.",
-    tags: ["React", "API", "AI"],
+      "Built and maintained AI-powered web applications and chatbot systems for the company's client base — full-stack architecture, LLM API integration, and production deployment.",
+    tags: ["React", "Node.js", "Express", "Groq API"],
   },
   {
-    icon: Cpu,
-    title: "Web Developer & Graphic Designer",
-    company: "Maps Media Productions",
-    location: "Remote · Mahikeng, SA",
-    period: "August 2025 — Present",
+    icon: Network,
+    title: "Junior Software Developer & IT Technician",
+    company: "Eullafied Tech Solutions",
+    location: "On-site · Rustenburg, SA",
+    period: "June 2025 — May 2026",
+    current: false,
     description:
-      "Develop and maintain client websites, collaborate on graphic design projects, and communicate directly with clients on delivery.",
-    tags: ["Next.js", "Tailwind CSS", "Graphic Design"],
+      "Developed internal business tools and client-facing web applications alongside IT support and infrastructure work — including a full Intern Management System and a Help Desk platform.",
+    tags: ["NestJS", "React", "TypeScript", "Supabase"],
   },
 ];
 
@@ -55,7 +58,7 @@ const testimonials = [
   },
 ];
 
-function ExperienceCard({ icon: Icon, title, company, location, period, description, tags }) {
+function ExperienceCard({ icon: Icon, title, company, location, period, current, description, tags }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -82,6 +85,12 @@ function ExperienceCard({ icon: Icon, title, company, location, period, descript
         <span className="text-xs text-[var(--ink-muted)] bg-[var(--surface-2)] px-2.5 py-1 rounded-full">
           {period}
         </span>
+        {current && (
+          <span className="inline-flex items-center gap-1.5 text-xs font-medium text-[var(--accent)] bg-[var(--accent-soft)] px-2.5 py-1 rounded-full">
+            <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent)]" />
+            Current
+          </span>
+        )}
       </div>
 
       <p className="text-sm text-[var(--ink-muted)] leading-relaxed">{description}</p>
@@ -101,11 +110,14 @@ export default function ExperienceSection() {
   return (
     <section className="bg-[var(--bg)] text-[var(--ink)] py-20 md:py-28">
       <div className="max-w-6xl mx-auto px-5 md:px-8">
-        <span className="eyebrow">// experience</span>
+        <span className="eyebrow">{"// experience"}</span>
         <h1 className="mt-3 text-3xl md:text-4xl font-bold tracking-tight flex items-center gap-3">
           <Briefcase className="w-7 h-7 text-[var(--accent)]" />
           Where I've worked
         </h1>
+        <p className="mt-2 text-[var(--ink-muted)] max-w-xl">
+          1 active role, 2 past roles.
+        </p>
 
         <div className="mt-10 grid gap-5 md:grid-cols-3">
           {experiences.map((exp) => (
@@ -115,7 +127,7 @@ export default function ExperienceSection() {
 
         {/* Testimonials */}
         <div className="mt-24">
-          <span className="eyebrow">// what people say</span>
+          <span className="eyebrow">{"// what people say"}</span>
           <h2 className="mt-3 text-2xl md:text-3xl font-bold tracking-tight">
             Client feedback
           </h2>

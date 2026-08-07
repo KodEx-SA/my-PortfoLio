@@ -1,0 +1,26 @@
+# Dependencies — reinstalled fresh inside the build stage
+node_modules
+
+# Build output — generated inside Docker, not copied from host
+dist
+
+# Git & editor noise
+.git
+.gitignore
+.vscode
+.idea
+*.log
+
+# OS noise
+.DS_Store
+Thumbs.db
+
+# Env files — never bake secrets into the image
+.env
+.env.*
+!.env.example
+
+# Docker files themselves
+Dockerfile
+.dockerignore
+docker-compose.yml
