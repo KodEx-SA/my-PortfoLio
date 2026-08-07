@@ -1,26 +1,40 @@
-import { Link } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Github, Linkedin, Twitter, Mail } from "lucide-react";
 import LogoImage from "@/assets/images/logo_images/Logo.png";
 
+const quickLinks = [
+  { name: "Home", id: "hero" },
+  { name: "About", id: "about" },
+  { name: "Projects", id: "projects" },
+  { name: "Skills", id: "skills" },
+  { name: "Experience", id: "experience" },
+  { name: "Education", id: "education" },
+  { name: "Contact", id: "contact" },
+];
+
+const socialLinks = [
+  { name: "GitHub", icon: Github, url: "https://github.com/KodEx-SA" },
+  { name: "LinkedIn", icon: Linkedin, url: "https://linkedin.com/in/ashley-motsie" },
+  { name: "Twitter", icon: Twitter, url: "https://twitter.com/ashley_motsie" },
+  { name: "Email", icon: Mail, url: "mailto:motsieashley31@gmail.com" },
+];
+
 export default function Footer() {
   const currentYear = new Date().getFullYear();
+  const location = useLocation();
+  const navigate = useNavigate();
+  const isHome = location.pathname === "/";
 
-  const quickLinks = [
-    { name: "Home", path: "/" },
-    { name: "About", path: "/about" },
-    { name: "Projects", path: "/projects" },
-    { name: "Skills", path: "/skills" },
-    { name: "Experience", path: "/experience" },
-    { name: "Education", path: "/education" },
-    { name: "Contact", path: "/contact" },
-  ];
-
-  const socialLinks = [
-    { name: "GitHub", icon: Github, url: "https://github.com/KodEx-SA" },
-    { name: "LinkedIn", icon: Linkedin, url: "https://linkedin.com/in/ashley-motsie" },
-    { name: "Twitter", icon: Twitter, url: "https://twitter.com/ashley_motsie" },
-    { name: "Email", icon: Mail, url: "mailto:motsieashley31@gmail.com" },
-  ];
+  const goTo = (id) => {
+    if (isHome) {
+      document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    } else {
+      navigate("/");
+      requestAnimationFrame(() =>
+        setTimeout(() => document.getElementById(id)?.scrollIntoView({ behavior: "smooth" }), 50)
+      );
+    }
+  };
 
   return (
     <footer className="bg-[var(--surface)] border-t border-[var(--border)] text-[var(--ink)]">
@@ -32,8 +46,8 @@ export default function Footer() {
               <span className="font-display font-semibold">Ashley K Motsie</span>
             </div>
             <p className="mt-3 text-sm text-[var(--ink-muted)] leading-relaxed max-w-xs">
-              Software developer building full-stack and AI-powered web
-              applications from Rustenburg, South Africa.
+              Software developer and AI engineer building production-ready
+              web apps and AI-powered tools from Rustenburg, South Africa.
             </p>
           </div>
 
@@ -42,9 +56,12 @@ export default function Footer() {
             <ul className="mt-3 grid grid-cols-2 gap-2">
               {quickLinks.map((link) => (
                 <li key={link.name}>
-                  <Link to={link.path} className="text-sm text-[var(--ink-muted)] hover:text-[var(--accent)] transition-colors">
+                  <button
+                    onClick={() => goTo(link.id)}
+                    className="text-sm text-[var(--ink-muted)] hover:text-[var(--accent)] transition-colors text-left"
+                  >
                     {link.name}
-                  </Link>
+                  </button>
                 </li>
               ))}
             </ul>
@@ -73,7 +90,7 @@ export default function Footer() {
         </div>
 
         <div className="mt-12 pt-6 border-t border-[var(--border)] text-sm text-[var(--ink-muted)]">
-          © {currentYear} Ashley K Motsie. Built with React & Tailwind.
+          © {currentYear} Ashley Koketso Motsie. Built with React & Tailwind.
         </div>
       </div>
     </footer>

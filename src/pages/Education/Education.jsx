@@ -161,7 +161,7 @@ export default function EducationSection() {
   const [activeIndex, setActiveIndex] = useState(null);
 
   return (
-    <section className="bg-[var(--bg)] text-[var(--ink)] py-20 md:py-28">
+    <section id="education" className="bg-[var(--bg)] text-[var(--ink)] py-20 md:py-28">
       <div className="max-w-6xl mx-auto px-5 md:px-8">
         <span className="eyebrow">{"// education"}</span>
         <h1 className="mt-3 text-3xl md:text-4xl font-bold tracking-tight flex items-center gap-3">

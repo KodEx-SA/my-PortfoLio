@@ -84,17 +84,19 @@ export default function Hero() {
   const words = ["Software Developer", "AI Engineer", "Tech Enthusiast"];
 
   return (
-    <main className="bg-[var(--bg)] text-[var(--ink)] min-h-screen">
-      <section className="min-h-[calc(100vh-4rem)] flex items-center px-5 sm:px-8 py-16">
+    <section id="hero" className="relative bg-[var(--bg)] text-[var(--ink)] min-h-screen overflow-hidden">
+      {/* Ambient gradient blobs — bolder visual energy, kept soft and out of the way of content */}
+      <div className="glow-blob w-[420px] h-[420px] -top-32 -right-32" style={{ background: "var(--accent)" }} />
+      <div className="glow-blob w-[380px] h-[380px] top-1/3 -left-40" style={{ background: "var(--accent-2)" }} />
+
+      <div className="relative z-10 min-h-[calc(100vh-4rem)] flex items-center px-5 sm:px-8 py-16">
         <div className="max-w-6xl mx-auto w-full grid lg:grid-cols-2 gap-14 lg:gap-10 items-center">
           {/* Left — text */}
           <div className="animate-fade-up">
             <span className="eyebrow">{"// hello world"}</span>
 
             <h1 className="mt-4 text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.05]">
-              I'm Ashley
-              <br />
-              Motsie
+              I'm <span className="text-gradient">Ashley Motsie</span>
             </h1>
 
             <div className="mt-5 text-xl text-[var(--ink-muted)] font-medium">
@@ -110,7 +112,7 @@ export default function Hero() {
             <div className="mt-9 flex flex-wrap gap-3">
               <a
                 href="/projects"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-[var(--ink)] text-[var(--bg)] font-medium text-sm hover:bg-[var(--accent-ink)] transition-colors"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-[var(--ink)] text-[var(--bg)] font-medium text-sm hover:bg-[var(--accent-ink)] hover:scale-[1.03] active:scale-[0.98] transition-all duration-200"
               >
                 View Projects
                 <ArrowRight className="w-4 h-4" />
@@ -119,7 +121,7 @@ export default function Hero() {
                 href="https://github.com/KodEx-SA"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-[var(--border)] text-[var(--ink)] font-medium text-sm hover:border-[var(--ink-faint)] transition-colors"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-[var(--border)] text-[var(--ink)] font-medium text-sm hover:border-[var(--ink-faint)] hover:scale-[1.03] active:scale-[0.98] transition-all duration-200"
               >
                 <FaGithub className="w-4 h-4" />
                 GitHub
@@ -140,7 +142,19 @@ export default function Hero() {
             <TerminalCard />
           </div>
         </div>
-      </section>
-    </main>
+      </div>
+
+      {/* Scroll cue */}
+      <button
+        onClick={() => document.getElementById("about")?.scrollIntoView({ behavior: "smooth" })}
+        className="hidden sm:flex absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex-col items-center gap-2 text-[var(--ink-faint)] hover:text-[var(--accent)] transition-colors animate-float-slow"
+        aria-label="Scroll to About"
+      >
+        <span className="text-[11px] font-mono tracking-wide">scroll</span>
+        <span className="w-5 h-8 rounded-full border border-current flex items-start justify-center p-1">
+          <span className="w-1 h-1.5 rounded-full bg-current" />
+        </span>
+      </button>
+    </section>
   );
 }

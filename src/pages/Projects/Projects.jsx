@@ -1,4 +1,3 @@
-import { ReactLenis } from "lenis/react";
 import { useTransform, motion, useScroll } from "framer-motion";
 import { useRef } from "react";
 import PropTypes from "prop-types";
@@ -117,8 +116,7 @@ export default function Projects() {
   });
 
   return (
-    <ReactLenis root>
-      <main className="bg-[var(--bg)] text-[var(--ink)]" ref={container}>
+    <section id="projects" className="relative bg-[var(--bg)] text-[var(--ink)]" ref={container}>
         <section className="max-w-6xl mx-auto px-5 md:px-8 pt-20 pb-14">
           <span className="eyebrow">{"// projects"}</span>
           <h1 className="mt-3 text-3xl md:text-4xl font-bold tracking-tight">
@@ -145,8 +143,7 @@ export default function Projects() {
             );
           })}
         </section>
-      </main>
-    </ReactLenis>
+      </section>
   );
 }
 
@@ -224,7 +221,7 @@ function Card({ i, title, description, src, tags, stack, status, year, progress,
                   href={liveLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-[var(--ink)] text-[var(--bg)] font-medium text-sm hover:bg-[var(--accent-ink)] transition-colors"
+                  className="btn-gradient inline-flex items-center gap-2 px-5 py-2.5 rounded-lg font-medium text-sm"
                 >
                   <Globe className="w-4 h-4" />
                   Live Demo

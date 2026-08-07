@@ -16,6 +16,9 @@
   --accent: #2247e0;
   --accent-ink: #16309e;
   --accent-soft: #e8ecfd;
+  --accent-2: #8b34e0;
+  --accent-2-soft: #f2e7fd;
+  --gradient-brand: linear-gradient(120deg, var(--accent), var(--accent-2));
 
   --font-display: "Space Grotesk", "Inter", sans-serif;
   --font-body: "Inter", sans-serif;
@@ -52,6 +55,10 @@ html {
   scroll-behavior: smooth;
 }
 
+section[id] {
+  scroll-margin-top: 5.5rem;
+}
+
 body {
   background-color: var(--bg);
   color: var(--ink);
@@ -85,10 +92,57 @@ h1, h2, h3, h4, h5, h6 {
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 1rem;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
 }
 
 .card-surface:hover {
   border-color: var(--ink-faint);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px -12px rgba(20, 20, 30, 0.14);
+}
+
+/* ============================================================
+   BOLD VISUAL ENERGY — used sparingly: gradient text, glow
+   blobs behind key sections, and a scroll progress indicator.
+   ============================================================ */
+.text-gradient {
+  background: var(--gradient-brand);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.btn-gradient {
+  background: var(--gradient-brand);
+  color: white;
+  transition: filter 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 8px 24px -8px rgba(139, 52, 224, 0.35);
+}
+.btn-gradient:hover {
+  filter: brightness(1.08);
+  transform: translateY(-1px) scale(1.02);
+}
+.btn-gradient:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.glow-blob {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(80px);
+  opacity: 0.35;
+  pointer-events: none;
+  z-index: 0;
+}
+
+#scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: var(--gradient-brand);
+  z-index: 60;
+  transform-origin: left;
 }
 
 /* Subtle, restrained motion helpers */

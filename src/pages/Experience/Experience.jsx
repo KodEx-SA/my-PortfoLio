@@ -108,7 +108,7 @@ function ExperienceCard({ icon: Icon, title, company, location, period, current,
 
 export default function ExperienceSection() {
   return (
-    <section className="bg-[var(--bg)] text-[var(--ink)] py-20 md:py-28">
+    <section id="experience" className="bg-[var(--bg)] text-[var(--ink)] py-20 md:py-28">
       <div className="max-w-6xl mx-auto px-5 md:px-8">
         <span className="eyebrow">{"// experience"}</span>
         <h1 className="mt-3 text-3xl md:text-4xl font-bold tracking-tight flex items-center gap-3">
@@ -119,10 +119,24 @@ export default function ExperienceSection() {
           1 active role, 2 past roles.
         </p>
 
-        <div className="mt-10 grid gap-5 md:grid-cols-3">
-          {experiences.map((exp) => (
-            <ExperienceCard key={exp.company} {...exp} />
-          ))}
+        <div className="mt-10 relative">
+          {/* Timeline connector — desktop only */}
+          <div className="hidden md:block absolute top-6 left-[16.5%] right-[16.5%] h-px" style={{ background: "var(--gradient-brand)", opacity: 0.35 }} />
+          <div className="grid gap-5 md:grid-cols-3">
+            {experiences.map((exp, i) => (
+              <div key={exp.company} className="relative">
+                <motion.span
+                  initial={{ scale: 0 }}
+                  whileInView={{ scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.3, delay: i * 0.1 }}
+                  className="hidden md:block absolute -top-[1px] left-1/2 -translate-x-1/2 -translate-y-1/2 w-2.5 h-2.5 rounded-full z-10"
+                  style={{ background: "var(--accent)" }}
+                />
+                <ExperienceCard {...exp} />
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* Testimonials */}

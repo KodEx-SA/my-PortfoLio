@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 import GitHubStats from "@/components/GitHubStats";
 import ErrorBoundary from "@/components/ErrorBoundary";
+import { CountUp } from "@/components/ui/count-up";
 
 const services = [
   {
@@ -51,7 +52,7 @@ const services = [
 
 export default function About() {
   return (
-    <section className="bg-[var(--bg)] text-[var(--ink)] py-20 md:py-28">
+    <section id="about" className="bg-[var(--bg)] text-[var(--ink)] py-20 md:py-28">
       <div className="max-w-6xl mx-auto px-5 md:px-8">
         <span className="eyebrow">{"// about"}</span>
         <h1 className="mt-3 text-3xl md:text-4xl font-bold tracking-tight">
@@ -92,15 +93,21 @@ export default function About() {
 
             <div className="grid grid-cols-3 gap-3 pt-2 max-w-sm">
               <div className="card-surface text-center py-4">
-                <div className="text-xl font-bold text-[var(--accent)]">3+</div>
+                <div className="text-xl font-bold text-[var(--accent)]">
+                  <CountUp value={3} suffix="+" />
+                </div>
                 <div className="text-xs text-[var(--ink-muted)] mt-1">Years experience</div>
               </div>
               <div className="card-surface text-center py-4">
-                <div className="text-xl font-bold text-[var(--accent)]">15+</div>
+                <div className="text-xl font-bold text-[var(--accent)]">
+                  <CountUp value={15} suffix="+" />
+                </div>
                 <div className="text-xs text-[var(--ink-muted)] mt-1">Projects shipped</div>
               </div>
               <div className="card-surface text-center py-4">
-                <div className="text-xl font-bold text-[var(--accent)]">4</div>
+                <div className="text-xl font-bold text-[var(--accent)]">
+                  <CountUp value={4} />
+                </div>
                 <div className="text-xs text-[var(--ink-muted)] mt-1">Certifications</div>
               </div>
             </div>

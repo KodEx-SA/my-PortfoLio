@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Send, MapPin, Mail, MessageSquare, Github, Linkedin, ArrowUpRight } from "lucide-react";
+import { Send, MapPin, Mail, MessageSquare, Github, Linkedin, ArrowUpRight, CheckCircle2 } from "lucide-react";
 import { motion } from "framer-motion";
 
 const contactCards = [
@@ -108,7 +108,7 @@ export default function Contact() {
     "w-full px-4 py-3 rounded-lg bg-[var(--bg)] border border-[var(--border)] text-[var(--ink)] placeholder:text-[var(--ink-faint)] focus:outline-none focus:border-[var(--accent)] transition-colors text-sm";
 
   return (
-    <main className="bg-[var(--bg)] text-[var(--ink)] min-h-screen py-20 md:py-28">
+    <section id="contact" className="bg-[var(--bg)] text-[var(--ink)] py-20 md:py-28">
       <div className="max-w-4xl mx-auto px-5 md:px-8">
         <span className="eyebrow">{"// contact"}</span>
         <h1 className="mt-3 text-3xl md:text-4xl font-bold tracking-tight">
@@ -186,21 +186,29 @@ export default function Contact() {
             <button
               type="submit"
               disabled={loading}
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-[var(--ink)] text-[var(--bg)] font-medium text-sm hover:bg-[var(--accent-ink)] transition-colors disabled:opacity-60"
+              className="btn-gradient inline-flex items-center gap-2 px-6 py-3 rounded-lg font-medium text-sm disabled:opacity-60"
             >
               <Send className="w-4 h-4" />
               {loading ? "Sending..." : "Send message"}
             </button>
 
             {status && (
-              <p className="flex items-center gap-2 text-sm text-[var(--ink-muted)]">
-                <MessageSquare className="w-4 h-4 text-[var(--accent)]" />
+              <motion.p
+                initial={{ opacity: 0, y: -6 }}
+                animate={{ opacity: 1, y: 0 }}
+                className={`flex items-center gap-2 text-sm ${status.includes("successfully") ? "text-[var(--accent)]" : "text-[var(--ink-muted)]"}`}
+              >
+                {status.includes("successfully") ? (
+                  <CheckCircle2 className="w-4 h-4" />
+                ) : (
+                  <MessageSquare className="w-4 h-4 text-[var(--accent)]" />
+                )}
                 {status}
-              </p>
+              </motion.p>
             )}
           </motion.form>
         </div>
       </div>
-    </main>
+    </section>
   );
 }

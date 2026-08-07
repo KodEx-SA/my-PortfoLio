@@ -1,32 +1,44 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import {
-  FaHome, FaUser, FaBriefcase, FaLaptopCode, FaCode,
-  FaGraduationCap, FaEnvelope, FaBars, FaTimes,
-} from "react-icons/fa";
+import { FaBars, FaTimes } from "react-icons/fa";
 import { ArrowUpRight, Download } from "lucide-react";
-import { Link, useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useActiveSection } from "@/hooks/useActiveSection";
 
 const links = [
-  { id: "home", icon: FaHome, text: "Home", path: "/" },
-  { id: "about", icon: FaUser, text: "About", path: "/about" },
-  { id: "projects", icon: FaLaptopCode, text: "Projects", path: "/projects" },
-  { id: "skills", icon: FaCode, text: "Skills", path: "/skills" },
-  { id: "experience", icon: FaBriefcase, text: "Experience", path: "/experience" },
-  { id: "education", icon: FaGraduationCap, text: "Education", path: "/education" },
-  { id: "contact", icon: FaEnvelope, text: "Contact", path: "/contact" },
+  { id: "hero", text: "Home" },
+  { id: "about", text: "About" },
+  { id: "projects", text: "Projects" },
+  { id: "skills", text: "Skills" },
+  { id: "experience", text: "Experience" },
+  { id: "education", text: "Education" },
+  { id: "contact", text: "Contact" },
 ];
+
+const sectionIds = links.map((l) => l.id);
+
+function scrollToSection(id) {
+  document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+}
 
 export default function Header() {
   const location = useLocation();
-  const activeLink = location.pathname.substring(1) || "home";
+  const navigate = useNavigate();
+  const isHome = location.pathname === "/";
+  const activeId = useActiveSection(sectionIds);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [hidden, setHidden] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
-  useEffect(() => {
+  const goTo = (id) => {
     setIsMenuOpen(false);
-  }, [location]);
+    if (isHome) {
+      scrollToSection(id);
+    } else {
+      navigate("/");
+      requestAnimationFrame(() => setTimeout(() => scrollToSection(id), 50));
+    }
+  };
 
   useEffect(() => {
     let lastY = window.scrollY;
@@ -58,27 +70,27 @@ export default function Header() {
               : "bg-[var(--bg)]/60 backdrop-blur-sm border-transparent"
           }`}
         >
-          <Link to="/" className="flex items-center gap-2 mr-1 shrink-0">
-            <span className="w-7 h-7 rounded-full bg-[var(--ink)] text-[var(--bg)] flex items-center justify-center font-mono text-[10px] font-semibold">
+          <button onClick={() => goTo("hero")} className="flex items-center gap-2 mr-1 shrink-0">
+            <span className="w-7 h-7 rounded-full flex items-center justify-center font-mono text-[10px] font-semibold text-white" style={{ background: "var(--gradient-brand)" }}>
               AM
             </span>
-          </Link>
+          </button>
 
           {/* Desktop nav */}
           <nav className="hidden md:flex items-center gap-0.5 flex-1">
-            {links.map(({ id, text, path }) => (
-              <Link key={id} to={path} className="relative px-3.5 py-2 rounded-full text-sm font-medium">
-                {activeLink === id && (
+            {links.map(({ id, text }) => (
+              <button key={id} onClick={() => goTo(id)} className="relative px-3.5 py-2 rounded-full text-sm font-medium">
+                {isHome && activeId === id && (
                   <motion.span
                     layoutId="nav-pill"
                     className="absolute inset-0 rounded-full bg-[var(--accent-soft)]"
                     transition={{ type: "spring", stiffness: 400, damping: 32 }}
                   />
                 )}
-                <span className={`relative z-10 ${activeLink === id ? "text-[var(--accent)]" : "text-[var(--ink-muted)] hover:text-[var(--ink)]"}`}>
+                <span className={`relative z-10 ${isHome && activeId === id ? "text-[var(--accent)]" : "text-[var(--ink-muted)] hover:text-[var(--ink)]"}`}>
                   {text}
                 </span>
-              </Link>
+              </button>
             ))}
           </nav>
 
@@ -114,28 +126,25 @@ export default function Header() {
           >
             <div className="h-full flex flex-col justify-center px-8">
               <nav className="flex flex-col gap-1">
-                {links.map(({ id, text, path }, i) => (
+                {links.map(({ id, text }, i) => (
                   <motion.div
                     key={id}
                     initial={{ opacity: 0, x: -12 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.3, delay: i * 0.04 }}
                   >
-                    <Link
-                      to={path}
-                      className="flex items-baseline gap-4 py-3 group"
-                    >
+                    <button onClick={() => goTo(id)} className="flex items-baseline gap-4 py-3 group text-left w-full">
                       <span className="font-mono text-xs text-[var(--ink-faint)]">
                         {String(i + 1).padStart(2, "0")}
                       </span>
                       <span
                         className={`text-3xl font-display font-semibold tracking-tight ${
-                          activeLink === id ? "text-[var(--accent)]" : "text-[var(--ink)] group-hover:text-[var(--accent)]"
+                          isHome && activeId === id ? "text-[var(--accent)]" : "text-[var(--ink)] group-hover:text-[var(--accent)]"
                         } transition-colors`}
                       >
                         {text}
                       </span>
-                    </Link>
+                    </button>
                   </motion.div>
                 ))}
               </nav>
