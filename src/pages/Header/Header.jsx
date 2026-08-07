@@ -1,15 +1,10 @@
 import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import {
-  FaHome,
-  FaLaptopCode,
-  FaUser,
-  FaBriefcase,
-  FaGraduationCap,
-  FaCode,
-  FaEnvelope,
-  FaBars,
-  FaTimes,
+  FaHome, FaUser, FaBriefcase, FaLaptopCode, FaCode,
+  FaGraduationCap, FaEnvelope, FaBars, FaTimes,
 } from "react-icons/fa";
+import { ArrowUpRight, Download } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 
 const links = [
@@ -24,94 +19,142 @@ const links = [
 
 export default function Header() {
   const location = useLocation();
-  const [activeLink, setActiveLink] = useState(() => location.pathname.substring(1) || "home");
+  const activeLink = location.pathname.substring(1) || "home";
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [hidden, setHidden] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    setActiveLink(location.pathname.substring(1) || "home");
     setIsMenuOpen(false);
   }, [location]);
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 12);
-    window.addEventListener("scroll", handleScroll);
+    let lastY = window.scrollY;
+    const handleScroll = () => {
+      const y = window.scrollY;
+      setScrolled(y > 12);
+      setHidden(y > lastY && y > 120);
+      lastY = y;
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    document.body.style.overflow = isMenuOpen ? "hidden" : "";
+  }, [isMenuOpen]);
+
   return (
     <>
-      <header
-        className={`fixed top-0 left-0 w-full z-50 bg-[var(--bg)]/90 backdrop-blur-md transition-shadow duration-200 ${
-          scrolled ? "shadow-[0_1px_0_0_var(--border)]" : "border-b border-transparent"
-        }`}
+      <motion.header
+        animate={{ y: hidden && !isMenuOpen ? -96 : 0 }}
+        transition={{ duration: 0.3, ease: "easeInOut" }}
+        className="fixed top-0 left-0 w-full z-50 flex justify-center px-4 pt-4"
       >
-        <div className="max-w-6xl mx-auto px-5 md:px-8 flex items-center justify-between h-16">
-          <Link to="/" className="flex items-center gap-2 group" onClick={() => setActiveLink("home")}>
-            <span className="w-8 h-8 rounded-md bg-[var(--ink)] text-[var(--bg)] flex items-center justify-center font-mono text-xs font-semibold">
+        <div
+          className={`flex items-center gap-1 w-full max-w-3xl rounded-full pl-4 pr-1.5 py-1.5 border transition-all duration-300 ${
+            scrolled
+              ? "bg-[var(--bg)]/85 backdrop-blur-md border-[var(--border)] shadow-[0_4px_20px_-4px_rgba(0,0,0,0.08)]"
+              : "bg-[var(--bg)]/60 backdrop-blur-sm border-transparent"
+          }`}
+        >
+          <Link to="/" className="flex items-center gap-2 mr-1 shrink-0">
+            <span className="w-7 h-7 rounded-full bg-[var(--ink)] text-[var(--bg)] flex items-center justify-center font-mono text-[10px] font-semibold">
               AM
-            </span>
-            <span className="font-display font-semibold text-[var(--ink)] tracking-tight hidden sm:inline">
-              Ashley Motsie
             </span>
           </Link>
 
           {/* Desktop nav */}
-          <nav className="hidden md:flex items-center gap-1">
+          <nav className="hidden md:flex items-center gap-0.5 flex-1">
             {links.map(({ id, text, path }) => (
-              <Link
-                key={id}
-                to={path}
-                onClick={() => setActiveLink(id)}
-                className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-                  activeLink === id
-                    ? "text-[var(--accent)] bg-[var(--accent-soft)]"
-                    : "text-[var(--ink-muted)] hover:text-[var(--ink)]"
-                }`}
-              >
-                {text}
+              <Link key={id} to={path} className="relative px-3.5 py-2 rounded-full text-sm font-medium">
+                {activeLink === id && (
+                  <motion.span
+                    layoutId="nav-pill"
+                    className="absolute inset-0 rounded-full bg-[var(--accent-soft)]"
+                    transition={{ type: "spring", stiffness: 400, damping: 32 }}
+                  />
+                )}
+                <span className={`relative z-10 ${activeLink === id ? "text-[var(--accent)]" : "text-[var(--ink-muted)] hover:text-[var(--ink)]"}`}>
+                  {text}
+                </span>
               </Link>
             ))}
           </nav>
 
+          <a
+            href="/Ashley_K_Motsie_Resume.pdf"
+            download="Ashley_K_Motsie_Resume.pdf"
+            className="hidden md:inline-flex items-center gap-1.5 ml-auto px-4 py-2 rounded-full bg-[var(--ink)] text-[var(--bg)] text-sm font-medium hover:bg-[var(--accent-ink)] transition-colors shrink-0"
+          >
+            Resume
+            <Download className="w-3.5 h-3.5" />
+          </a>
+
           {/* Mobile toggle */}
           <button
             onClick={() => setIsMenuOpen((v) => !v)}
-            className="md:hidden p-2 text-[var(--ink)]"
+            className="md:hidden ml-auto p-2.5 rounded-full text-[var(--ink)] hover:bg-[var(--surface-2)]"
             aria-label="Toggle menu"
           >
-            {isMenuOpen ? <FaTimes size={18} /> : <FaBars size={18} />}
+            {isMenuOpen ? <FaTimes size={16} /> : <FaBars size={16} />}
           </button>
         </div>
+      </motion.header>
 
-        {/* Mobile menu */}
-        <div
-          className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out border-t border-[var(--border)] ${
-            isMenuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0 border-t-0"
-          }`}
-        >
-          <div className="px-5 py-3 flex flex-col gap-1 bg-[var(--bg)]">
-            {links.map(({ id, icon: Icon, text, path }) => (
-              <Link
-                key={id}
-                to={path}
-                onClick={() => setActiveLink(id)}
-                className={`flex items-center gap-3 px-3 py-2.5 rounded-md text-sm font-medium transition-colors ${
-                  activeLink === id
-                    ? "text-[var(--accent)] bg-[var(--accent-soft)]"
-                    : "text-[var(--ink-muted)] hover:text-[var(--ink)]"
-                }`}
+      {/* Mobile full-screen menu */}
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="fixed inset-0 z-40 bg-[var(--bg)] md:hidden"
+          >
+            <div className="h-full flex flex-col justify-center px-8">
+              <nav className="flex flex-col gap-1">
+                {links.map(({ id, text, path }, i) => (
+                  <motion.div
+                    key={id}
+                    initial={{ opacity: 0, x: -12 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.3, delay: i * 0.04 }}
+                  >
+                    <Link
+                      to={path}
+                      className="flex items-baseline gap-4 py-3 group"
+                    >
+                      <span className="font-mono text-xs text-[var(--ink-faint)]">
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                      <span
+                        className={`text-3xl font-display font-semibold tracking-tight ${
+                          activeLink === id ? "text-[var(--accent)]" : "text-[var(--ink)] group-hover:text-[var(--accent)]"
+                        } transition-colors`}
+                      >
+                        {text}
+                      </span>
+                    </Link>
+                  </motion.div>
+                ))}
+              </nav>
+
+              <a
+                href="/Ashley_K_Motsie_Resume.pdf"
+                download="Ashley_K_Motsie_Resume.pdf"
+                className="mt-10 inline-flex items-center gap-2 self-start px-5 py-3 rounded-full bg-[var(--ink)] text-[var(--bg)] font-medium text-sm"
               >
-                <Icon className="text-base" />
-                {text}
-              </Link>
-            ))}
-          </div>
-        </div>
-      </header>
+                Download resume
+                <ArrowUpRight className="w-4 h-4" />
+              </a>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Spacer for fixed header */}
-      <div className="h-16" />
+      <div className="h-20" />
     </>
   );
 }
