@@ -163,7 +163,7 @@ export default function EducationSection() {
   return (
     <section className="bg-[var(--bg)] text-[var(--ink)] py-20 md:py-28">
       <div className="max-w-6xl mx-auto px-5 md:px-8">
-        <span className="eyebrow">// education</span>
+        <span className="eyebrow">{"// education"}</span>
         <h1 className="mt-3 text-3xl md:text-4xl font-bold tracking-tight flex items-center gap-3">
           <GraduationCap className="w-7 h-7 text-[var(--accent)]" />
           Education & certifications
@@ -199,7 +199,7 @@ export default function EducationSection() {
 
         {/* Certifications */}
         <div className="mt-24">
-          <span className="eyebrow">// certifications</span>
+          <span className="eyebrow">{"// certifications"}</span>
           <h2 className="mt-3 text-2xl md:text-3xl font-bold tracking-tight flex items-center gap-3">
             <Award className="w-6 h-6 text-[var(--accent)]" />
             Certifications

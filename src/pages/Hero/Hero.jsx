@@ -7,7 +7,7 @@ import { FlipWords } from "@/components/ui/flip-words";
 const codeLines = [
   'const ashley = {',
   '  name:     "Ashley K Motsie",',
-  '  role:     "Software Developer",',
+  '  role:     "Software Developer & AI Engineer",',
   '  location: "Rustenburg, South Africa",',
   '  exp:      "3+ years",',
   '  stack: [',
@@ -89,7 +89,7 @@ export default function Hero() {
         <div className="max-w-6xl mx-auto w-full grid lg:grid-cols-2 gap-14 lg:gap-10 items-center">
           {/* Left — text */}
           <div className="animate-fade-up">
-            <span className="eyebrow">// hello world</span>
+            <span className="eyebrow">{"// hello world"}</span>
 
             <h1 className="mt-4 text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.05]">
               I'm Ashley
@@ -102,9 +102,9 @@ export default function Hero() {
             </div>
 
             <p className="mt-5 max-w-md text-[var(--ink-muted)] leading-relaxed">
-              I build full-stack web applications and AI-powered features —
-              from database schema to shipped product, based in Rustenburg,
-              South Africa.
+              I build production-ready web apps and AI-powered tools.
+              Passionate about clean code, great UX, and shipping things that
+              work — based in Rustenburg, South Africa.
             </p>
 
             <div className="mt-9 flex flex-wrap gap-3">

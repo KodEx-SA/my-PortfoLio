@@ -79,7 +79,7 @@ export default function Contact() {
   return (
     <main className="bg-[var(--bg)] text-[var(--ink)] min-h-screen py-20 md:py-28">
       <div className="max-w-5xl mx-auto px-5 md:px-8">
-        <span className="eyebrow">// contact</span>
+        <span className="eyebrow">{"// contact"}</span>
         <h1 className="mt-3 text-3xl md:text-4xl font-bold tracking-tight">
           Let's work together
         </h1>

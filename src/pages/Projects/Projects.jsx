@@ -1,6 +1,6 @@
 import { ReactLenis } from "lenis/react";
 import { useTransform, motion, useScroll } from "framer-motion";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import PropTypes from "prop-types";
 import AIAssistantImg from "@/assets/img/AI-Assistant.png";
 import GautengRentalsImg from "@/assets/img/gauteng-rentals.jpg";
@@ -11,6 +11,18 @@ import SasboImg from "@/assets/img/sasbo.jpeg";
 import { Github, Globe, ArrowUpRight, Code2 } from "lucide-react";
 
 const projects = [
+  {
+    title: "Trading-R1 Trace Market",
+    description:
+      "A reasoning-trace marketplace built on Arc. AI agents generate structured investment theses via the TradingAgents framework, each trace is pinned to IPFS and hashed on-chain, and users stake USDC on which reasoning patterns converge to profit.",
+    src: "",
+    tags: ["Arc Testnet", "Web3", "AI", "Finance"],
+    stack: ["Next.js 15", "TypeScript", "Wagmi + RainbowKit", "Groq", "Foundry"],
+    githubLink: "https://github.com/KodEx-SA/trading-r1",
+    liveLink: "https://trading-r1-trace-market.vercel.app/",
+    status: "Live",
+    year: "2026",
+  },
   {
     title: "Generative AI Chatbot",
     description:
@@ -108,13 +120,13 @@ export default function Projects() {
     <ReactLenis root>
       <main className="bg-[var(--bg)] text-[var(--ink)]" ref={container}>
         <section className="max-w-6xl mx-auto px-5 md:px-8 pt-20 pb-14">
-          <span className="eyebrow">// projects</span>
+          <span className="eyebrow">{"// projects"}</span>
           <h1 className="mt-3 text-3xl md:text-4xl font-bold tracking-tight">
             Featured projects
           </h1>
           <p className="mt-3 text-[var(--ink-muted)] max-w-xl">
-            {projects.length} live projects across AI, e-commerce, hospitality,
-            and events.
+            {projects.length} featured projects across AI, Web3, e-commerce,
+            hospitality, and events.
           </p>
         </section>
 

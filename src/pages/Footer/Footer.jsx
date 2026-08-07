@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Github, Linkedin, Mail } from "lucide-react";
+import { Github, Linkedin, Twitter, Mail } from "lucide-react";
 import LogoImage from "@/assets/images/logo_images/Logo.png";
 
 export default function Footer() {
@@ -17,7 +17,8 @@ export default function Footer() {
 
   const socialLinks = [
     { name: "GitHub", icon: Github, url: "https://github.com/KodEx-SA" },
-    { name: "LinkedIn", icon: Linkedin, url: "https://www.linkedin.com/in/ashley-k-motsie-718686263/" },
+    { name: "LinkedIn", icon: Linkedin, url: "https://linkedin.com/in/ashley-motsie" },
+    { name: "Twitter", icon: Twitter, url: "https://twitter.com/ashley_motsie" },
     { name: "Email", icon: Mail, url: "mailto:motsieashley31@gmail.com" },
   ];
 
