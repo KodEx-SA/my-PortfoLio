@@ -14,6 +14,7 @@ import {
   ChevronRight,
   ZoomIn,
 } from "lucide-react";
+import { SectionHeading } from "@/components/ui/section-heading";
 import CertItEssentials from "@/assets/certificates/cert-it-essentials.jpeg";
 import CertCybersecurity from "@/assets/certificates/cert-cybersecurity.jpeg";
 import CertItCompletion from "@/assets/certificates/cert-it-completion.jpeg";
@@ -163,11 +164,7 @@ export default function EducationSection() {
   return (
     <section id="education" className="bg-[var(--bg)] text-[var(--ink)] py-20 md:py-28">
       <div className="max-w-6xl mx-auto px-5 md:px-8">
-        <span className="eyebrow">{"// education"}</span>
-        <h1 className="mt-3 text-3xl md:text-4xl font-bold tracking-tight flex items-center gap-3">
-          <GraduationCap className="w-7 h-7 text-[var(--accent)]" />
-          Education & certifications
-        </h1>
+        <SectionHeading eyebrow={"// education"} title="Education & certifications" icon={GraduationCap} />
 
         {/* Education timeline */}
         <div className="mt-10 grid gap-5 md:grid-cols-2">
@@ -199,11 +196,7 @@ export default function EducationSection() {
 
         {/* Certifications */}
         <div className="mt-24">
-          <span className="eyebrow">{"// certifications"}</span>
-          <h2 className="mt-3 text-2xl md:text-3xl font-bold tracking-tight flex items-center gap-3">
-            <Award className="w-6 h-6 text-[var(--accent)]" />
-            Certifications
-          </h2>
+          <SectionHeading eyebrow={"// certifications"} title="Certifications" icon={Award} level={2} />
 
           <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {certifications.map((cert) => {

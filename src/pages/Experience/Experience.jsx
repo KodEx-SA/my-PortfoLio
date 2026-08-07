@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Network, Code2, Cpu, MapPin, Briefcase, Quote, Star } from "lucide-react";
+import { SectionHeading } from "@/components/ui/section-heading";
 
 const experiences = [
   {
@@ -110,14 +111,12 @@ export default function ExperienceSection() {
   return (
     <section id="experience" className="bg-[var(--bg)] text-[var(--ink)] py-20 md:py-28">
       <div className="max-w-6xl mx-auto px-5 md:px-8">
-        <span className="eyebrow">{"// experience"}</span>
-        <h1 className="mt-3 text-3xl md:text-4xl font-bold tracking-tight flex items-center gap-3">
-          <Briefcase className="w-7 h-7 text-[var(--accent)]" />
-          Where I've worked
-        </h1>
-        <p className="mt-2 text-[var(--ink-muted)] max-w-xl">
-          1 active role, 2 past roles.
-        </p>
+        <SectionHeading
+          eyebrow={"// experience"}
+          title="Where I've worked"
+          icon={Briefcase}
+          description="1 active role, 2 past roles."
+        />
 
         <div className="mt-10 relative">
           {/* Timeline connector — desktop only */}
@@ -141,10 +140,7 @@ export default function ExperienceSection() {
 
         {/* Testimonials */}
         <div className="mt-24">
-          <span className="eyebrow">{"// what people say"}</span>
-          <h2 className="mt-3 text-2xl md:text-3xl font-bold tracking-tight">
-            Client feedback
-          </h2>
+          <SectionHeading eyebrow={"// what people say"} title="Client feedback" level={2} />
 
           <div className="mt-10 grid gap-5 md:grid-cols-3">
             {testimonials.map((t) => (

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Send, MapPin, Mail, MessageSquare, Github, Linkedin, ArrowUpRight, CheckCircle2 } from "lucide-react";
 import { motion } from "framer-motion";
+import { SectionHeading } from "@/components/ui/section-heading";
 
 const contactCards = [
   {
@@ -110,13 +111,11 @@ export default function Contact() {
   return (
     <section id="contact" className="bg-[var(--bg)] text-[var(--ink)] py-20 md:py-28">
       <div className="max-w-4xl mx-auto px-5 md:px-8">
-        <span className="eyebrow">{"// contact"}</span>
-        <h1 className="mt-3 text-3xl md:text-4xl font-bold tracking-tight">
-          Let's work together
-        </h1>
-        <p className="mt-3 text-[var(--ink-muted)] max-w-xl">
-          Have a project in mind? Send a message and I'll get back to you soon.
-        </p>
+        <SectionHeading
+          eyebrow={"// contact"}
+          title="Let's work together"
+          description="Have a project in mind? Send a message and I'll get back to you soon."
+        />
 
         {/* Contact cards */}
         <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">

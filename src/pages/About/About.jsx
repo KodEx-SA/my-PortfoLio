@@ -11,6 +11,7 @@ import {
 import GitHubStats from "@/components/GitHubStats";
 import ErrorBoundary from "@/components/ErrorBoundary";
 import { CountUp } from "@/components/ui/count-up";
+import { SectionHeading } from "@/components/ui/section-heading";
 
 const services = [
   {
@@ -54,10 +55,7 @@ export default function About() {
   return (
     <section id="about" className="bg-[var(--bg)] text-[var(--ink)] py-20 md:py-28">
       <div className="max-w-6xl mx-auto px-5 md:px-8">
-        <span className="eyebrow">{"// about"}</span>
-        <h1 className="mt-3 text-3xl md:text-4xl font-bold tracking-tight">
-          A bit about me
-        </h1>
+        <SectionHeading eyebrow={"// about"} title="A bit about me" />
 
         {/* Intro */}
         <div className="mt-12 grid gap-10 lg:grid-cols-[280px_1fr] items-start">
@@ -116,14 +114,12 @@ export default function About() {
 
         {/* What I do */}
         <div className="mt-24">
-          <span className="eyebrow">{"// what I do"}</span>
-          <h2 className="mt-3 text-2xl md:text-3xl font-bold tracking-tight">
-            Services & expertise
-          </h2>
-          <p className="mt-2 text-[var(--ink-muted)] max-w-xl">
-            From idea to deployment — covering the full stack of modern
-            software development.
-          </p>
+          <SectionHeading
+            eyebrow={"// what I do"}
+            title="Services & expertise"
+            description="From idea to deployment — covering the full stack of modern software development."
+            level={2}
+          />
 
           <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {services.map((s) => {

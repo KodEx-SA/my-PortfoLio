@@ -36,7 +36,7 @@ function TerminalCard() {
   const done = visible >= codeLines.length;
 
   return (
-    <div className="relative w-full rounded-2xl overflow-hidden border border-white/10 bg-[var(--ink)] font-mono shadow-xl">
+    <div className="relative w-full rounded-2xl overflow-hidden border border-white/10 bg-[var(--chrome)] font-mono shadow-xl">
       {/* Title bar */}
       <div className="flex items-center gap-3 px-4 py-3 bg-black/20 border-b border-white/10 select-none">
         <div className="flex items-center gap-1.5">

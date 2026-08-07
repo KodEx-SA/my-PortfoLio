@@ -20,6 +20,11 @@
   --accent-2-soft: #f2e7fd;
   --gradient-brand: linear-gradient(120deg, var(--accent), var(--accent-2));
 
+  /* Fixed "always dark" chrome — for elements like the terminal card that
+     should stay dark regardless of light/dark theme. Never flips. */
+  --chrome: #15161a;
+  --chrome-text: #fcfcfa;
+
   --font-display: "Space Grotesk", "Inter", sans-serif;
   --font-body: "Inter", sans-serif;
   --font-mono: "JetBrains Mono", monospace;
@@ -47,6 +52,27 @@
   --radius: 0.5rem;
 }
 
+/* ============================================================
+   DARK THEME
+   Same tokens, inverted. Because every component reads colour
+   through these variables (never raw Tailwind colour classes),
+   flipping this block re-themes the whole site.
+   ============================================================ */
+.dark {
+  --bg: #0b0c0f;
+  --surface: #16181d;
+  --surface-2: #1e2127;
+  --border: #2a2d34;
+  --ink: #f3f3f0;
+  --ink-muted: #a3a6b0;
+  --ink-faint: #686b74;
+  --accent: #6d8cff;
+  --accent-ink: #a9bcff;
+  --accent-soft: rgba(109, 140, 255, 0.14);
+  --accent-2: #b57cf5;
+  --accent-2-soft: rgba(181, 124, 245, 0.14);
+}
+
 * {
   border-color: var(--border);
 }
@@ -63,6 +89,7 @@ body {
   background-color: var(--bg);
   color: var(--ink);
   font-family: var(--font-body);
+  transition: background-color 0.25s ease, color 0.25s ease;
 }
 
 h1, h2, h3, h4, h5, h6 {

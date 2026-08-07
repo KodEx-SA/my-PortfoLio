@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import IconCloudDemo from "@/components/globe";
+import { SectionHeading } from "@/components/ui/section-heading";
 import { Code2, Database, Cpu, Cloud, Paintbrush, Server } from "lucide-react";
 import {
   FaReact, FaNodeJs, FaPython, FaDocker, FaGitAlt, FaFigma, FaLinux,
@@ -124,13 +125,11 @@ export default function SkillsSection() {
   return (
     <section id="skills" className="bg-[var(--bg)] text-[var(--ink)] py-20 md:py-28">
       <section className="max-w-6xl mx-auto px-5 md:px-8">
-        <span className="eyebrow">{"// skills"}</span>
-        <h1 className="mt-3 text-3xl md:text-4xl font-bold tracking-tight">
-          Skills & technologies
-        </h1>
-        <p className="mt-3 text-[var(--ink-muted)] max-w-xl">
-          The tools and technologies I use to build web applications.
-        </p>
+        <SectionHeading
+          eyebrow={"// skills"}
+          title="Skills & technologies"
+          description="The tools and technologies I use to build web applications."
+        />
 
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}

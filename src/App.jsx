@@ -1,19 +1,26 @@
 import "./assets/css/index.css";
-import { useEffect } from "react";
+import { lazy, Suspense, useEffect } from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import { ReactLenis } from "lenis/react";
 
 import Header from "./pages/Header/Header";
 import Hero from "./pages/Hero/Hero";
-import About from "./pages/About/About";
-import Projects from "./pages/Projects/Projects";
-import Skills from "./pages/Skills/Skills";
-import Experience from "./pages/Experience/Experience";
-import Education from "./pages/Education/Education";
-import Contact from "./pages/Contact/Contact";
 import Footer from "./pages/Footer/Footer";
 import AIChatbot from "./components/AIChatbot";
 import ScrollUtils from "./components/ScrollUtils";
+import { SectionSkeleton } from "./components/ui/section-skeleton";
+
+// Hero renders above the fold on first paint, so it's the only section
+// bundled eagerly. Everything below the fold is code-split into its own
+// chunk and streamed in as the browser has spare capacity — this keeps
+// the initial JS payload (and Time-to-Interactive) small even though the
+// whole site now lives on one scrolling page.
+const About = lazy(() => import("./pages/About/About"));
+const Projects = lazy(() => import("./pages/Projects/Projects"));
+const Skills = lazy(() => import("./pages/Skills/Skills"));
+const Experience = lazy(() => import("./pages/Experience/Experience"));
+const Education = lazy(() => import("./pages/Education/Education"));
+const Contact = lazy(() => import("./pages/Contact/Contact"));
 
 // Old routes (from the previous multi-page version) redirect to the
 // matching anchor on the single page, so bookmarked/shared links still work.
@@ -25,21 +32,25 @@ function AnchorRedirect({ hash }) {
     requestAnimationFrame(() => {
       document.getElementById(hash)?.scrollIntoView({ behavior: "smooth" });
     });
-  }, [navigate]);
+  }, [navigate, hash]);
   return null;
+}
+
+function LazySection({ children }) {
+  return <Suspense fallback={<SectionSkeleton />}>{children}</Suspense>;
 }
 
 function SinglePage() {
   return (
-    <>
+    <main>
       <Hero />
-      <About />
-      <Projects />
-      <Skills />
-      <Experience />
-      <Education />
-      <Contact />
-    </>
+      <LazySection><About /></LazySection>
+      <LazySection><Projects /></LazySection>
+      <LazySection><Skills /></LazySection>
+      <LazySection><Experience /></LazySection>
+      <LazySection><Education /></LazySection>
+      <LazySection><Contact /></LazySection>
+    </main>
   );
 }
 

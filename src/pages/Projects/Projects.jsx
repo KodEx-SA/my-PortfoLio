@@ -8,6 +8,7 @@ import UbizoiMarketImg from "@/assets/img/ubizo.jpg";
 import IsongCafeImg from "@/assets/img/Isong.jpg";
 import SasboImg from "@/assets/img/sasbo.jpeg";
 import { Github, Globe, ArrowUpRight, Code2 } from "lucide-react";
+import { SectionHeading } from "@/components/ui/section-heading";
 
 const projects = [
   {
@@ -118,14 +119,11 @@ export default function Projects() {
   return (
     <section id="projects" className="relative bg-[var(--bg)] text-[var(--ink)]" ref={container}>
         <section className="max-w-6xl mx-auto px-5 md:px-8 pt-20 pb-14">
-          <span className="eyebrow">{"// projects"}</span>
-          <h1 className="mt-3 text-3xl md:text-4xl font-bold tracking-tight">
-            Featured projects
-          </h1>
-          <p className="mt-3 text-[var(--ink-muted)] max-w-xl">
-            {projects.length} featured projects across AI, Web3, e-commerce,
-            hospitality, and events.
-          </p>
+          <SectionHeading
+            eyebrow={"// projects"}
+            title="Featured projects"
+            description={`${projects.length} featured projects across AI, Web3, e-commerce, hospitality, and events.`}
+          />
         </section>
 
         <section className="pb-24">

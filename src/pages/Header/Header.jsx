@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaBars, FaTimes } from "react-icons/fa";
-import { ArrowUpRight, Download } from "lucide-react";
+import { ArrowUpRight, Download, Sun, Moon } from "lucide-react";
+import { useTheme } from "next-themes";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useActiveSection } from "@/hooks/useActiveSection";
 
@@ -29,6 +30,13 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [hidden, setHidden] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { resolvedTheme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  // Runs once on mount so the theme icon only renders after the client
+  // has resolved the real theme — avoids a flash of the wrong icon.
+  // eslint-disable-next-line react-hooks/set-state-in-effect
+  useEffect(() => setMounted(true), []);
 
   const goTo = (id) => {
     setIsMenuOpen(false);
@@ -94,19 +102,34 @@ export default function Header() {
             ))}
           </nav>
 
+          <button
+            onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
+            className="hidden md:flex ml-auto items-center justify-center w-9 h-9 rounded-full text-[var(--ink-muted)] hover:text-[var(--ink)] hover:bg-[var(--surface-2)] transition-colors shrink-0"
+            aria-label="Toggle theme"
+          >
+            {mounted && resolvedTheme === "dark" ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+          </button>
+
           <a
             href="/Ashley_K_Motsie_Resume.pdf"
             download="Ashley_K_Motsie_Resume.pdf"
-            className="hidden md:inline-flex items-center gap-1.5 ml-auto px-4 py-2 rounded-full bg-[var(--ink)] text-[var(--bg)] text-sm font-medium hover:bg-[var(--accent-ink)] transition-colors shrink-0"
+            className="hidden md:inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-[var(--ink)] text-[var(--bg)] text-sm font-medium hover:bg-[var(--accent-ink)] transition-colors shrink-0"
           >
             Resume
             <Download className="w-3.5 h-3.5" />
           </a>
 
-          {/* Mobile toggle */}
+          {/* Mobile controls */}
+          <button
+            onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
+            className="md:hidden ml-auto p-2.5 rounded-full text-[var(--ink-muted)] hover:bg-[var(--surface-2)]"
+            aria-label="Toggle theme"
+          >
+            {mounted && resolvedTheme === "dark" ? <Sun size={16} /> : <Moon size={16} />}
+          </button>
           <button
             onClick={() => setIsMenuOpen((v) => !v)}
-            className="md:hidden ml-auto p-2.5 rounded-full text-[var(--ink)] hover:bg-[var(--surface-2)]"
+            className="md:hidden p-2.5 rounded-full text-[var(--ink)] hover:bg-[var(--surface-2)]"
             aria-label="Toggle menu"
           >
             {isMenuOpen ? <FaTimes size={16} /> : <FaBars size={16} />}
