@@ -1,4 +1,3 @@
-import { ReactLenis } from "lenis/react";
 import { useTransform, motion, useScroll } from "framer-motion";
 import { useRef } from "react";
 import PropTypes from "prop-types";
@@ -9,6 +8,9 @@ import UbizoiMarketImg from "@/assets/img/ubizo.jpg";
 import IsongCafeImg from "@/assets/img/Isong.jpg";
 import SasboImg from "@/assets/img/sasbo.jpeg";
 import { Github, Globe, ArrowUpRight, Code2 } from "lucide-react";
+import { SectionHeading } from "@/components/ui/section-heading";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 
 const projects = [
   {
@@ -117,17 +119,13 @@ export default function Projects() {
   });
 
   return (
-    <ReactLenis root>
-      <main className="bg-[var(--bg)] text-[var(--ink)]" ref={container}>
+    <section id="projects" className="relative bg-[var(--bg)] text-[var(--ink)]" ref={container}>
         <section className="max-w-6xl mx-auto px-5 md:px-8 pt-20 pb-14">
-          <span className="eyebrow">{"// projects"}</span>
-          <h1 className="mt-3 text-3xl md:text-4xl font-bold tracking-tight">
-            Featured projects
-          </h1>
-          <p className="mt-3 text-[var(--ink-muted)] max-w-xl">
-            {projects.length} featured projects across AI, Web3, e-commerce,
-            hospitality, and events.
-          </p>
+          <SectionHeading
+            eyebrow={"// projects"}
+            title="Featured projects"
+            description={`${projects.length} featured projects across AI, Web3, e-commerce, hospitality, and events.`}
+          />
         </section>
 
         <section className="pb-24">
@@ -145,8 +143,7 @@ export default function Projects() {
             );
           })}
         </section>
-      </main>
-    </ReactLenis>
+      </section>
   );
 }
 
@@ -193,14 +190,9 @@ function Card({ i, title, description, src, tags, stack, status, year, progress,
           {/* Content */}
           <div className="flex-1 p-6 md:p-8 lg:p-10 flex flex-col gap-4">
             <div className="flex items-center gap-2 flex-wrap">
-              <span className="inline-flex items-center gap-1.5 text-[11px] font-mono px-2.5 py-1 rounded-full bg-[var(--accent-soft)] text-[var(--accent)]">
-                <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent)]" />
-                {status}
-              </span>
+              <Badge variant="success" dot>{status}</Badge>
               {stack.map((s) => (
-                <span key={s} className="text-[11px] font-mono px-2 py-1 rounded-full bg-[var(--surface-2)] text-[var(--ink-muted)]">
-                  {s}
-                </span>
+                <Badge key={s} variant="mono" className="rounded-full">{s}</Badge>
               ))}
             </div>
 
@@ -212,9 +204,7 @@ function Card({ i, title, description, src, tags, stack, status, year, progress,
 
             <div className="flex flex-wrap gap-2">
               {tags.map((tag) => (
-                <span key={tag} className="px-2.5 py-1 text-[11px] rounded-md bg-[var(--surface-2)] text-[var(--ink-muted)]">
-                  #{tag}
-                </span>
+                <Badge key={tag} variant="neutral">#{tag}</Badge>
               ))}
             </div>
 
@@ -224,23 +214,20 @@ function Card({ i, title, description, src, tags, stack, status, year, progress,
                   href={liveLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-[var(--ink)] text-[var(--bg)] font-medium text-sm hover:bg-[var(--accent-ink)] transition-colors"
+                  className="btn-gradient inline-flex items-center gap-2 px-5 py-2.5 rounded-lg font-medium text-sm"
                 >
                   <Globe className="w-4 h-4" />
                   Live Demo
                   <ArrowUpRight className="w-3.5 h-3.5" />
                 </a>
               )}
-              <a
-                href={githubLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border border-[var(--border)] text-[var(--ink)] font-medium text-sm hover:border-[var(--ink-faint)] transition-colors"
-              >
-                <Github className="w-4 h-4" />
-                Source
-                <Code2 className="w-3.5 h-3.5 opacity-60" />
-              </a>
+              <Button asChild variant="outline" size="sm">
+                <a href={githubLink} target="_blank" rel="noopener noreferrer">
+                  <Github className="w-4 h-4" />
+                  Source
+                  <Code2 className="w-3.5 h-3.5 opacity-60" />
+                </a>
+              </Button>
             </div>
           </div>
         </div>

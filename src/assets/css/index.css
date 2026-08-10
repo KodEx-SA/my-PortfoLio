@@ -16,32 +16,72 @@
   --accent: #2247e0;
   --accent-ink: #16309e;
   --accent-soft: #e8ecfd;
+  --accent-2: #8b34e0;
+  --accent-2-soft: #f2e7fd;
+  --gradient-brand: linear-gradient(120deg, var(--accent), var(--accent-2));
+
+  /* Fixed "always dark" chrome — for elements like the terminal card that
+     should stay dark regardless of light/dark theme. Never flips. */
+  --chrome: #15161a;
+  --chrome-text: #fcfcfa;
 
   --font-display: "Space Grotesk", "Inter", sans-serif;
   --font-body: "Inter", sans-serif;
   --font-mono: "JetBrains Mono", monospace;
 
-  --color-background: oklch(100% 0 0);
-  --color-foreground: oklch(3.9% 0 0);
-  --color-card: oklch(100% 0 0);
-  --color-card-foreground: oklch(3.9% 0 0);
-  --color-popover: oklch(100% 0 0);
-  --color-popover-foreground: oklch(3.9% 0 0);
-  --color-primary: oklch(9% 0 0);
-  --color-primary-foreground: oklch(98% 0 0);
-  --color-secondary: oklch(96.1% 0 0);
-  --color-secondary-foreground: oklch(9% 0 0);
-  --color-muted: oklch(96.1% 0 0);
-  --color-muted-foreground: oklch(45.1% 0 0);
-  --color-accent: oklch(96.1% 0 0);
-  --color-accent-foreground: oklch(9% 0 0);
-  --color-destructive: oklch(60.2% 0.177 29.233);
-  --color-destructive-foreground: oklch(98% 0 0);
-  --color-border: oklch(89.8% 0 0);
-  --color-input: oklch(89.8% 0 0);
-  --color-ring: oklch(3.9% 0 0);
+  /* Semantic green — used narrowly for "available / current" status,
+     not as decoration. Pairs with the blue/violet brand gradient. */
+  --success: #17875a;
+  --success-soft: #e4f5ec;
+
+  /* shadcn/ui components (Button, Badge, Tooltip, Card) read colour
+     through these — aliasing them to our own tokens means those
+     components re-theme for free whenever .dark toggles, instead of
+     keeping a second, disconnected palette in sync by hand. */
+  --color-background: var(--bg);
+  --color-foreground: var(--ink);
+  --color-card: var(--surface);
+  --color-card-foreground: var(--ink);
+  --color-popover: var(--surface);
+  --color-popover-foreground: var(--ink);
+  --color-primary: var(--ink);
+  --color-primary-foreground: var(--bg);
+  --color-secondary: var(--surface-2);
+  --color-secondary-foreground: var(--ink);
+  --color-muted: var(--surface-2);
+  --color-muted-foreground: var(--ink-muted);
+  --color-accent: var(--accent-soft);
+  --color-accent-foreground: var(--accent-ink);
+  --color-destructive: #dc2626;
+  --color-destructive-foreground: #fff;
+  --color-border: var(--border);
+  --color-input: var(--border);
+  --color-ring: var(--accent);
 
   --radius: 0.5rem;
+}
+
+/* ============================================================
+   DARK THEME
+   Same tokens, inverted. Because every component reads colour
+   through these variables (never raw Tailwind colour classes),
+   flipping this block re-themes the whole site.
+   ============================================================ */
+.dark {
+  --bg: #0b0c0f;
+  --surface: #16181d;
+  --surface-2: #1e2127;
+  --border: #2a2d34;
+  --ink: #f3f3f0;
+  --ink-muted: #a3a6b0;
+  --ink-faint: #686b74;
+  --accent: #6d8cff;
+  --accent-ink: #a9bcff;
+  --accent-soft: rgba(109, 140, 255, 0.14);
+  --accent-2: #b57cf5;
+  --accent-2-soft: rgba(181, 124, 245, 0.14);
+  --success: #34d399;
+  --success-soft: rgba(52, 211, 153, 0.14);
 }
 
 * {
@@ -52,10 +92,48 @@ html {
   scroll-behavior: smooth;
 }
 
+/* ============================================================
+   METEORS + ORBIT — custom Tailwind v4 utilities.
+   Registered via @theme so `animate-meteor` / `animate-orbit`
+   work as ordinary utility classes wherever they're used.
+   ============================================================ */
+@theme {
+  --animate-meteor: meteor 5s linear infinite;
+  --animate-orbit: orbit calc(var(--duration) * 1s) linear infinite;
+}
+
+@keyframes meteor {
+  0% {
+    transform: rotate(var(--angle)) translateX(0);
+    opacity: 1;
+  }
+  70% {
+    opacity: 1;
+  }
+  100% {
+    transform: rotate(var(--angle)) translateX(-500px);
+    opacity: 0;
+  }
+}
+
+@keyframes orbit {
+  0% {
+    transform: rotate(calc(var(--angle) * 1deg)) translateY(calc(var(--radius) * 1px)) rotate(calc(var(--angle) * -1deg));
+  }
+  100% {
+    transform: rotate(calc(var(--angle) * 1deg + 360deg)) translateY(calc(var(--radius) * 1px)) rotate(calc((var(--angle) * -1deg) - 360deg));
+  }
+}
+
+section[id] {
+  scroll-margin-top: 5.5rem;
+}
+
 body {
   background-color: var(--bg);
   color: var(--ink);
   font-family: var(--font-body);
+  transition: background-color 0.25s ease, color 0.25s ease;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -85,10 +163,57 @@ h1, h2, h3, h4, h5, h6 {
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 1rem;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
 }
 
 .card-surface:hover {
   border-color: var(--ink-faint);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px -12px rgba(20, 20, 30, 0.14);
+}
+
+/* ============================================================
+   BOLD VISUAL ENERGY — used sparingly: gradient text, glow
+   blobs behind key sections, and a scroll progress indicator.
+   ============================================================ */
+.text-gradient {
+  background: var(--gradient-brand);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.btn-gradient {
+  background: var(--gradient-brand);
+  color: white;
+  transition: filter 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 8px 24px -8px rgba(139, 52, 224, 0.35);
+}
+.btn-gradient:hover {
+  filter: brightness(1.08);
+  transform: translateY(-1px) scale(1.02);
+}
+.btn-gradient:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.glow-blob {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(80px);
+  opacity: 0.35;
+  pointer-events: none;
+  z-index: 0;
+}
+
+#scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: var(--gradient-brand);
+  z-index: 60;
+  transform-origin: left;
 }
 
 /* Subtle, restrained motion helpers */

@@ -8,8 +8,24 @@ import {
   Database,
   CheckCircle,
 } from "lucide-react";
+import { FaReact, FaNodeJs, FaPython, FaDocker } from "react-icons/fa";
+import { SiTypescript, SiNextdotjs } from "react-icons/si";
 import GitHubStats from "@/components/GitHubStats";
 import ErrorBoundary from "@/components/ErrorBoundary";
+import { CountUp } from "@/components/ui/count-up";
+import { SectionHeading } from "@/components/ui/section-heading";
+import { OrbitingCircles } from "@/components/ui/orbiting-circles";
+
+const orbitIconInner = [
+  { Icon: FaReact, color: "#61DAFB" },
+  { Icon: SiNextdotjs, color: "var(--ink)" },
+  { Icon: SiTypescript, color: "#3178C6" },
+];
+const orbitIconOuter = [
+  { Icon: FaNodeJs, color: "#339933" },
+  { Icon: FaPython, color: "#3776AB" },
+  { Icon: FaDocker, color: "#2496ED" },
+];
 
 const services = [
   {
@@ -51,24 +67,39 @@ const services = [
 
 export default function About() {
   return (
-    <section className="bg-[var(--bg)] text-[var(--ink)] py-20 md:py-28">
+    <section id="about" className="bg-[var(--bg)] text-[var(--ink)] py-20 md:py-28">
       <div className="max-w-6xl mx-auto px-5 md:px-8">
-        <span className="eyebrow">{"// about"}</span>
-        <h1 className="mt-3 text-3xl md:text-4xl font-bold tracking-tight">
-          A bit about me
-        </h1>
+        <SectionHeading eyebrow={"// about"} title="A bit about me" />
 
         {/* Intro */}
-        <div className="mt-12 grid gap-10 lg:grid-cols-[280px_1fr] items-start">
-          <motion.img
+        <div className="mt-12 grid gap-10 lg:grid-cols-[320px_1fr] items-start">
+          <motion.div
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            src={HeroImg}
-            alt="Ashley Motsie"
-            className="rounded-2xl w-full max-w-[280px] object-cover border border-[var(--border)]"
-          />
+            className="relative w-full aspect-square max-w-[320px] mx-auto flex items-center justify-center"
+          >
+            <OrbitingCircles radius={95} duration={16} iconSize={32}>
+              {orbitIconInner.map(({ Icon, color }, i) => (
+                <div key={i} className="w-full h-full rounded-full bg-[var(--surface)] border border-[var(--border)] flex items-center justify-center shadow-sm">
+                  <Icon className="w-4 h-4" style={{ color }} />
+                </div>
+              ))}
+            </OrbitingCircles>
+            <OrbitingCircles radius={135} duration={24} iconSize={28} reverse>
+              {orbitIconOuter.map(({ Icon, color }, i) => (
+                <div key={i} className="w-full h-full rounded-full bg-[var(--surface)] border border-[var(--border)] flex items-center justify-center shadow-sm">
+                  <Icon className="w-3.5 h-3.5" style={{ color }} />
+                </div>
+              ))}
+            </OrbitingCircles>
+            <img
+              src={HeroImg}
+              alt="Ashley Motsie"
+              className="relative z-10 w-[170px] h-[170px] rounded-full object-cover border-2 border-[var(--bg)] shadow-lg"
+            />
+          </motion.div>
 
           <motion.div
             initial={{ opacity: 0, y: 16 }}
@@ -92,15 +123,21 @@ export default function About() {
 
             <div className="grid grid-cols-3 gap-3 pt-2 max-w-sm">
               <div className="card-surface text-center py-4">
-                <div className="text-xl font-bold text-[var(--accent)]">3+</div>
+                <div className="text-xl font-bold text-[var(--accent)]">
+                  <CountUp value={3} suffix="+" />
+                </div>
                 <div className="text-xs text-[var(--ink-muted)] mt-1">Years experience</div>
               </div>
               <div className="card-surface text-center py-4">
-                <div className="text-xl font-bold text-[var(--accent)]">15+</div>
+                <div className="text-xl font-bold text-[var(--accent)]">
+                  <CountUp value={15} suffix="+" />
+                </div>
                 <div className="text-xs text-[var(--ink-muted)] mt-1">Projects shipped</div>
               </div>
               <div className="card-surface text-center py-4">
-                <div className="text-xl font-bold text-[var(--accent)]">4</div>
+                <div className="text-xl font-bold text-[var(--accent)]">
+                  <CountUp value={4} />
+                </div>
                 <div className="text-xs text-[var(--ink-muted)] mt-1">Certifications</div>
               </div>
             </div>
@@ -109,14 +146,12 @@ export default function About() {
 
         {/* What I do */}
         <div className="mt-24">
-          <span className="eyebrow">{"// what I do"}</span>
-          <h2 className="mt-3 text-2xl md:text-3xl font-bold tracking-tight">
-            Services & expertise
-          </h2>
-          <p className="mt-2 text-[var(--ink-muted)] max-w-xl">
-            From idea to deployment — covering the full stack of modern
-            software development.
-          </p>
+          <SectionHeading
+            eyebrow={"// what I do"}
+            title="Services & expertise"
+            description="From idea to deployment — covering the full stack of modern software development."
+            level={2}
+          />
 
           <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {services.map((s) => {

@@ -1,117 +1,164 @@
 import { useState, useEffect } from "react";
-import {
-  FaHome,
-  FaLaptopCode,
-  FaUser,
-  FaBriefcase,
-  FaGraduationCap,
-  FaCode,
-  FaEnvelope,
-  FaBars,
-  FaTimes,
-} from "react-icons/fa";
-import { Link, useLocation } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
+import { FaBars, FaTimes } from "react-icons/fa";
+import { ArrowUpRight, Download } from "lucide-react";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useActiveSection } from "@/hooks/useActiveSection";
+import { AnimatedThemeToggler } from "@/components/ui/animated-theme-toggler";
 
 const links = [
-  { id: "home", icon: FaHome, text: "Home", path: "/" },
-  { id: "about", icon: FaUser, text: "About", path: "/about" },
-  { id: "projects", icon: FaLaptopCode, text: "Projects", path: "/projects" },
-  { id: "skills", icon: FaCode, text: "Skills", path: "/skills" },
-  { id: "experience", icon: FaBriefcase, text: "Experience", path: "/experience" },
-  { id: "education", icon: FaGraduationCap, text: "Education", path: "/education" },
-  { id: "contact", icon: FaEnvelope, text: "Contact", path: "/contact" },
+  { id: "hero", text: "Home" },
+  { id: "about", text: "About" },
+  { id: "projects", text: "Projects" },
+  { id: "skills", text: "Skills" },
+  { id: "experience", text: "Experience" },
+  { id: "education", text: "Education" },
+  { id: "contact", text: "Contact" },
 ];
+
+const sectionIds = links.map((l) => l.id);
+
+function scrollToSection(id) {
+  document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+}
 
 export default function Header() {
   const location = useLocation();
-  const [activeLink, setActiveLink] = useState(() => location.pathname.substring(1) || "home");
+  const navigate = useNavigate();
+  const isHome = location.pathname === "/";
+  const activeId = useActiveSection(sectionIds);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
-  useEffect(() => {
-    setActiveLink(location.pathname.substring(1) || "home");
+  const goTo = (id) => {
     setIsMenuOpen(false);
-  }, [location]);
+    if (isHome) {
+      scrollToSection(id);
+    } else {
+      navigate("/");
+      requestAnimationFrame(() => setTimeout(() => scrollToSection(id), 50));
+    }
+  };
 
+  // Only tracks scroll position for the blur/border transition — the
+  // nav itself always stays on screen, it never hides on scroll.
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 12);
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    document.body.style.overflow = isMenuOpen ? "hidden" : "";
+  }, [isMenuOpen]);
+
   return (
     <>
-      <header
-        className={`fixed top-0 left-0 w-full z-50 bg-[var(--bg)]/90 backdrop-blur-md transition-shadow duration-200 ${
-          scrolled ? "shadow-[0_1px_0_0_var(--border)]" : "border-b border-transparent"
-        }`}
-      >
-        <div className="max-w-6xl mx-auto px-5 md:px-8 flex items-center justify-between h-16">
-          <Link to="/" className="flex items-center gap-2 group" onClick={() => setActiveLink("home")}>
-            <span className="w-8 h-8 rounded-md bg-[var(--ink)] text-[var(--bg)] flex items-center justify-center font-mono text-xs font-semibold">
+      <header className="fixed top-0 left-0 w-full z-50 flex justify-center px-4 pt-4">
+        <div
+          className={`flex items-center gap-1 w-full max-w-3xl rounded-full pl-4 pr-1.5 py-1.5 border transition-all duration-300 ${
+            scrolled
+              ? "bg-[var(--bg)]/85 backdrop-blur-md border-[var(--border)] shadow-[0_4px_20px_-4px_rgba(0,0,0,0.08)]"
+              : "bg-[var(--bg)]/60 backdrop-blur-sm border-transparent"
+          }`}
+        >
+          <button onClick={() => goTo("hero")} className="flex items-center gap-2 mr-1 shrink-0">
+            <span className="w-7 h-7 rounded-full flex items-center justify-center font-mono text-[10px] font-semibold text-white" style={{ background: "var(--gradient-brand)" }}>
               AM
             </span>
-            <span className="font-display font-semibold text-[var(--ink)] tracking-tight hidden sm:inline">
-              Ashley Motsie
-            </span>
-          </Link>
+          </button>
 
           {/* Desktop nav */}
-          <nav className="hidden md:flex items-center gap-1">
-            {links.map(({ id, text, path }) => (
-              <Link
-                key={id}
-                to={path}
-                onClick={() => setActiveLink(id)}
-                className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-                  activeLink === id
-                    ? "text-[var(--accent)] bg-[var(--accent-soft)]"
-                    : "text-[var(--ink-muted)] hover:text-[var(--ink)]"
-                }`}
-              >
-                {text}
-              </Link>
+          <nav className="hidden md:flex items-center gap-0.5 flex-1">
+            {links.map(({ id, text }) => (
+              <button key={id} onClick={() => goTo(id)} className="relative px-3.5 py-2 rounded-full text-sm font-medium">
+                {isHome && activeId === id && (
+                  <motion.span
+                    layoutId="nav-pill"
+                    className="absolute inset-0 rounded-full bg-[var(--accent-soft)]"
+                    transition={{ type: "spring", stiffness: 400, damping: 32 }}
+                  />
+                )}
+                <span className={`relative z-10 ${isHome && activeId === id ? "text-[var(--accent)]" : "text-[var(--ink-muted)] hover:text-[var(--ink)]"}`}>
+                  {text}
+                </span>
+              </button>
             ))}
           </nav>
 
-          {/* Mobile toggle */}
+          <AnimatedThemeToggler className="hidden md:flex items-center justify-center w-9 h-9 rounded-full text-[var(--ink-muted)] hover:text-[var(--ink)] hover:bg-[var(--surface-2)] transition-colors shrink-0" />
+
+          <a
+            href="/Ashley_K_Motsie_Resume.pdf"
+            download="Ashley_K_Motsie_Resume.pdf"
+            className="hidden md:inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-[var(--ink)] text-[var(--bg)] text-sm font-medium hover:bg-[var(--accent-ink)] transition-colors shrink-0"
+          >
+            Resume
+            <Download className="w-3.5 h-3.5" />
+          </a>
+
+          {/* Mobile controls */}
+          <AnimatedThemeToggler className="md:hidden ml-auto p-2.5 rounded-full text-[var(--ink-muted)] hover:bg-[var(--surface-2)]" />
           <button
             onClick={() => setIsMenuOpen((v) => !v)}
-            className="md:hidden p-2 text-[var(--ink)]"
+            className="md:hidden p-2.5 rounded-full text-[var(--ink)] hover:bg-[var(--surface-2)]"
             aria-label="Toggle menu"
           >
-            {isMenuOpen ? <FaTimes size={18} /> : <FaBars size={18} />}
+            {isMenuOpen ? <FaTimes size={16} /> : <FaBars size={16} />}
           </button>
-        </div>
-
-        {/* Mobile menu */}
-        <div
-          className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out border-t border-[var(--border)] ${
-            isMenuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0 border-t-0"
-          }`}
-        >
-          <div className="px-5 py-3 flex flex-col gap-1 bg-[var(--bg)]">
-            {links.map(({ id, icon: Icon, text, path }) => (
-              <Link
-                key={id}
-                to={path}
-                onClick={() => setActiveLink(id)}
-                className={`flex items-center gap-3 px-3 py-2.5 rounded-md text-sm font-medium transition-colors ${
-                  activeLink === id
-                    ? "text-[var(--accent)] bg-[var(--accent-soft)]"
-                    : "text-[var(--ink-muted)] hover:text-[var(--ink)]"
-                }`}
-              >
-                <Icon className="text-base" />
-                {text}
-              </Link>
-            ))}
-          </div>
         </div>
       </header>
 
+      {/* Mobile full-screen menu */}
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="fixed inset-0 z-40 bg-[var(--bg)] md:hidden"
+          >
+            <div className="h-full flex flex-col justify-center px-8">
+              <nav className="flex flex-col gap-1">
+                {links.map(({ id, text }, i) => (
+                  <motion.div
+                    key={id}
+                    initial={{ opacity: 0, x: -12 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.3, delay: i * 0.04 }}
+                  >
+                    <button onClick={() => goTo(id)} className="flex items-baseline gap-4 py-3 group text-left w-full">
+                      <span className="font-mono text-xs text-[var(--ink-faint)]">
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                      <span
+                        className={`text-3xl font-display font-semibold tracking-tight ${
+                          isHome && activeId === id ? "text-[var(--accent)]" : "text-[var(--ink)] group-hover:text-[var(--accent)]"
+                        } transition-colors`}
+                      >
+                        {text}
+                      </span>
+                    </button>
+                  </motion.div>
+                ))}
+              </nav>
+
+              <a
+                href="/Ashley_K_Motsie_Resume.pdf"
+                download="Ashley_K_Motsie_Resume.pdf"
+                className="mt-10 inline-flex items-center gap-2 self-start px-5 py-3 rounded-full bg-[var(--ink)] text-[var(--bg)] font-medium text-sm"
+              >
+                Download resume
+                <ArrowUpRight className="w-4 h-4" />
+              </a>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       {/* Spacer for fixed header */}
-      <div className="h-16" />
+      <div className="h-20" />
     </>
   );
 }

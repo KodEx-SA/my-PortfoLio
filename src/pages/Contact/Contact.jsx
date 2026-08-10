@@ -1,6 +1,39 @@
 import { useState } from "react";
-import { Send, MapPin, Mail, MessageSquare } from "lucide-react";
+import { Send, MapPin, Mail, MessageSquare, Github, Linkedin, ArrowUpRight, CheckCircle2 } from "lucide-react";
 import { motion } from "framer-motion";
+import { SectionHeading } from "@/components/ui/section-heading";
+import { Button } from "@/components/ui/button";
+
+const contactCards = [
+  {
+    icon: Mail,
+    label: "Email",
+    value: "motsieashley31@gmail.com",
+    blurb: "Best for project inquiries",
+    href: "mailto:motsieashley31@gmail.com",
+  },
+  {
+    icon: MapPin,
+    label: "Location",
+    value: "Rustenburg, North West, ZA",
+    blurb: "Open to remote worldwide",
+    href: "https://www.google.com/maps/place/Rustenburg",
+  },
+  {
+    icon: Github,
+    label: "GitHub",
+    value: "github.com/KodEx-SA",
+    blurb: "See my open source work",
+    href: "https://github.com/KodEx-SA",
+  },
+  {
+    icon: Linkedin,
+    label: "LinkedIn",
+    value: "linkedin.com/in/ashley-motsie",
+    blurb: "Professional networking",
+    href: "https://linkedin.com/in/ashley-motsie",
+  },
+];
 
 export default function Contact() {
   const [formData, setFormData] = useState({ name: "", email: "", subject: "", message: "" });
@@ -77,36 +110,48 @@ export default function Contact() {
     "w-full px-4 py-3 rounded-lg bg-[var(--bg)] border border-[var(--border)] text-[var(--ink)] placeholder:text-[var(--ink-faint)] focus:outline-none focus:border-[var(--accent)] transition-colors text-sm";
 
   return (
-    <main className="bg-[var(--bg)] text-[var(--ink)] min-h-screen py-20 md:py-28">
-      <div className="max-w-5xl mx-auto px-5 md:px-8">
-        <span className="eyebrow">{"// contact"}</span>
-        <h1 className="mt-3 text-3xl md:text-4xl font-bold tracking-tight">
-          Let's work together
-        </h1>
-        <p className="mt-3 text-[var(--ink-muted)] max-w-xl">
-          Have a project in mind? Send a message and I'll get back to you soon.
-        </p>
+    <section id="contact" className="bg-[var(--bg)] text-[var(--ink)] py-20 md:py-28">
+      <div className="max-w-4xl mx-auto px-5 md:px-8">
+        <SectionHeading
+          eyebrow={"// contact"}
+          title="Let's work together"
+          description="Have a project in mind? Send a message and I'll get back to you soon."
+        />
 
-        <div className="mt-12 grid gap-10 lg:grid-cols-[280px_1fr]">
-          {/* Contact info */}
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.4 }}
-            className="space-y-4"
-          >
-            <a href="mailto:motsieashley31@gmail.com" className="card-surface p-4 flex items-center gap-3 hover:border-[var(--ink-faint)] transition-colors">
-              <Mail className="w-4 h-4 text-[var(--accent)] flex-shrink-0" />
-              <span className="text-sm text-[var(--ink-muted)] break-all">motsieashley31@gmail.com</span>
-            </a>
-            <div className="card-surface p-4 flex items-center gap-3">
-              <MapPin className="w-4 h-4 text-[var(--accent)] flex-shrink-0" />
-              <span className="text-sm text-[var(--ink-muted)]">Rustenburg, South Africa</span>
-            </div>
-          </motion.div>
+        {/* Contact cards */}
+        <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {contactCards.map((c, i) => {
+            const Icon = c.icon;
+            return (
+              <motion.a
+                key={c.label}
+                href={c.href}
+                target={c.href.startsWith("http") ? "_blank" : undefined}
+                rel={c.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.35, delay: i * 0.05 }}
+                className="card-surface group p-5 flex flex-col gap-3 hover:border-[var(--ink-faint)] transition-colors"
+              >
+                <div className="flex items-center justify-between">
+                  <div className="w-10 h-10 rounded-lg bg-[var(--accent-soft)] flex items-center justify-center">
+                    <Icon className="w-[18px] h-[18px] text-[var(--accent)]" />
+                  </div>
+                  <ArrowUpRight className="w-4 h-4 text-[var(--ink-faint)] group-hover:text-[var(--accent)] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+                </div>
+                <div>
+                  <div className="text-xs font-medium text-[var(--ink-muted)]">{c.label}</div>
+                  <div className="mt-0.5 text-sm font-semibold text-[var(--ink)] break-all leading-snug">{c.value}</div>
+                  <div className="mt-1.5 text-xs text-[var(--ink-faint)]">{c.blurb}</div>
+                </div>
+              </motion.a>
+            );
+          })}
+        </div>
 
-          {/* Form */}
+        {/* Form */}
+        <div className="mt-6">
           <motion.form
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -138,24 +183,28 @@ export default function Contact() {
               {errors.message && <p className="text-xs text-red-500 mt-1">{errors.message}</p>}
             </div>
 
-            <button
-              type="submit"
-              disabled={loading}
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-[var(--ink)] text-[var(--bg)] font-medium text-sm hover:bg-[var(--accent-ink)] transition-colors disabled:opacity-60"
-            >
+            <Button type="submit" variant="gradient" disabled={loading}>
               <Send className="w-4 h-4" />
               {loading ? "Sending..." : "Send message"}
-            </button>
+            </Button>
 
             {status && (
-              <p className="flex items-center gap-2 text-sm text-[var(--ink-muted)]">
-                <MessageSquare className="w-4 h-4 text-[var(--accent)]" />
+              <motion.p
+                initial={{ opacity: 0, y: -6 }}
+                animate={{ opacity: 1, y: 0 }}
+                className={`flex items-center gap-2 text-sm ${status.includes("successfully") ? "text-[var(--accent)]" : "text-[var(--ink-muted)]"}`}
+              >
+                {status.includes("successfully") ? (
+                  <CheckCircle2 className="w-4 h-4" />
+                ) : (
+                  <MessageSquare className="w-4 h-4 text-[var(--accent)]" />
+                )}
                 {status}
-              </p>
+              </motion.p>
             )}
           </motion.form>
         </div>
       </div>
-    </main>
+    </section>
   );
 }

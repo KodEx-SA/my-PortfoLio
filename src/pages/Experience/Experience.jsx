@@ -1,5 +1,7 @@
 import { motion } from "framer-motion";
 import { Network, Code2, Cpu, MapPin, Briefcase, Quote, Star } from "lucide-react";
+import { SectionHeading } from "@/components/ui/section-heading";
+import { Badge } from "@/components/ui/badge";
 
 const experiences = [
   {
@@ -78,18 +80,15 @@ function ExperienceCard({ icon: Icon, title, company, location, period, current,
       </div>
 
       <div className="flex flex-wrap gap-2">
-        <span className="inline-flex items-center gap-1.5 text-xs text-[var(--ink-muted)] bg-[var(--surface-2)] px-2.5 py-1 rounded-full">
+        <Badge variant="neutral">
           <MapPin className="w-3 h-3" />
           {location}
-        </span>
-        <span className="text-xs text-[var(--ink-muted)] bg-[var(--surface-2)] px-2.5 py-1 rounded-full">
-          {period}
-        </span>
+        </Badge>
+        <Badge variant="neutral">{period}</Badge>
         {current && (
-          <span className="inline-flex items-center gap-1.5 text-xs font-medium text-[var(--accent)] bg-[var(--accent-soft)] px-2.5 py-1 rounded-full">
-            <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent)]" />
+          <Badge variant="success" dot>
             Current
-          </span>
+          </Badge>
         )}
       </div>
 
@@ -97,9 +96,9 @@ function ExperienceCard({ icon: Icon, title, company, location, period, current,
 
       <div className="flex flex-wrap gap-2 mt-auto pt-1">
         {tags.map((tag) => (
-          <span key={tag} className="text-[11px] font-mono px-2 py-1 rounded-md bg-[var(--surface-2)] text-[var(--ink-muted)]">
+          <Badge key={tag} variant="mono">
             #{tag}
-          </span>
+          </Badge>
         ))}
       </div>
     </motion.div>
@@ -108,29 +107,38 @@ function ExperienceCard({ icon: Icon, title, company, location, period, current,
 
 export default function ExperienceSection() {
   return (
-    <section className="bg-[var(--bg)] text-[var(--ink)] py-20 md:py-28">
+    <section id="experience" className="bg-[var(--bg)] text-[var(--ink)] py-20 md:py-28">
       <div className="max-w-6xl mx-auto px-5 md:px-8">
-        <span className="eyebrow">{"// experience"}</span>
-        <h1 className="mt-3 text-3xl md:text-4xl font-bold tracking-tight flex items-center gap-3">
-          <Briefcase className="w-7 h-7 text-[var(--accent)]" />
-          Where I've worked
-        </h1>
-        <p className="mt-2 text-[var(--ink-muted)] max-w-xl">
-          1 active role, 2 past roles.
-        </p>
+        <SectionHeading
+          eyebrow={"// experience"}
+          title="Where I've worked"
+          icon={Briefcase}
+          description="1 active role, 2 past roles."
+        />
 
-        <div className="mt-10 grid gap-5 md:grid-cols-3">
-          {experiences.map((exp) => (
-            <ExperienceCard key={exp.company} {...exp} />
-          ))}
+        <div className="mt-10 relative">
+          {/* Timeline connector — desktop only */}
+          <div className="hidden md:block absolute top-6 left-[16.5%] right-[16.5%] h-px" style={{ background: "var(--gradient-brand)", opacity: 0.35 }} />
+          <div className="grid gap-5 md:grid-cols-3">
+            {experiences.map((exp, i) => (
+              <div key={exp.company} className="relative">
+                <motion.span
+                  initial={{ scale: 0 }}
+                  whileInView={{ scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.3, delay: i * 0.1 }}
+                  className="hidden md:block absolute -top-[1px] left-1/2 -translate-x-1/2 -translate-y-1/2 w-2.5 h-2.5 rounded-full z-10"
+                  style={{ background: "var(--accent)" }}
+                />
+                <ExperienceCard {...exp} />
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* Testimonials */}
         <div className="mt-24">
-          <span className="eyebrow">{"// what people say"}</span>
-          <h2 className="mt-3 text-2xl md:text-3xl font-bold tracking-tight">
-            Client feedback
-          </h2>
+          <SectionHeading eyebrow={"// what people say"} title="Client feedback" level={2} />
 
           <div className="mt-10 grid gap-5 md:grid-cols-3">
             {testimonials.map((t) => (
