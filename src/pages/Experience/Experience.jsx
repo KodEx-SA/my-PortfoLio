@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Network, Code2, Cpu, MapPin, Briefcase, Quote, Star } from "lucide-react";
 import { SectionHeading } from "@/components/ui/section-heading";
+import { Badge } from "@/components/ui/badge";
 
 const experiences = [
   {
@@ -79,18 +80,15 @@ function ExperienceCard({ icon: Icon, title, company, location, period, current,
       </div>
 
       <div className="flex flex-wrap gap-2">
-        <span className="inline-flex items-center gap-1.5 text-xs text-[var(--ink-muted)] bg-[var(--surface-2)] px-2.5 py-1 rounded-full">
+        <Badge variant="neutral">
           <MapPin className="w-3 h-3" />
           {location}
-        </span>
-        <span className="text-xs text-[var(--ink-muted)] bg-[var(--surface-2)] px-2.5 py-1 rounded-full">
-          {period}
-        </span>
+        </Badge>
+        <Badge variant="neutral">{period}</Badge>
         {current && (
-          <span className="inline-flex items-center gap-1.5 text-xs font-medium text-[var(--accent)] bg-[var(--accent-soft)] px-2.5 py-1 rounded-full">
-            <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent)]" />
+          <Badge variant="success" dot>
             Current
-          </span>
+          </Badge>
         )}
       </div>
 
@@ -98,9 +96,9 @@ function ExperienceCard({ icon: Icon, title, company, location, period, current,
 
       <div className="flex flex-wrap gap-2 mt-auto pt-1">
         {tags.map((tag) => (
-          <span key={tag} className="text-[11px] font-mono px-2 py-1 rounded-md bg-[var(--surface-2)] text-[var(--ink-muted)]">
+          <Badge key={tag} variant="mono">
             #{tag}
-          </span>
+          </Badge>
         ))}
       </div>
     </motion.div>

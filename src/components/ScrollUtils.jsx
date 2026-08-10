@@ -29,7 +29,7 @@ export default function ScrollUtils() {
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: visible ? 1 : 0, scale: visible ? 1 : 0.8, pointerEvents: visible ? "auto" : "none" }}
         transition={{ duration: 0.2 }}
-        className="fixed bottom-6 right-6 z-50 w-11 h-11 rounded-full bg-[var(--ink)] text-[var(--bg)] flex items-center justify-center shadow-lg hover:bg-[var(--accent-ink)] transition-colors group"
+        className="fixed bottom-20 right-4 sm:bottom-24 sm:right-6 z-50 w-11 h-11 rounded-full bg-[var(--ink)] text-[var(--bg)] flex items-center justify-center shadow-lg hover:bg-[var(--accent-ink)] transition-colors group"
         aria-label="Back to top"
       >
         <ArrowUp className="w-4 h-4 group-hover:-translate-y-0.5 transition-transform duration-200" />

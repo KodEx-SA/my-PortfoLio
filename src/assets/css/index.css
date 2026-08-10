@@ -29,25 +29,34 @@
   --font-body: "Inter", sans-serif;
   --font-mono: "JetBrains Mono", monospace;
 
-  --color-background: oklch(100% 0 0);
-  --color-foreground: oklch(3.9% 0 0);
-  --color-card: oklch(100% 0 0);
-  --color-card-foreground: oklch(3.9% 0 0);
-  --color-popover: oklch(100% 0 0);
-  --color-popover-foreground: oklch(3.9% 0 0);
-  --color-primary: oklch(9% 0 0);
-  --color-primary-foreground: oklch(98% 0 0);
-  --color-secondary: oklch(96.1% 0 0);
-  --color-secondary-foreground: oklch(9% 0 0);
-  --color-muted: oklch(96.1% 0 0);
-  --color-muted-foreground: oklch(45.1% 0 0);
-  --color-accent: oklch(96.1% 0 0);
-  --color-accent-foreground: oklch(9% 0 0);
-  --color-destructive: oklch(60.2% 0.177 29.233);
-  --color-destructive-foreground: oklch(98% 0 0);
-  --color-border: oklch(89.8% 0 0);
-  --color-input: oklch(89.8% 0 0);
-  --color-ring: oklch(3.9% 0 0);
+  /* Semantic green — used narrowly for "available / current" status,
+     not as decoration. Pairs with the blue/violet brand gradient. */
+  --success: #17875a;
+  --success-soft: #e4f5ec;
+
+  /* shadcn/ui components (Button, Badge, Tooltip, Card) read colour
+     through these — aliasing them to our own tokens means those
+     components re-theme for free whenever .dark toggles, instead of
+     keeping a second, disconnected palette in sync by hand. */
+  --color-background: var(--bg);
+  --color-foreground: var(--ink);
+  --color-card: var(--surface);
+  --color-card-foreground: var(--ink);
+  --color-popover: var(--surface);
+  --color-popover-foreground: var(--ink);
+  --color-primary: var(--ink);
+  --color-primary-foreground: var(--bg);
+  --color-secondary: var(--surface-2);
+  --color-secondary-foreground: var(--ink);
+  --color-muted: var(--surface-2);
+  --color-muted-foreground: var(--ink-muted);
+  --color-accent: var(--accent-soft);
+  --color-accent-foreground: var(--accent-ink);
+  --color-destructive: #dc2626;
+  --color-destructive-foreground: #fff;
+  --color-border: var(--border);
+  --color-input: var(--border);
+  --color-ring: var(--accent);
 
   --radius: 0.5rem;
 }
@@ -71,6 +80,8 @@
   --accent-soft: rgba(109, 140, 255, 0.14);
   --accent-2: #b57cf5;
   --accent-2-soft: rgba(181, 124, 245, 0.14);
+  --success: #34d399;
+  --success-soft: rgba(52, 211, 153, 0.14);
 }
 
 * {
@@ -79,6 +90,39 @@
 
 html {
   scroll-behavior: smooth;
+}
+
+/* ============================================================
+   METEORS + ORBIT — custom Tailwind v4 utilities.
+   Registered via @theme so `animate-meteor` / `animate-orbit`
+   work as ordinary utility classes wherever they're used.
+   ============================================================ */
+@theme {
+  --animate-meteor: meteor 5s linear infinite;
+  --animate-orbit: orbit calc(var(--duration) * 1s) linear infinite;
+}
+
+@keyframes meteor {
+  0% {
+    transform: rotate(var(--angle)) translateX(0);
+    opacity: 1;
+  }
+  70% {
+    opacity: 1;
+  }
+  100% {
+    transform: rotate(var(--angle)) translateX(-500px);
+    opacity: 0;
+  }
+}
+
+@keyframes orbit {
+  0% {
+    transform: rotate(calc(var(--angle) * 1deg)) translateY(calc(var(--radius) * 1px)) rotate(calc(var(--angle) * -1deg));
+  }
+  100% {
+    transform: rotate(calc(var(--angle) * 1deg + 360deg)) translateY(calc(var(--radius) * 1px)) rotate(calc((var(--angle) * -1deg) - 360deg));
+  }
 }
 
 section[id] {

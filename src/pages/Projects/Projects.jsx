@@ -9,6 +9,8 @@ import IsongCafeImg from "@/assets/img/Isong.jpg";
 import SasboImg from "@/assets/img/sasbo.jpeg";
 import { Github, Globe, ArrowUpRight, Code2 } from "lucide-react";
 import { SectionHeading } from "@/components/ui/section-heading";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 
 const projects = [
   {
@@ -188,14 +190,9 @@ function Card({ i, title, description, src, tags, stack, status, year, progress,
           {/* Content */}
           <div className="flex-1 p-6 md:p-8 lg:p-10 flex flex-col gap-4">
             <div className="flex items-center gap-2 flex-wrap">
-              <span className="inline-flex items-center gap-1.5 text-[11px] font-mono px-2.5 py-1 rounded-full bg-[var(--accent-soft)] text-[var(--accent)]">
-                <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent)]" />
-                {status}
-              </span>
+              <Badge variant="success" dot>{status}</Badge>
               {stack.map((s) => (
-                <span key={s} className="text-[11px] font-mono px-2 py-1 rounded-full bg-[var(--surface-2)] text-[var(--ink-muted)]">
-                  {s}
-                </span>
+                <Badge key={s} variant="mono" className="rounded-full">{s}</Badge>
               ))}
             </div>
 
@@ -207,9 +204,7 @@ function Card({ i, title, description, src, tags, stack, status, year, progress,
 
             <div className="flex flex-wrap gap-2">
               {tags.map((tag) => (
-                <span key={tag} className="px-2.5 py-1 text-[11px] rounded-md bg-[var(--surface-2)] text-[var(--ink-muted)]">
-                  #{tag}
-                </span>
+                <Badge key={tag} variant="neutral">#{tag}</Badge>
               ))}
             </div>
 
@@ -226,16 +221,13 @@ function Card({ i, title, description, src, tags, stack, status, year, progress,
                   <ArrowUpRight className="w-3.5 h-3.5" />
                 </a>
               )}
-              <a
-                href={githubLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border border-[var(--border)] text-[var(--ink)] font-medium text-sm hover:border-[var(--ink-faint)] transition-colors"
-              >
-                <Github className="w-4 h-4" />
-                Source
-                <Code2 className="w-3.5 h-3.5 opacity-60" />
-              </a>
+              <Button asChild variant="outline" size="sm">
+                <a href={githubLink} target="_blank" rel="noopener noreferrer">
+                  <Github className="w-4 h-4" />
+                  Source
+                  <Code2 className="w-3.5 h-3.5 opacity-60" />
+                </a>
+              </Button>
             </div>
           </div>
         </div>

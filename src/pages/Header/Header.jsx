@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaBars, FaTimes } from "react-icons/fa";
-import { ArrowUpRight, Download, Sun, Moon } from "lucide-react";
-import { useTheme } from "next-themes";
+import { ArrowUpRight, Download } from "lucide-react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useActiveSection } from "@/hooks/useActiveSection";
+import { AnimatedThemeToggler } from "@/components/ui/animated-theme-toggler";
 
 const links = [
   { id: "hero", text: "Home" },
@@ -28,15 +28,7 @@ export default function Header() {
   const isHome = location.pathname === "/";
   const activeId = useActiveSection(sectionIds);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [hidden, setHidden] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const { resolvedTheme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-
-  // Runs once on mount so the theme icon only renders after the client
-  // has resolved the real theme — avoids a flash of the wrong icon.
-  // eslint-disable-next-line react-hooks/set-state-in-effect
-  useEffect(() => setMounted(true), []);
 
   const goTo = (id) => {
     setIsMenuOpen(false);
@@ -48,14 +40,10 @@ export default function Header() {
     }
   };
 
+  // Only tracks scroll position for the blur/border transition — the
+  // nav itself always stays on screen, it never hides on scroll.
   useEffect(() => {
-    let lastY = window.scrollY;
-    const handleScroll = () => {
-      const y = window.scrollY;
-      setScrolled(y > 12);
-      setHidden(y > lastY && y > 120);
-      lastY = y;
-    };
+    const handleScroll = () => setScrolled(window.scrollY > 12);
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -66,11 +54,7 @@ export default function Header() {
 
   return (
     <>
-      <motion.header
-        animate={{ y: hidden && !isMenuOpen ? -96 : 0 }}
-        transition={{ duration: 0.3, ease: "easeInOut" }}
-        className="fixed top-0 left-0 w-full z-50 flex justify-center px-4 pt-4"
-      >
+      <header className="fixed top-0 left-0 w-full z-50 flex justify-center px-4 pt-4">
         <div
           className={`flex items-center gap-1 w-full max-w-3xl rounded-full pl-4 pr-1.5 py-1.5 border transition-all duration-300 ${
             scrolled
@@ -102,13 +86,7 @@ export default function Header() {
             ))}
           </nav>
 
-          <button
-            onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
-            className="hidden md:flex ml-auto items-center justify-center w-9 h-9 rounded-full text-[var(--ink-muted)] hover:text-[var(--ink)] hover:bg-[var(--surface-2)] transition-colors shrink-0"
-            aria-label="Toggle theme"
-          >
-            {mounted && resolvedTheme === "dark" ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
-          </button>
+          <AnimatedThemeToggler className="hidden md:flex items-center justify-center w-9 h-9 rounded-full text-[var(--ink-muted)] hover:text-[var(--ink)] hover:bg-[var(--surface-2)] transition-colors shrink-0" />
 
           <a
             href="/Ashley_K_Motsie_Resume.pdf"
@@ -120,13 +98,7 @@ export default function Header() {
           </a>
 
           {/* Mobile controls */}
-          <button
-            onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
-            className="md:hidden ml-auto p-2.5 rounded-full text-[var(--ink-muted)] hover:bg-[var(--surface-2)]"
-            aria-label="Toggle theme"
-          >
-            {mounted && resolvedTheme === "dark" ? <Sun size={16} /> : <Moon size={16} />}
-          </button>
+          <AnimatedThemeToggler className="md:hidden ml-auto p-2.5 rounded-full text-[var(--ink-muted)] hover:bg-[var(--surface-2)]" />
           <button
             onClick={() => setIsMenuOpen((v) => !v)}
             className="md:hidden p-2.5 rounded-full text-[var(--ink)] hover:bg-[var(--surface-2)]"
@@ -135,7 +107,7 @@ export default function Header() {
             {isMenuOpen ? <FaTimes size={16} /> : <FaBars size={16} />}
           </button>
         </div>
-      </motion.header>
+      </header>
 
       {/* Mobile full-screen menu */}
       <AnimatePresence>

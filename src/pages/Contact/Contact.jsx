@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Send, MapPin, Mail, MessageSquare, Github, Linkedin, ArrowUpRight, CheckCircle2 } from "lucide-react";
 import { motion } from "framer-motion";
 import { SectionHeading } from "@/components/ui/section-heading";
+import { Button } from "@/components/ui/button";
 
 const contactCards = [
   {
@@ -182,14 +183,10 @@ export default function Contact() {
               {errors.message && <p className="text-xs text-red-500 mt-1">{errors.message}</p>}
             </div>
 
-            <button
-              type="submit"
-              disabled={loading}
-              className="btn-gradient inline-flex items-center gap-2 px-6 py-3 rounded-lg font-medium text-sm disabled:opacity-60"
-            >
+            <Button type="submit" variant="gradient" disabled={loading}>
               <Send className="w-4 h-4" />
               {loading ? "Sending..." : "Send message"}
-            </button>
+            </Button>
 
             {status && (
               <motion.p
