@@ -71,6 +71,10 @@ export const TypingAnimation = ({
   startOnView = true,
   ...props
 }) => {
+  if (typeof children !== "string") {
+    throw new Error(`TypingAnimation: children must be a string. Received: ${typeof children}`);
+  }
+
   const [displayedText, setDisplayedText] = useState("");
   const [started, setStarted] = useState(false);
   const elementRef = useRef(null);
